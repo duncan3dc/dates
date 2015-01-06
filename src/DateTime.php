@@ -5,9 +5,14 @@ namespace Regatta\Dates;
 class DateTime
 {
     /**
-     * @var int $date Unix timestamp representing the datetime of this object
+     * @var int $unix Unix timestamp representing the datetime of this object
      */
     protected $unix;
+
+    /**
+     * @var Date $period The financial period data for this date
+     */
+    protected $period;
 
     /**
      * Create a new instance from a unix timestamp
@@ -21,6 +26,7 @@ class DateTime
         }
 
         $this->unix = $unix;
+        $this->period = null;
     }
 
 
@@ -32,6 +38,43 @@ class DateTime
     public function asUnix()
     {
         return $this->unix;
+    }
+
+
+    /**
+     * Get the details of the financial period for this date.
+     *
+     * @return Date
+     */
+    public function getPeriod()
+    {
+        if ($this->period === null) {
+            $this->period = new Date(mktime(12, 0, 0, date("n", $this->unix) - 1, date("j", $this->unix), date("Y", $this->unix)));
+        }
+
+        return $this->period;
+    }
+
+
+    /**
+     * Get the financial yaer of this date.
+     *
+     * @return int
+     */
+    public function getFinancialYear()
+    {
+        return $this->getPeriod()->numeric("Y");
+    }
+
+
+    /**
+     * Get the financial yaer of this date.
+     *
+     * @return int
+     */
+    public function getFinancialPeriod()
+    {
+        return $this->getPeriod()->numeric("n");
     }
 
 
