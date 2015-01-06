@@ -13,15 +13,23 @@ class DateTime
     protected $unix;
 
     /**
+     * Create a new DateTime object representing the current time.
+     *
+     * @return static
+     */
+    public static function now()
+    {
+        return new static(time());
+    }
+
+
+    /**
      * Create a new instance from a unix timestamp.
      *
      * @param int A unix timestamp
      */
-    public function __construct($unix = null)
+    public function __construct($unix)
     {
-        if ($unix === null) {
-            $unix = time();
-        }
         if (!$unix = (int) $unix) {
             throw new \InvalidArgumentException("An invalid unix timestamp was passed");
         }

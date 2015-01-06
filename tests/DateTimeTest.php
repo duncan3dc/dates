@@ -15,19 +15,21 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     }
     public function testConstructor2()
     {
-        $unix = time();
-        $date = new DateTime;
-        $this->assertSame($unix, $date->timestamp());
+        $this->setExpectedException("InvalidArgumentException", "An invalid unix timestamp was passed");
+        $date = new DateTime(0);
     }
     public function testConstructor3()
     {
         $this->setExpectedException("InvalidArgumentException", "An invalid unix timestamp was passed");
-        $date = new DateTime(0);
-    }
-    public function testConstructor4()
-    {
-        $this->setExpectedException("InvalidArgumentException", "An invalid unix timestamp was passed");
         $date = new DateTime("ABC");
+    }
+
+
+    public function testNow()
+    {
+        $unix = time();
+        $date = DateTime::now();
+        $this->assertSame($unix, $date->timestamp());
     }
 
 
@@ -54,5 +56,13 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
         $unix = time();
         $date = new DateTime($unix);
         $this->assertSame(date("Ymd", $unix), $date->string("Ymd"));
+    }
+
+
+    public function testConstructor()
+    {
+        $unix = time();
+        $date = DateTime::now();
+        $this->assertSame($unix, $date->timestamp());
     }
 }
