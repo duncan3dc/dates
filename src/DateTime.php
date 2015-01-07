@@ -2,6 +2,9 @@
 
 namespace Regatta\Dates;
 
+/**
+ * A class to respresent a unix timestamp and allow convenient methods.
+ */
 class DateTime
 {
     /**

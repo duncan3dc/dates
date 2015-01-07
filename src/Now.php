@@ -2,6 +2,9 @@
 
 namespace Regatta\Dates;
 
+/**
+ * A DateTime object representing the current time.
+ */
 class Now extends DateTime
 {
     /**

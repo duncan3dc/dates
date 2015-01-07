@@ -2,6 +2,9 @@
 
 namespace Regatta\Dates;
 
+/**
+ * Parse dates/times in a variety of formats and create a DateTime object.
+ */
 class DateParser extends DateTime
 {
     /**
