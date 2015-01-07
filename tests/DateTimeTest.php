@@ -47,4 +47,16 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
         $date = new DateTime($unix);
         $this->assertSame(date("Ymd", $unix), $date->string("Ymd"));
     }
+
+
+    public function testMiddayEarly()
+    {
+        $date = new DateTime(mktime(0, 0, 0, 1, 1, 2014));
+        $this->assertSame(mktime(12, 0, 0, 1, 1, 2014), $date->midday());
+    }
+    public function testMiddayLate()
+    {
+        $date = new DateTime(mktime(23, 59, 59, 1, 1, 2014));
+        $this->assertSame(mktime(12, 0, 0, 1, 1, 2014), $date->midday());
+    }
 }
