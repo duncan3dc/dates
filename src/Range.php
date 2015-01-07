@@ -83,4 +83,15 @@ class Range
     {
         return new Iterator\Years($this->start, $this->end);
     }
+
+
+    /**
+     * Get an iterator for the seasons covered by this date range.
+     *
+     * @return Iterator\Seasons
+     */
+    public function seasons()
+    {
+        return new Iterator\Seasons($this->start, $this->end);
+    }
 }
