@@ -72,4 +72,15 @@ class Range
     {
         return new Iterator\Months($this->start, $this->end);
     }
+
+
+    /**
+     * Get an iterator for the years covered by this date range.
+     *
+     * @return Iterator\Years
+     */
+    public function years()
+    {
+        return new Iterator\Years($this->start, $this->end);
+    }
 }
