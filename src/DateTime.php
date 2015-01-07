@@ -52,7 +52,7 @@ class DateTime
     public function getPeriod()
     {
         if ($this->period === null) {
-            $this->period = new Date(mktime(12, 0, 0, date("n", $this->unix) - 1, date("j", $this->unix), date("Y", $this->unix)));
+            $this->period = new Date(mktime(12, 0, 0, date("n", $this->unix) - 1, 1, date("Y", $this->unix)));
         }
 
         return $this->period;
