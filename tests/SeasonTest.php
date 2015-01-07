@@ -1,0 +1,131 @@
+<?php
+
+namespace Regatta\Dates;
+
+class SeasonTest extends \PHPUnit_Framework_TestCase
+{
+
+    protected function assertStartTime($expected, $unix)
+    {
+        $date = new DateTime($unix);
+        $season = new Season($date);
+        $result = $season->getStart()->asUnix();
+        $this->assertSame($expected, $result);
+    }
+    public function testGetStart1()
+    {
+        $this->assertStartTime(mktime(12, 0, 0, 2, 1, 2015), mktime(12, 0, 0, 2, 1, 2015));
+    }
+    public function testGetStart2()
+    {
+        $this->assertStartTime(mktime(12, 0, 0, 2, 1, 2015), mktime(12, 0, 0, 7, 31, 2015));
+    }
+    public function testGetStart3()
+    {
+        $this->assertStartTime(mktime(12, 0, 0, 8, 1, 2015), mktime(12, 0, 0, 8, 1, 2015));
+    }
+    public function testGetStart4()
+    {
+        $this->assertStartTime(mktime(12, 0, 0, 8, 1, 2014), mktime(12, 0, 0, 1, 31, 2015));
+    }
+
+
+    protected function assertEndTime($expected, $unix)
+    {
+        $date = new DateTime($unix);
+        $season = new Season($date);
+        $result = $season->getEnd()->asUnix();
+        $this->assertSame($expected, $result);
+    }
+    public function testGetEnd1()
+    {
+        $this->assertEndTime(mktime(12, 0, 0, 7, 31, 2014), mktime(12, 0, 0, 2, 1, 2014));
+    }
+    public function testGetEnd2()
+    {
+        $this->assertEndTime(mktime(12, 0, 0, 7, 31, 2014), mktime(12, 0, 0, 7, 31, 2014));
+    }
+    public function testGetEnd3()
+    {
+        $this->assertEndTime(mktime(12, 0, 0, 1, 31, 2015), mktime(12, 0, 0, 8, 1, 2014));
+    }
+    public function testGetEnd4()
+    {
+        $this->assertEndTime(mktime(12, 0, 0, 1, 31, 2015), mktime(12, 0, 0, 1, 31, 2015));
+    }
+
+
+    protected function assertIntCode($expected, $unix)
+    {
+        $date = new DateTime($unix);
+        $season = new Season($date);
+        $result = $season->getInt();
+        $this->assertSame($expected, $result);
+    }
+    public function testGetInt1()
+    {
+        $this->assertIntCode(140, mktime(12, 0, 0, 2, 1, 2014));
+    }
+    public function testGetInt2()
+    {
+        $this->assertIntCode(140, mktime(12, 0, 0, 7, 31, 2014));
+    }
+    public function testGetInt3()
+    {
+        $this->assertIntCode(145, mktime(12, 0, 0, 8, 1, 2014));
+    }
+    public function testGetInt4()
+    {
+        $this->assertIntCode(145, mktime(12, 0, 0, 1, 31, 2015));
+    }
+
+
+    protected function assertStringCode($expected, $unix)
+    {
+        $date = new DateTime($unix);
+        $season = new Season($date);
+        $result = $season->getString();
+        $this->assertSame($expected, $result);
+    }
+    public function testGetString1()
+    {
+        $this->assertStringCode("SS14", mktime(12, 0, 0, 2, 1, 2014));
+    }
+    public function testGetString2()
+    {
+        $this->assertStringCode("SS14", mktime(12, 0, 0, 7, 31, 2014));
+    }
+    public function testGetString3()
+    {
+        $this->assertStringCode("AW14", mktime(12, 0, 0, 8, 1, 2014));
+    }
+    public function testGetString4()
+    {
+        $this->assertStringCode("AW14", mktime(12, 0, 0, 1, 31, 2015));
+    }
+
+
+    protected function assertDescription($expected, $unix)
+    {
+        $date = new DateTime($unix);
+        $season = new Season($date);
+        $result = $season->getDescription();
+        $this->assertSame($expected, $result);
+    }
+    public function testGetDescription1()
+    {
+        $this->assertDescription("Spring/Summer 2014", mktime(12, 0, 0, 2, 1, 2014));
+    }
+    public function testGetDescription2()
+    {
+        $this->assertDescription("Spring/Summer 2014", mktime(12, 0, 0, 7, 31, 2014));
+    }
+    public function testGetDescription3()
+    {
+        $this->assertDescription("Autumn/Winter 2014", mktime(12, 0, 0, 8, 1, 2014));
+    }
+    public function testGetDescription4()
+    {
+        $this->assertDescription("Autumn/Winter 2014", mktime(12, 0, 0, 1, 31, 2015));
+    }
+}
