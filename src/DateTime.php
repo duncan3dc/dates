@@ -98,4 +98,15 @@ class DateTime
     {
         return date($format, $this->unix);
     }
+
+
+    /**
+     * Get a unix timestamp for 12pm on this date.
+     *
+     * @return int
+     */
+    public function midday()
+    {
+        return mktime(12, 0, 0, $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
+    }
 }
