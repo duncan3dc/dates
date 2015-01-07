@@ -61,4 +61,15 @@ class Range
     {
         return new Iterator\Days($this->start, $this->end);
     }
+
+
+    /**
+     * Get an iterator for the months covered by this date range.
+     *
+     * @return Iterator\Months
+     */
+    public function months()
+    {
+        return new Iterator\Months($this->start, $this->end);
+    }
 }
