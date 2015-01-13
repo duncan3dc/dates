@@ -7,6 +7,8 @@ namespace duncan3dc\Dates;
  */
 class DateTime
 {
+    use Traits\RelativeDates;
+
     /**
      * @var int $unix Unix timestamp representing the datetime of this object
      */
