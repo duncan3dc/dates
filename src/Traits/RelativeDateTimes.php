@@ -2,20 +2,20 @@
 
 namespace duncan3dc\Dates\Traits;
 
-use duncan3dc\Dates\Date;
+use duncan3dc\Dates\DateTime;
 
 /**
- * Get a new Date object relative to the current one
+ * Get a new DateTime object relative to the current one
  */
-trait RelativeDates
+trait RelativeDateTimes
 {
 
     /**
-     * Get a Date object for the specified number of months difference.
+     * Get a DateTime object for the specified number of months difference.
      *
      * @param int $months The number of months to add
      *
-     * @return Date
+     * @return DateTime
      */
     public function addMonths($months)
     {
@@ -24,7 +24,7 @@ trait RelativeDates
             return $this;
         }
 
-        $date = new Date(mktime(12, 0, 0, date("n", $this->unix) + $months, 1, date("Y", $this->unix)));
+        $date = new DateTime(mktime($this->numeric("H"), $this->numeric("i"), $this->numeric("s"), $this->numeric("n") + $months, 1, $this->numeric("Y")));
 
         # Prevent the month from wrapping when using a date that doesn't exist in that month
         $day = $this->numeric("j");
@@ -33,14 +33,15 @@ trait RelativeDates
             $day = $max;
         }
 
-        return new Date(mktime(12, 0, 0, date("n", $this->unix) + $months, $day, date("Y", $this->unix)));
+        return new DateTime(mktime($this->numeric("H"), $this->numeric("i"), $this->numeric("s"), $this->numeric("n") + $months, $day, $this->numeric("Y")));
     }
 
 
+
     /**
-     * Get a Date object for the previous month.
+     * Get a DateTime object for the previous month.
      *
-     * @return Date
+     * @return DateTime
      */
     public function prevMonth()
     {
@@ -49,9 +50,9 @@ trait RelativeDates
 
 
     /**
-     * Get a Date object for the next month.
+     * Get a DateTime object for the next month.
      *
-     * @return Date
+     * @return DateTime
      */
     public function nextMonth()
     {
@@ -60,11 +61,11 @@ trait RelativeDates
 
 
     /**
-     * Get a Date object for the specified number of years difference.
+     * Get a DateTime object for the specified number of years difference.
      *
      * @param int $years The number of years to add
      *
-     * @return Date
+     * @return DateTime
      */
     public function addYears($years)
     {
@@ -75,9 +76,9 @@ trait RelativeDates
 
 
     /**
-     * Get a Date object for the previous year.
+     * Get a DateTime object for the previous year.
      *
-     * @return Date
+     * @return DateTime
      */
     public function prevYear()
     {
@@ -86,9 +87,9 @@ trait RelativeDates
 
 
     /**
-     * Get a Date object for the next year.
+     * Get a DateTime object for the next year.
      *
-     * @return Date
+     * @return DateTime
      */
     public function nextYear()
     {
