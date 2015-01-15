@@ -59,4 +59,15 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
         $date = new DateTime(mktime(23, 59, 59, 1, 1, 2014));
         $this->assertSame(mktime(12, 0, 0, 1, 1, 2014), $date->midday());
     }
+
+    public function testStart()
+    {
+        $date = new DateTime(mktime(12, 0, 0, 1, 1, 2014));
+        $this->assertSame(mktime(0, 0, 0, 1, 1, 2014), $date->start());
+    }
+    public function testEnd()
+    {
+        $date = new DateTime(mktime(12, 0, 0, 1, 1, 2014));
+        $this->assertSame(mktime(23, 59, 59, 1, 1, 2014), $date->end());
+    }
 }
