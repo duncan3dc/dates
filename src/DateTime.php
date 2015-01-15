@@ -47,6 +47,17 @@ class DateTime
 
 
     /**
+     * Get a Season object for this date.
+     *
+     * @return Season
+     */
+    public function getSeason()
+    {
+        return new Season($this);
+    }
+
+
+    /**
      * Get the details of the financial period for this date.
      *
      * @return Date
