@@ -7,8 +7,7 @@ class TodayTest extends \PHPUnit_Framework_TestCase
 
     public function testConstructor()
     {
-        $unix = time();
         $date = new Today;
-        $this->assertSame($unix, $date->asUnix());
+        $this->assertSame(mktime(12, 0, 0, date("n"), date("j"), date("Y")), $date->asUnix());
     }
 }
