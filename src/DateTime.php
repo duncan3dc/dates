@@ -111,4 +111,26 @@ class DateTime
     {
         return mktime(12, 0, 0, $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
     }
+
+
+    /**
+     * Get a unix timestamp for the start of this date.
+     *
+     * @return int
+     */
+    public function start()
+    {
+        return mktime(0, 0, 0, $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
+    }
+
+
+    /**
+     * Get a unix timestamp for the end of this date.
+     *
+     * @return int
+     */
+    public function end()
+    {
+        return mktime(23, 59, 59, $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
+    }
 }
