@@ -28,7 +28,7 @@ class RelativeDateTimesTest extends \PHPUnit_Framework_TestCase
     public function testPreviousMonth()
     {
         $date = new DateTime(mktime(0, 0, 0, 1, 1, 2001));
-        $result = $date->PreviousMonth();
+        $result = $date->previousMonth();
         $this->assertSame(mktime(0, 0, 0, 12, 1, 2000), $result->asUnix());
     }
 
@@ -56,7 +56,55 @@ class RelativeDateTimesTest extends \PHPUnit_Framework_TestCase
     public function testPreviousYear()
     {
         $date = new DateTime(mktime(0, 0, 0, 1, 1, 2001));
-        $result = $date->PreviousYear();
+        $result = $date->previousYear();
         $this->assertSame(mktime(0, 0, 0, 1, 1, 2000), $result->asUnix());
+    }
+
+
+    public function testAddSeconds()
+    {
+        $date = new DateTime(mktime(12, 0, 0, 3, 31, 2014));
+        $result = $date->addSeconds(5);
+        $this->assertSame(mktime(12, 0, 5, 3, 31, 2014), $result->asUnix());
+    }
+
+
+    public function testSubSeconds()
+    {
+        $date = new DateTime(mktime(12, 0, 0, 3, 31, 2014));
+        $result = $date->subSeconds(60);
+        $this->assertSame(mktime(11, 59, 0, 3, 31, 2014), $result->asUnix());
+    }
+
+
+    public function testAddMinutes()
+    {
+        $date = new DateTime(mktime(23, 59, 59, 3, 31, 1970));
+        $result = $date->addMinutes(5);
+        $this->assertSame(mktime(0, 4, 59, 4, 1, 1970), $result->asUnix());
+    }
+
+
+    public function testSubMinutes()
+    {
+        $date = new DateTime(mktime(12, 10, 0, 5, 1, 2012));
+        $result = $date->subMinutes(2);
+        $this->assertSame(mktime(12, 8, 0, 5, 1, 2012), $result->asUnix());
+    }
+
+
+    public function testAddHours()
+    {
+        $date = new DateTime(mktime(23, 59, 59, 12, 31, 1986));
+        $result = $date->addHours(1);
+        $this->assertSame(mktime(0, 59, 59, 1, 1, 1987), $result->asUnix());
+    }
+
+
+    public function testSubHours()
+    {
+        $date = new DateTime(mktime(0, 0, 0, 2, 29, 2012));
+        $result = $date->subHours(24);
+        $this->assertSame(mktime(0, 0, 0, 2, 28, 2012), $result->asUnix());
     }
 }

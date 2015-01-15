@@ -84,7 +84,14 @@ trait RelativeDateTimes
             return $this;
         }
 
-        $date = new DateTime(mktime($this->numeric("H"), $this->numeric("i"), $this->numeric("s"), $this->numeric("n") + $months, 1, $this->numeric("Y")));
+        $date = new DateTime(mktime(
+            $this->numeric("H"),
+            $this->numeric("i"),
+            $this->numeric("s"),
+            $this->numeric("n") + $months,
+            1,
+            $this->numeric("Y")
+        ));
 
         # Prevent the month from wrapping when using a date that doesn't exist in that month
         $day = $this->numeric("j");
@@ -93,7 +100,14 @@ trait RelativeDateTimes
             $day = $max;
         }
 
-        return new DateTime(mktime($this->numeric("H"), $this->numeric("i"), $this->numeric("s"), $this->numeric("n") + $months, $day, $this->numeric("Y")));
+        return new DateTime(mktime(
+            $this->numeric("H"),
+            $this->numeric("i"),
+            $this->numeric("s"),
+            $this->numeric("n") + $months,
+            $day,
+            $this->numeric("Y")
+        ));
     }
 
 
@@ -178,5 +192,94 @@ trait RelativeDateTimes
     public function nextYear()
     {
         return $this->addYears(1);
+    }
+
+
+    /**
+     * Get a DateTime object for the specified number of seconds difference.
+     *
+     * @param int $seconds The number of seconds to add
+     *
+     * @return DateTime
+     */
+    public function addSeconds($seconds)
+    {
+        $seconds = (int) $seconds;
+        if ($seconds === 0) {
+            return $this;
+        }
+
+        return new DateTime(mktime(
+            $this->numeric("H"),
+            $this->numeric("i"),
+            $this->numeric("s") + $seconds,
+            $this->numeric("n"),
+            $this->numeric("j"),
+            $this->numeric("Y")
+        ));
+    }
+
+
+    /**
+     * Get a DateTime object for the specified number of seconds difference.
+     *
+     * @param int $seconds The number of seconds to subtract
+     *
+     * @return DateTime
+     */
+    public function subtractSeconds($seconds)
+    {
+        return $this->addSeconds($seconds * -1);
+    }
+
+
+    /**
+     * Get a DateTime object for the specified number of minutes difference.
+     *
+     * @param int $minutes The number of minutes to add
+     *
+     * @return DateTime
+     */
+    public function addMinutes($minutes)
+    {
+        return $this->addSeconds($minutes * 60);
+    }
+
+
+    /**
+     * Get a DateTime object for the specified number of minutes difference.
+     *
+     * @param int $minutes The number of minutes to subtract
+     *
+     * @return DateTime
+     */
+    public function subtractMinutes($minutes)
+    {
+        return $this->addMinutes($minutes * -1);
+    }
+
+    /**
+     * Get a DateTime object for the specified number of hours difference.
+     *
+     * @param int $hours The number of hours to add
+     *
+     * @return DateTime
+     */
+    public function addHours($hours)
+    {
+        return $this->addMinutes($hours * 60);
+    }
+
+
+    /**
+     * Get a DateTime object for the specified number of hours difference.
+     *
+     * @param int $hours The number of hours to subtract
+     *
+     * @return DateTime
+     */
+    public function subtractHours($hours)
+    {
+        return $this->addHours($hours * -1);
     }
 }
