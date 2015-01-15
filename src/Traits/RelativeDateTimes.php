@@ -11,6 +11,54 @@ trait RelativeDateTimes
 {
 
     /**
+     * Get a DateTime object for the specified number of days difference.
+     *
+     * @param int $days The number of days to add
+     *
+     * @return DateTime
+     */
+    public function addDays($days)
+    {
+        $days = (int) $days;
+        if ($days === 0) {
+            return $this;
+        }
+
+        return new DateTime(mktime(
+            $this->numeric("H"),
+            $this->numeric("i"),
+            $this->numeric("s"),
+            $this->numeric("n"),
+            $this->numeric("j") + $days,
+            $this->numeric("Y")
+        ));
+    }
+
+
+
+    /**
+     * Get a DateTime object for the previous day.
+     *
+     * @return DateTime
+     */
+    public function previousDay()
+    {
+        return $this->addDays(-1);
+    }
+
+
+    /**
+     * Get a DateTime object for the next day.
+     *
+     * @return DateTime
+     */
+    public function nextDay()
+    {
+        return $this->addDays(1);
+    }
+
+
+    /**
      * Get a DateTime object for the specified number of months difference.
      *
      * @param int $months The number of months to add
