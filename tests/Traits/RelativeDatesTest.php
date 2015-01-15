@@ -7,6 +7,34 @@ use duncan3dc\Dates\Date;
 class RelativeDatesTest extends \PHPUnit_Framework_TestCase
 {
 
+    public function testAddDays1()
+    {
+        $date = new Date(mktime(12, 0, 0, 3, 31, 2014));
+        $result = $date->addDays(2);
+        $this->assertSame(mktime(12, 0, 0, 4, 2, 2014), $result->timestamp());
+    }
+    public function testAddDays2()
+    {
+        $date = new Date(mktime(12, 0, 0, 1, 1, 2012));
+        $result = $date->addDays(-2);
+        $this->assertSame(mktime(12, 0, 0, 12, 30, 2011), $result->timestamp());
+    }
+
+
+    public function testNextDay()
+    {
+        $date = new Date(mktime(23, 59, 59, 3, 31, 1970));
+        $result = $date->nextDay();
+        $this->assertSame(mktime(12, 0, 0, 4, 1, 1970), $result->timestamp());
+    }
+    public function testPrevDay()
+    {
+        $date = new Date(mktime(0, 0, 0, 1, 1, 2001));
+        $result = $date->prevDay();
+        $this->assertSame(mktime(12, 0, 0, 12, 31, 2000), $result->timestamp());
+    }
+
+
     public function testAddMonths1()
     {
         $date = new Date(mktime(12, 0, 0, 3, 31, 2014));
