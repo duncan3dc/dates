@@ -35,6 +35,18 @@ trait RelativeDateTimes
     }
 
 
+    /**
+     * Get a DateTime object for the specified number of days difference.
+     *
+     * @param int $days The number of days to subtract
+     *
+     * @return DateTime
+     */
+    public function subDays($days)
+    {
+        return $this->addDays($days * -1);
+    }
+
 
     /**
      * Get a DateTime object for the previous day.
@@ -85,6 +97,18 @@ trait RelativeDateTimes
     }
 
 
+    /**
+     * Get a DateTime object for the specified number of months difference.
+     *
+     * @param int $months The number of months to subtract
+     *
+     * @return DateTime
+     */
+    public function subMonths($months)
+    {
+        return $this->addMonths($months * -1);
+    }
+
 
     /**
      * Get a DateTime object for the previous month.
@@ -121,6 +145,18 @@ trait RelativeDateTimes
         return $this->addMonths($years * 12);
     }
 
+
+    /**
+     * Get a DateTime object for the specified number of years difference.
+     *
+     * @param int $years The number of years to subtract
+     *
+     * @return DateTime
+     */
+    public function subYears($years)
+    {
+        return $this->addYears($years * -1);
+    }
 
 
     /**

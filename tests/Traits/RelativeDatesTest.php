@@ -21,6 +21,14 @@ class RelativeDatesTest extends \PHPUnit_Framework_TestCase
     }
 
 
+    public function testSubDays()
+    {
+        $date = new Date(mktime(12, 0, 0, 4, 2, 2014));
+        $result = $date->subDays(2);
+        $this->assertSame(mktime(12, 0, 0, 3, 31, 2014), $result->timestamp());
+    }
+
+
     public function testNextDay()
     {
         $date = new Date(mktime(23, 59, 59, 3, 31, 1970));
@@ -49,6 +57,14 @@ class RelativeDatesTest extends \PHPUnit_Framework_TestCase
     }
 
 
+    public function testSubMonths()
+    {
+        $date = new Date(mktime(12, 0, 0, 5, 31, 2014));
+        $result = $date->subMonths(2);
+        $this->assertSame(mktime(12, 0, 0, 3, 31, 2014), $result->timestamp());
+    }
+
+
     public function testNextMonth()
     {
         $date = new Date(mktime(23, 59, 59, 3, 31, 1970));
@@ -74,6 +90,14 @@ class RelativeDatesTest extends \PHPUnit_Framework_TestCase
         $date = new Date(mktime(12, 0, 0, 2, 29, 2012));
         $result = $date->addYears(-2);
         $this->assertSame(mktime(12, 0, 0, 2, 28, 2010), $result->timestamp());
+    }
+
+
+    public function testSubYears()
+    {
+        $date = new Date(mktime(12, 0, 0, 5, 1, 2014));
+        $result = $date->subYears(2);
+        $this->assertSame(mktime(12, 0, 0, 5, 1, 2012), $result->timestamp());
     }
 
 
