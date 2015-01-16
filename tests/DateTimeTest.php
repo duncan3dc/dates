@@ -88,4 +88,19 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
         $date = new DateTime(mktime(12, 0, 0, 1, 1, 2014));
         $this->assertSame(mktime(23, 59, 59, 1, 1, 2014), $date->end());
     }
+
+
+    public function testParse1()
+    {
+        $input = "28/02/2008 06:30:12";
+        $result = DateTime::parse($input)->format("d/m/Y H:i:s");
+        $this->assertSame($input, $result);
+    }
+    public function testParse2()
+    {
+        $date = "1101231";
+        $time = "042015";
+        $result = DateTime::parse($date, $time)->format("1ymd His");
+        $this->assertSame("{$date} {$time}", $result);
+    }
 }

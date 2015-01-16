@@ -26,6 +26,24 @@ class DateTime
 
 
     /**
+     * Create a new DateTime object from a parsable date/time.
+     *
+     * @param string|int The date to parse
+     * @param string|int The time to parse
+     *
+     * @return DateTime
+     */
+    public static function parse($date, $time = null)
+    {
+        $parser = new DateTimeParser();
+
+        $parser->addDefaultParsers();
+
+        return $parser->parse($date, $time);
+    }
+
+
+    /**
      * Create a new instance from a unix timestamp.
      *
      * @param int A unix timestamp

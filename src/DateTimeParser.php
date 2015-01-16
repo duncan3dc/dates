@@ -15,28 +15,6 @@ class DateTimeParser
     protected $parsers = [];
 
     /**
-     * Create a new instance from a parsable date/time
-     *
-     * @param string|int The date to parse
-     * @param string|int The time to parse
-     */
-    public static function create($date, $time = null)
-    {
-        $parser = new static();
-
-        $parser->addParser(new Parsers\ISO8601);
-        $parser->addParser(new Parsers\Sql);
-        $parser->addParser(new Parsers\HumanReadable);
-        $parser->addParser(new Parsers\SortableDateTime);
-        $parser->addParser(new Parsers\SortableYearMonth);
-        $parser->addParser(new Parsers\IbmDb2);
-        $parser->addParser(new Parsers\Sortable);
-
-        return $parser->parse($date, $time);
-    }
-
-
-    /**
      * Add a parser to the stack.
      *
      * @param Parsers\AbstractParser The parser object to add
@@ -46,6 +24,25 @@ class DateTimeParser
     public function addParser(Parsers\AbstractParser $parser)
     {
         $this->parsers[] = $parser;
+    }
+
+
+    /**
+     * Add the default set of parsers the library ships with.
+     *
+     * @return static
+     */
+    public function addDefaultParsers()
+    {
+        $this->addParser(new Parsers\ISO8601);
+        $this->addParser(new Parsers\Sql);
+        $this->addParser(new Parsers\HumanReadable);
+        $this->addParser(new Parsers\SortableDateTime);
+        $this->addParser(new Parsers\SortableYearMonth);
+        $this->addParser(new Parsers\IbmDb2);
+        $this->addParser(new Parsers\Sortable);
+
+        return $this;
     }
 
 
