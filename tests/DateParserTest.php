@@ -16,8 +16,11 @@ class DateParserTest extends \PHPUnit_Framework_TestCase
 
     public function testFormats()
     {
+        $parser = new DateParser;
+        $parser->addDefaultParsers();
+
         foreach ($this->dates as $format => $test) {
-            $result = DateParser::create($test)->format($format);
+            $result = $parser->parse($test)->format($format);
             $this->assertSame($test, $result);
         }
     }

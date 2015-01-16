@@ -27,21 +27,27 @@ class DateTimeParserTest extends \PHPUnit_Framework_TestCase
 
     public function testFormats()
     {
+        $parser = new DateTimeParser;
+        $parser->addDefaultParsers();
+
         foreach ($this->dates as $format => $test) {
-            $result = DateTimeParser::create($test)->format($format);
+            $result = $parser->parse($test)->format($format);
             $this->assertSame($test, $result);
         }
     }
 
     public function testSeparateTime()
     {
+        $parser = new DateTimeParser;
+        $parser->addDefaultParsers();
+
         foreach ($this->dates as $format => $test) {
             if (!strpos($format, " ")) {
                 continue;
             }
 
             list($date, $time) = explode(" ", $test);
-            $result = DateTimeParser::create($date, $time)->format($format);
+            $result = $parser->parse($date, $time)->format($format);
             $this->assertSame($test, $result);
         }
     }
