@@ -42,7 +42,7 @@ trait RelativeDateTimes
      *
      * @return DateTime
      */
-    public function subtractDays($days)
+    public function subDays($days)
     {
         return $this->addDays($days * -1);
     }
@@ -118,7 +118,7 @@ trait RelativeDateTimes
      *
      * @return DateTime
      */
-    public function subtractMonths($months)
+    public function subMonths($months)
     {
         return $this->addMonths($months * -1);
     }
@@ -167,7 +167,7 @@ trait RelativeDateTimes
      *
      * @return DateTime
      */
-    public function subtractYears($years)
+    public function subYears($years)
     {
         return $this->addYears($years * -1);
     }
@@ -227,7 +227,7 @@ trait RelativeDateTimes
      *
      * @return DateTime
      */
-    public function subtractSeconds($seconds)
+    public function subSeconds($seconds)
     {
         return $this->addSeconds($seconds * -1);
     }
@@ -253,7 +253,7 @@ trait RelativeDateTimes
      *
      * @return DateTime
      */
-    public function subtractMinutes($minutes)
+    public function subMinutes($minutes)
     {
         return $this->addMinutes($minutes * -1);
     }
@@ -278,7 +278,7 @@ trait RelativeDateTimes
      *
      * @return DateTime
      */
-    public function subtractHours($hours)
+    public function subHours($hours)
     {
         return $this->addHours($hours * -1);
     }
