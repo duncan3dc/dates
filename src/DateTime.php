@@ -8,6 +8,7 @@ namespace Regatta\Dates;
 class DateTime
 {
     use Traits\RelativeDateTimes;
+    use Traits\DayHelpers;
 
     /**
      * @var int $unix Unix timestamp representing the datetime of this object
