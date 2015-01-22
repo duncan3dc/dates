@@ -80,37 +80,45 @@ class DateTime
     /**
      * Get the details of the financial period for this date.
      *
-     * @return Date
+     * This method will convert the result to an integer if it looks like one.
+     *
+     * @var string $format The format to apply to the date, only the characters m, n, y, Y and numbers may be used
+     *
+     * @return string|int
      */
-    public function getPeriod()
+    public function formatPeriod($format)
     {
         if ($this->period === null) {
             $this->period = new Date(mktime(12, 0, 0, date("n", $this->unix) - 1, 1, date("Y", $this->unix)));
         }
 
-        return $this->period;
+        if (preg_match("/[^mnyY0-9]/", $format)) {
+            throw new \InvalidArgumentException("Invalid year format ({$format}), only 'm', 'n', 'y', 'Y', and numbers may be used");
+        }
+
+        return $this->period->format($format);
     }
 
 
     /**
-     * Get the financial yaer of this date.
+     * Get the financial year of this date.
      *
      * @return int
      */
     public function getFinancialYear()
     {
-        return $this->getPeriod()->numeric("Y");
+        return (int) $this->formatPeriod("Y");
     }
 
 
     /**
-     * Get the financial yaer of this date.
+     * Get the financial period of this date.
      *
      * @return int
      */
     public function getFinancialPeriod()
     {
-        return $this->getPeriod()->numeric("n");
+        return (int) $this->formatPeriod("n");
     }
 
 
