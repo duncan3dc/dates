@@ -5,6 +5,26 @@ namespace Regatta\Dates;
 class PeriodTest extends \PHPUnit_Framework_TestCase
 {
 
+    public function testFormatPeriod1()
+    {
+        $unix = mktime(12, 0, 0, 2, 1, 2014);
+        $date = new DateTime($unix);
+        $this->assertSame(14, $date->formatPeriod("y"));
+    }
+    public function testFormatPeriod2()
+    {
+        $unix = mktime(12, 0, 0, 2, 1, 2014);
+        $date = new DateTime($unix);
+        $this->assertSame(201401, $date->formatPeriod("Ym"));
+    }
+    public function testFormatPeriod3()
+    {
+        $unix = mktime(12, 0, 0, 2, 1, 2014);
+        $date = new DateTime($unix);
+        $this->setExpectedException("InvalidArgumentException", "Invalid year format (F), only 'm', 'n', 'y', 'Y', and numbers may be used");
+        $date->formatPeriod("F");
+    }
+
     public function testFinancialYear1()
     {
         $unix = mktime(12, 0, 0, 2, 1, 2014);
