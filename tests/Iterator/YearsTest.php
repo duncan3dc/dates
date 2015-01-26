@@ -30,7 +30,7 @@ class YearsTest extends \PHPUnit_Framework_TestCase
 
     public function testLateStartDate()
     {
-        $this->assertRangeYears(1, mktime(23, 59, 59, 12, 31, 2014), mktime(12, 0, 0, 6, 15, 2014));
+        $this->assertRangeYears(1, mktime(12, 0, 0, 6, 15, 2014), mktime(23, 59, 59, 12, 31, 2014));
     }
 
 
