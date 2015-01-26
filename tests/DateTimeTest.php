@@ -85,4 +85,20 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
         $result = DateTime::parse($date, $time)->format("1ymd His");
         $this->assertSame("{$date} {$time}", $result);
     }
+
+
+    public function testFromFormat1()
+    {
+        $input = "28/02/2008 06:30:12";
+        $format = "d/m/Y H:i:s";
+        $result = DateTime::fromFormat($format, $input)->format($format);
+        $this->assertSame($input, $result);
+    }
+    public function testFromFormat2()
+    {
+        $input = "March Mon 2 06/30 (2015)";
+        $format = "F D j H/i (Y)";
+        $result = DateTime::fromFormat($format, $input)->format($format);
+        $this->assertSame($input, $result);
+    }
 }

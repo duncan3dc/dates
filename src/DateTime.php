@@ -24,10 +24,10 @@ class DateTime
     /**
      * Create a new DateTime object from a parsable date/time
      *
-     * @param string|int The date to parse
-     * @param string|int The time to parse
+     * @param string|int $date The date to parse
+     * @param string|int $time The time to parse
      *
-     * @return DateTime
+     * @return static
      */
     public static function parse($date, $time = null)
     {
@@ -36,6 +36,24 @@ class DateTime
         $parser->addDefaultParsers();
 
         return $parser->parse($date, $time);
+    }
+
+
+    /**
+     * Create a new DateTime object from a specifically formatted date/time
+     *
+     * @param string $format The format that the date/time is in
+     * @param string $date The date/time to parse
+     *
+     * @return static
+     */
+    public static function fromFormat($format, $date)
+    {
+        $datetime = \DateTime::createFromFormat($format, $date);
+
+        $unix = $datetime->getTimestamp();
+
+        return new static($unix);
     }
 
 
