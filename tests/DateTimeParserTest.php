@@ -7,6 +7,7 @@ class DateTimeParserTest extends \PHPUnit_Framework_TestCase
     protected $dates = [
         "Y-m-d"         =>  "2008-02-22",
         "Y-m-d H:i:s"   =>  "2010-04-30 05:33:21",
+        "Y-m-d G:i"     =>  "2015-12-20 7:44",
         "d/m/Y"         =>  "28/02/2008",
         "d/m/y"         =>  "31/01/97",
         "d/m/Y H:i:s"   =>  "28/02/2008 06:30:12",

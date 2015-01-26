@@ -62,6 +62,10 @@ class DateTimeParser
             throw new \InvalidArgumentException("Invalid character found in date (" . $date . ")");
         }
 
+        if ($time === null && strpos($date, " ")) {
+            list($date, $time) = explode(" ", $date);
+        }
+
         foreach ($this->parsers as $parser) {
             $result = $parser->parse($date, $time);
             if ($result !== null) {

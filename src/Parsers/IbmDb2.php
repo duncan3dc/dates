@@ -22,9 +22,6 @@ class IbmDb2 extends AbstractParser
             $m = floor(($date / 100) % 100);
             $d = $date % 100;
 
-            if (!$time && strpos($date, " ")) {
-                list($date, $time) = explode(" ", $date);
-            }
             $time = $this->parseTime($time);
 
             return mktime($time["h"], $time["m"], $time["s"], $m, $d, $y);

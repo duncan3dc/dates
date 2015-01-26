@@ -22,9 +22,6 @@ class Sortable extends AbstractParser
             $m = substr($date, 4, 2);
             $d = substr($date, 6, 2);
 
-            if (!$time && strpos($date, " ")) {
-                list($date, $time) = explode(" ", $date);
-            }
             $time = $this->parseTime($time);
 
             return mktime($time["h"], $time["m"], $time["s"], $m, $d, $y);

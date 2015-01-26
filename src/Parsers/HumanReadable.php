@@ -18,13 +18,12 @@ class HumanReadable extends AbstractParser
     public function parse($date, $time)
     {
         if (strpos($date, "/") || strpos($date, "-")) {
-            $char = strpos($date, "/") ? "/" : "-";
-            if (!$time && strpos($date, " ")) {
-                list($date, $time) = explode(" ", $date);
-            }
 
+            $char = strpos($date, "/") ? "/" : "-";
             list($d, $m, $y) = explode($char, $date);
+
             $time = $this->parseTime($time);
+
             return mktime($time["h"], $time["m"], $time["s"], $m, $d, $y);
         }
     }
