@@ -27,6 +27,10 @@ class Range
     {
         $this->start = $start;
         $this->end = $end;
+
+        if ($this->end->asUnix() < $this->start->asUnix()) {
+            throw new \InvalidArgumentException("Invalid range, the start date must be before the end date");
+        }
     }
 
 

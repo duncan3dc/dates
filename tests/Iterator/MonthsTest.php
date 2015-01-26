@@ -60,7 +60,7 @@ class MonthsTest extends \PHPUnit_Framework_TestCase
 
     public function testLateStartDate()
     {
-        $this->assertRangeMonths(1, mktime(23, 59, 59, 6, 30, 2014), mktime(12, 0, 0, 6, 15, 2014));
+        $this->assertRangeMonths(1, mktime(23, 59, 59, 6, 15, 2014), mktime(12, 0, 0, 6, 30, 2014));
     }
 
 
