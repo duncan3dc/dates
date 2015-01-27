@@ -53,7 +53,7 @@ trait RelativeDateTimes
      *
      * @return DateTime
      */
-    public function previousDay()
+    public function prevDay()
     {
         return $this->addDays(-1);
     }
@@ -129,7 +129,7 @@ trait RelativeDateTimes
      *
      * @return DateTime
      */
-    public function previousMonth()
+    public function prevMonth()
     {
         return $this->addMonths(-1);
     }
@@ -178,7 +178,7 @@ trait RelativeDateTimes
      *
      * @return DateTime
      */
-    public function previousYear()
+    public function prevYear()
     {
         return $this->addYears(-1);
     }

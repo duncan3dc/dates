@@ -25,10 +25,10 @@ class RelativeDateTimesTest extends \PHPUnit_Framework_TestCase
         $result = $date->nextMonth();
         $this->assertSame(mktime(23, 59, 59, 4, 30, 1970), $result->asUnix());
     }
-    public function testPreviousMonth()
+    public function testPrevMonth()
     {
         $date = new DateTime(mktime(0, 0, 0, 1, 1, 2001));
-        $result = $date->previousMonth();
+        $result = $date->prevMonth();
         $this->assertSame(mktime(0, 0, 0, 12, 1, 2000), $result->asUnix());
     }
 
@@ -53,10 +53,10 @@ class RelativeDateTimesTest extends \PHPUnit_Framework_TestCase
         $result = $date->nextYear();
         $this->assertSame(mktime(23, 59, 59, 31, 12, 1987), $result->asUnix());
     }
-    public function testPreviousYear()
+    public function testPrevYear()
     {
         $date = new DateTime(mktime(0, 0, 0, 1, 1, 2001));
-        $result = $date->previousYear();
+        $result = $date->prevYear();
         $this->assertSame(mktime(0, 0, 0, 1, 1, 2000), $result->asUnix());
     }
 
