@@ -22,7 +22,7 @@ class DateTime
 
 
     /**
-     * Create a new DateTime object from a parsable date/time
+     * Create a new DateTime object from a parsable date/time.
      *
      * @param string|int $date The date to parse
      * @param string|int $time The time to parse
@@ -40,7 +40,7 @@ class DateTime
 
 
     /**
-     * Create a new DateTime object from a specifically formatted date/time
+     * Create a new DateTime object from a specifically formatted date/time.
      *
      * @param string $format The format that the date/time is in
      * @param string $date The date/time to parse
@@ -58,7 +58,23 @@ class DateTime
 
 
     /**
-     * Create a new instance from a unix timestamp
+     * Create a new DateTime object from a set of individual parts.
+     *
+     * @param string $format The format that the date/time is in
+     * @param string $date The date/time to parse
+     *
+     * @return static
+     */
+    public static function mktime($hour, $minute, $second, $month, $day, $year)
+    {
+        $unix = mktime($hour, $minute, $second, $month, $day, $year);
+
+        return new static($unix);
+    }
+
+
+    /**
+     * Create a new instance from a unix timestamp.
      *
      * @param int A unix timestamp
      */

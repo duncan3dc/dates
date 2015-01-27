@@ -101,4 +101,11 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
         $result = DateTime::fromFormat($format, $input)->format($format);
         $this->assertSame($input, $result);
     }
+
+
+    public function testMktime()
+    {
+        $date = DateTime::mktime(12, 0, 0, 1, 1, 2014);
+        $this->assertSame(mktime(12, 0, 0, 1, 1, 2014), $date->asUnix());
+    }
 }
