@@ -10,7 +10,7 @@ class DateTest extends \PHPUnit_Framework_TestCase
         $unix = time();
         $datetime = new DateTime($unix);
         $date = new Date($unix);
-        $this->assertSame($datetime->midday(), $date->asUnix());
+        $this->assertSame($datetime->midday(), $date->timestamp());
     }
 
 

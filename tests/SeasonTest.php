@@ -9,7 +9,7 @@ class SeasonTest extends \PHPUnit_Framework_TestCase
     {
         $date = new DateTime($unix);
         $season = new Season($date);
-        $result = $season->getStart()->asUnix();
+        $result = $season->getStart()->timestamp();
         $this->assertSame($expected, $result);
     }
     public function testGetStart1()
@@ -34,7 +34,7 @@ class SeasonTest extends \PHPUnit_Framework_TestCase
     {
         $date = new DateTime($unix);
         $season = new Season($date);
-        $result = $season->getEnd()->asUnix();
+        $result = $season->getEnd()->timestamp();
         $this->assertSame($expected, $result);
     }
     public function testGetEnd1()

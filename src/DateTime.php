@@ -94,7 +94,7 @@ class DateTime
      *
      * @return int
      */
-    public function asUnix()
+    public function timestamp()
     {
         return $this->unix;
     }

@@ -9,6 +9,6 @@ class NowTest extends \PHPUnit_Framework_TestCase
     {
         $unix = time();
         $date = new Now;
-        $this->assertSame($unix, $date->asUnix());
+        $this->assertSame($unix, $date->timestamp());
     }
 }

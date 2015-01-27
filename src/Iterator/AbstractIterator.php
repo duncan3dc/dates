@@ -100,6 +100,6 @@ abstract class AbstractIterator implements \Iterator
      */
     public function valid()
     {
-        return $this->date->asUnix() <= $this->end;
+        return $this->date->timestamp() <= $this->end;
     }
 }

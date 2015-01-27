@@ -9,7 +9,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     {
         $unix = time() - 100;
         $date = new DateTime($unix);
-        $this->assertSame($unix, $date->asUnix());
+        $this->assertSame($unix, $date->timestamp());
     }
     public function testConstructor2()
     {
@@ -106,6 +106,6 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     public function testMktime()
     {
         $date = DateTime::mktime(12, 0, 0, 1, 1, 2014);
-        $this->assertSame(mktime(12, 0, 0, 1, 1, 2014), $date->asUnix());
+        $this->assertSame(mktime(12, 0, 0, 1, 1, 2014), $date->timestamp());
     }
 }
