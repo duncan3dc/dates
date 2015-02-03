@@ -60,8 +60,12 @@ class DateTime
     /**
      * Create a new DateTime object from a set of individual parts.
      *
-     * @param string $format The format that the date/time is in
-     * @param string $date The date/time to parse
+     * @param int $hour The hour
+     * @param int $minute The minute
+     * @param int $second The second
+     * @param int $month The month
+     * @param int $day The day
+     * @param int $year The year
      *
      * @return static
      */

@@ -20,4 +20,11 @@ class DateTest extends \PHPUnit_Framework_TestCase
         $result = Date::parse($input)->format("Y-m-d");
         $this->assertSame($input, $result);
     }
+
+
+    public function testMkdate()
+    {
+        $date = Date::mkdate(2014, 6, 12);
+        $this->assertSame(mktime(12, 0, 0, 6, 12, 2014), $date->timestamp());
+    }
 }
