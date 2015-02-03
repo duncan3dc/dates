@@ -123,7 +123,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
 
     public function testMktime()
     {
-        $date = DateTime::mktime(12, 0, 0, 1, 1, 2014);
-        $this->assertSame(mktime(12, 0, 0, 1, 1, 2014), $date->timestamp());
+        $date = DateTime::mktime(12, 0, 0, 7, 1, 2014);
+        $this->assertSame(mktime(12, 0, 0, 7, 1, 2014), $date->timestamp());
     }
 }

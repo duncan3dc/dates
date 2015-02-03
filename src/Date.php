@@ -26,6 +26,23 @@ class Date extends DateTime
 
 
     /**
+     * Create a new DateTime object from a set of individual parts.
+     *
+     * @param int $year The year
+     * @param int $month The month
+     * @param int $day The day
+     *
+     * @return static
+     */
+    public static function mkdate($year, $month, $day)
+    {
+        $unix = mktime(12, 0, 0, $month, $day, $year);
+
+        return new static($unix);
+    }
+
+
+    /**
      * Create a new instance from a unix timestamp.
      *
      * @param int A unix timestamp
