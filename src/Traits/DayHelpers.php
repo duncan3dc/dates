@@ -5,7 +5,7 @@ namespace duncan3dc\Dates\Traits;
 use duncan3dc\Dates\Interfaces\Days;
 
 /**
- * Get a new DateTime object relative to the current one
+ * Check if this instance is a particular day.
  */
 trait DayHelpers
 {
