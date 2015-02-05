@@ -5,7 +5,7 @@ namespace Regatta\Dates\Traits;
 use Regatta\Dates\Interfaces\Days;
 
 /**
- * Get a new DateTime object relative to the current one
+ * Check if this instance is a particular day.
  */
 trait DayHelpers
 {

@@ -7,8 +7,9 @@ namespace Regatta\Dates;
  */
 class DateTime
 {
-    use Traits\RelativeDateTimes;
+    use Traits\BankHoliday;
     use Traits\DayHelpers;
+    use Traits\RelativeDateTimes;
 
     /**
      * @var int $unix Unix timestamp representing the datetime of this object
