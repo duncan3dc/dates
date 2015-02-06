@@ -128,4 +128,28 @@ class SeasonTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertDescription("Autumn/Winter 2014", mktime(12, 0, 0, 1, 31, 2015));
     }
+
+
+    protected function assertFromInt($code)
+    {
+        $season = Season::fromInt($code);
+        $result = $season->getInt();
+        $this->assertSame($code, $result);
+    }
+    public function testFromInt1()
+    {
+        $this->assertFromInt(110);
+    }
+    public function testFromInt2()
+    {
+        $this->assertFromInt(215);
+    }
+    public function testFromInt3()
+    {
+        $this->assertFromInt(115);
+    }
+    public function testFromInt4()
+    {
+        $this->assertFromInt(5);
+    }
 }

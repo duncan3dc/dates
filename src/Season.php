@@ -15,6 +15,25 @@ class Season extends Range
      */
     protected $type;
 
+
+    /**
+     * Cerate a new instance of the Season class from a numeric season code.
+     *
+     * @param $code The season code, as returned by Season::getInt()
+     *
+     * @return static
+     */
+    public static function fromInt($code)
+    {
+        $year = 2000 + floor($code / 10);
+        $type = $code % 10;
+        $month = $type ? 8 : 2;
+
+        $date = Date::mkdate($year, $month, 1);
+        return new static($date);
+    }
+
+
     /**
      * Create a new season from a date object.
      *
