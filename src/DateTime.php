@@ -124,7 +124,7 @@ class DateTime
     public function formatPeriod($format)
     {
         if ($this->period === null) {
-            $this->period = new Date(mktime(12, 0, 0, date("n", $this->unix) - 1, 1, date("Y", $this->unix)));
+            $this->period = new Date(mktime(12, 0, 0, $this->numeric("n") - 1, 1, $this->numeric("Y")));
         }
 
         if (preg_match("/[^mnyY0-9]/", $format)) {

@@ -18,8 +18,8 @@ class Seasons extends AbstractIterator
      */
     public function __construct(DateTime $start, DateTime $end)
     {
-        $this->start = (new Season($start))->getStart()->timestamp();
-        $this->end = (new Season($end))->getStart()->timestamp();
+        $this->start = $start->getSeason()->getStart()->timestamp();
+        $this->end = $end->getSeason()->getStart()->timestamp();
         $this->rewind();
     }
 

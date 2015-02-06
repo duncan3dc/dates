@@ -11,7 +11,7 @@ class Season extends Range
     const AUTUMN_WINTER = "AW";
 
     /**
-     * @var string $type The type of season is is (one of the class constants SPRING_SUMMAR or AUTUMN_WINTER)
+     * @var string $type The type of season is is (one of the class constants SPRING_SUMMER or AUTUMN_WINTER)
      */
     protected $type;
 
@@ -24,13 +24,15 @@ class Season extends Range
     {
         if ($date->getFinancialPeriod() < 7) {
             $this->type = self::SPRING_SUMMER;
-            $this->start = new DateTime(mktime(12, 0, 0, 2, 1, $date->getFinancialYear()));
-            $this->end = new DateTime(mktime(12, 0, 0, 7, 31, $date->getFinancialYear()));
+            $start = Date::mkdate($date->getFinancialYear(), 2, 1);
+            $end = Date::mkdate($date->getFinancialYear(), 7, 31);
         } else {
             $this->type = self::AUTUMN_WINTER;
-            $this->start = new DateTime(mktime(12, 0, 0, 8, 1, $date->getFinancialYear()));
-            $this->end = new DateTime(mktime(12, 0, 0, 1, 31, $date->getFinancialYear() + 1));
+            $start = Date::mkdate($date->getFinancialYear(), 8, 1);
+            $end = Date::mkdate($date->getFinancialYear() + 1, 1, 31);
         }
+
+        parent::__construct($start, $end);
     }
 
 
