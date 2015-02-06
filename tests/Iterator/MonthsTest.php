@@ -15,7 +15,7 @@ class MonthsTest extends \PHPUnit_Framework_TestCase
         $range = new Range($start, $end);
         $count = 0;
         foreach ($range->months() as $date) {
-            $this->assertInstanceOf("Regatta\\Dates\\DateTime", $date);
+            $this->assertInstanceOf("Regatta\\Dates\\Month", $date);
             ++$count;
         }
         $this->assertSame($months, $count);
