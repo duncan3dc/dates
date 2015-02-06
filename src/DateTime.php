@@ -110,6 +110,17 @@ class DateTime
 
 
     /**
+     * Get a Month object for this date.
+     *
+     * @return Month
+     */
+    public function getMonth()
+    {
+        return new Month($this);
+    }
+
+
+    /**
      * Get a unix timestamp for 12pm on this date.
      *
      * @return int

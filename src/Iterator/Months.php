@@ -3,6 +3,7 @@
 namespace duncan3dc\Dates\Iterator;
 
 use duncan3dc\Dates\DateTime;
+use duncan3dc\Dates\Month;
 
 /**
  * An iterator for the number of months in a range.
@@ -17,9 +18,20 @@ class Months extends AbstractIterator
      */
     public function __construct(DateTime $start, DateTime $end)
     {
-        $this->start = mktime(12, 0, 0, $start->numeric("n"), 1, $start->numeric("Y"));
-        $this->end = mktime(12, 0, 0, $end->numeric("n"), 1, $end->numeric("Y"));
+        $this->start = $start->getMonth()->getStart()->timestamp();
+        $this->end = $end->getMonth()->getStart()->timestamp();
         $this->rewind();
+    }
+
+
+    /**
+     * Get the current iterator value
+     *
+     * @return Month
+     */
+    public function current()
+    {
+        return new Month($this->date);
     }
 
 

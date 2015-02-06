@@ -4,6 +4,7 @@ namespace duncan3dc\DateTests\Iterator;
 
 use duncan3dc\Dates\DateTime;
 use duncan3dc\Dates\Range;
+use duncan3dc\Dates\Month;
 
 class MonthsTest extends \PHPUnit_Framework_TestCase
 {
@@ -15,7 +16,7 @@ class MonthsTest extends \PHPUnit_Framework_TestCase
         $range = new Range($start, $end);
         $count = 0;
         foreach ($range->months() as $date) {
-            $this->assertInstanceOf(DateTime::class, $date);
+            $this->assertInstanceOf(Month::class, $date);
             ++$count;
         }
         $this->assertSame($months, $count);
