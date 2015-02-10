@@ -14,6 +14,13 @@ class DateTest extends \PHPUnit_Framework_TestCase
     }
 
 
+    public function testNow()
+    {
+        $date = Date::now();
+        $this->assertSame(mktime(12, 0, 0, date("n"), date("j"), date("Y")), $date->timestamp());
+    }
+
+
     public function testParse()
     {
         $input = "2008-02-22";

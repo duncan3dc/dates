@@ -19,6 +19,17 @@ class DateTime
 
 
     /**
+     * Create a new DateTime object representing the current time.
+     *
+     * @return static
+     */
+    public static function now()
+    {
+        return new static(time());
+    }
+
+
+    /**
      * Create a new DateTime object from a parsable date/time.
      *
      * @param string|int $date The date to parse

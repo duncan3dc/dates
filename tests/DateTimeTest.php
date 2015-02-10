@@ -72,6 +72,14 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     }
 
 
+    public function testConstructor()
+    {
+        $unix = time();
+        $date = DateTime::now();
+        $this->assertSame($unix, $date->timestamp());
+    }
+
+
     public function testParse1()
     {
         $input = "28/02/2008 06:30:12";

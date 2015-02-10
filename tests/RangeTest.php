@@ -7,18 +7,16 @@ class RangeTest extends \PHPUnit_Framework_TestCase
 
     public function testGetStart()
     {
-        $start = new Now;
-        $end = new Now;
-        $range = new Range($start, $end);
-        $this->assertSame($start, $range->getStart());
+        $date = Date::now();
+        $range = new Range($date, $date);
+        $this->assertSame($date, $range->getStart());
     }
 
 
     public function testGetEnd()
     {
-        $start = new Now;
-        $end = new Now;
-        $range = new Range($start, $end);
-        $this->assertSame($end, $range->getEnd());
+        $date = Date::now();
+        $range = new Range($date, $date);
+        $this->assertSame($date, $range->getEnd());
     }
 }
