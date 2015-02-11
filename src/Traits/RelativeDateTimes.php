@@ -2,8 +2,6 @@
 
 namespace Regatta\Dates\Traits;
 
-use Regatta\Dates\DateTime;
-
 /**
  * Get a new DateTime object relative to the current one
  */
@@ -15,7 +13,7 @@ trait RelativeDateTimes
      *
      * @param int $days The number of days to add
      *
-     * @return DateTime
+     * @return static
      */
     public function addDays($days)
     {
@@ -24,7 +22,7 @@ trait RelativeDateTimes
             return $this;
         }
 
-        return new DateTime(mktime(
+        return new static(mktime(
             $this->numeric("H"),
             $this->numeric("i"),
             $this->numeric("s"),
@@ -40,7 +38,7 @@ trait RelativeDateTimes
      *
      * @param int $days The number of days to subtract
      *
-     * @return DateTime
+     * @return static
      */
     public function subDays($days)
     {
@@ -51,7 +49,7 @@ trait RelativeDateTimes
     /**
      * Get a DateTime object for the previous day.
      *
-     * @return DateTime
+     * @return static
      */
     public function prevDay()
     {
@@ -62,7 +60,7 @@ trait RelativeDateTimes
     /**
      * Get a DateTime object for the next day.
      *
-     * @return DateTime
+     * @return static
      */
     public function nextDay()
     {
@@ -75,7 +73,7 @@ trait RelativeDateTimes
      *
      * @param int $months The number of months to add
      *
-     * @return DateTime
+     * @return static
      */
     public function addMonths($months)
     {
@@ -84,7 +82,7 @@ trait RelativeDateTimes
             return $this;
         }
 
-        $date = new DateTime(mktime(
+        $date = new static(mktime(
             $this->numeric("H"),
             $this->numeric("i"),
             $this->numeric("s"),
@@ -100,7 +98,7 @@ trait RelativeDateTimes
             $day = $max;
         }
 
-        return new DateTime(mktime(
+        return new static(mktime(
             $this->numeric("H"),
             $this->numeric("i"),
             $this->numeric("s"),
@@ -116,7 +114,7 @@ trait RelativeDateTimes
      *
      * @param int $months The number of months to subtract
      *
-     * @return DateTime
+     * @return static
      */
     public function subMonths($months)
     {
@@ -127,7 +125,7 @@ trait RelativeDateTimes
     /**
      * Get a DateTime object for the previous month.
      *
-     * @return DateTime
+     * @return static
      */
     public function prevMonth()
     {
@@ -138,7 +136,7 @@ trait RelativeDateTimes
     /**
      * Get a DateTime object for the next month.
      *
-     * @return DateTime
+     * @return static
      */
     public function nextMonth()
     {
@@ -151,7 +149,7 @@ trait RelativeDateTimes
      *
      * @param int $years The number of years to add
      *
-     * @return DateTime
+     * @return static
      */
     public function addYears($years)
     {
@@ -165,7 +163,7 @@ trait RelativeDateTimes
      *
      * @param int $years The number of years to subtract
      *
-     * @return DateTime
+     * @return static
      */
     public function subYears($years)
     {
@@ -176,7 +174,7 @@ trait RelativeDateTimes
     /**
      * Get a DateTime object for the previous year.
      *
-     * @return DateTime
+     * @return static
      */
     public function prevYear()
     {
@@ -187,7 +185,7 @@ trait RelativeDateTimes
     /**
      * Get a DateTime object for the next year.
      *
-     * @return DateTime
+     * @return static
      */
     public function nextYear()
     {
@@ -200,7 +198,7 @@ trait RelativeDateTimes
      *
      * @param int $seconds The number of seconds to add
      *
-     * @return DateTime
+     * @return static
      */
     public function addSeconds($seconds)
     {
@@ -209,7 +207,7 @@ trait RelativeDateTimes
             return $this;
         }
 
-        return new DateTime(mktime(
+        return new static(mktime(
             $this->numeric("H"),
             $this->numeric("i"),
             $this->numeric("s") + $seconds,
@@ -225,7 +223,7 @@ trait RelativeDateTimes
      *
      * @param int $seconds The number of seconds to subtract
      *
-     * @return DateTime
+     * @return static
      */
     public function subSeconds($seconds)
     {
@@ -238,7 +236,7 @@ trait RelativeDateTimes
      *
      * @param int $minutes The number of minutes to add
      *
-     * @return DateTime
+     * @return static
      */
     public function addMinutes($minutes)
     {
@@ -251,7 +249,7 @@ trait RelativeDateTimes
      *
      * @param int $minutes The number of minutes to subtract
      *
-     * @return DateTime
+     * @return static
      */
     public function subMinutes($minutes)
     {
@@ -263,7 +261,7 @@ trait RelativeDateTimes
      *
      * @param int $hours The number of hours to add
      *
-     * @return DateTime
+     * @return static
      */
     public function addHours($hours)
     {
@@ -276,7 +274,7 @@ trait RelativeDateTimes
      *
      * @param int $hours The number of hours to subtract
      *
-     * @return DateTime
+     * @return static
      */
     public function subHours($hours)
     {
