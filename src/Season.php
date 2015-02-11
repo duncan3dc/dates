@@ -35,6 +35,17 @@ class Season extends Range
 
 
     /**
+     * Create a new Season object representing the current date.
+     *
+     * @return static
+     */
+    public static function now()
+    {
+        return new static(Date::now());
+    }
+
+
+    /**
      * Create a new season from a date object.
      *
      * @param DateTime $date A date within the season
