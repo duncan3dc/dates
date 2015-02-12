@@ -152,4 +152,14 @@ class SeasonTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertFromInt(5);
     }
+
+
+    public function testNow()
+    {
+        $date = Date::now();
+        $check = new Season($date);
+        $season = Season::now();
+        $this->assertSame($check->getStart()->timestamp(), $season->getStart()->timestamp());
+        $this->assertSame($check->getEnd()->timestamp(), $season->getEnd()->timestamp());
+    }
 }

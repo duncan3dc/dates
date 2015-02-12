@@ -75,4 +75,13 @@ class BankHolidayTest extends \PHPUnit_Framework_TestCase
             }
         }
     }
+
+
+    public function testBankHoliday1()
+    {
+        $date = Date::mkdate(2014, 1, 2);
+        $this->assertFalse($date->isBankHoliday());
+        $date = Date::mkdate(2014, 1, 3);
+        $this->assertFalse($date->isBankHoliday());
+    }
 }
