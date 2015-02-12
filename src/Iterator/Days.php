@@ -30,6 +30,6 @@ class Days extends AbstractIterator
      */
     protected function increment()
     {
-        $this->date = new DateTime(mktime(12, 0, 0, $this->date->numeric("n"), $this->date->numeric("j") + 1, $this->date->numeric("Y")));
+        $this->date = $this->date->addDays(1);
     }
 }

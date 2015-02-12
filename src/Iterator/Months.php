@@ -42,6 +42,6 @@ class Months extends AbstractIterator
      */
     protected function increment()
     {
-        $this->date = new DateTime(mktime(12, 0, 0, $this->date->numeric("n") + 1, 1, $this->date->numeric("Y")));
+        $this->date = $this->date->addMonths(1);
     }
 }

@@ -42,6 +42,6 @@ class Years extends AbstractIterator
      */
     protected function increment()
     {
-        $this->date = new DateTime(mktime(12, 0, 0, 1, 1, $this->date->numeric("Y") + 1));
+        $this->date = $this->date->addYears(1);
     }
 }
