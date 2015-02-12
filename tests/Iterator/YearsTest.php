@@ -15,7 +15,7 @@ class YearsTest extends \PHPUnit_Framework_TestCase
         $range = new Range($start, $end);
         $count = 0;
         foreach ($range->years() as $date) {
-            $this->assertInstanceOf("Regatta\\Dates\\DateTime", $date);
+            $this->assertInstanceOf("Regatta\\Dates\\Year", $date);
             ++$count;
         }
         $this->assertSame($years, $count);

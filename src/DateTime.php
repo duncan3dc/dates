@@ -124,6 +124,17 @@ class DateTime
 
 
     /**
+     * Get a Year object for this date.
+     *
+     * @return Year
+     */
+    public function getYear()
+    {
+        return new Year($this);
+    }
+
+
+    /**
      * Get the details of the financial period for this date.
      *
      * This method will convert the result to an integer if it looks like one.
