@@ -6,6 +6,8 @@ use duncan3dc\Dates\DateTimeParser;
 
 class DateTimeParserTest extends \PHPUnit_Framework_TestCase
 {
+    protected $parser;
+
     protected $dates = [
         "Y-m-d"         =>  "2008-02-22",
         "Y-m-d H:i:s"   =>  "2010-04-30 05:33:21",
@@ -26,32 +28,55 @@ class DateTimeParserTest extends \PHPUnit_Framework_TestCase
         "1ymd His"      =>  "1101231 042015",
         "1ymd Gis"      =>  "1110615 40004",
         "Y-m-d-H.i.s.u" =>  "2014-02-11-22.54.04.000000",
+        "Ym"            =>  201512,
+        "U"             =>  1420027200,
     ];
+
+    public function setUp()
+    {
+        $this->parser = new DateTimeParser;
+        $this->parser->addDefaultParsers();
+    }
 
     public function testFormats()
     {
-        $parser = new DateTimeParser;
-        $parser->addDefaultParsers();
-
         foreach ($this->dates as $format => $test) {
-            $result = $parser->parse($test)->format($format);
+            $result = $this->parser->parse($test)->format($format);
             $this->assertSame($test, $result);
         }
     }
 
     public function testSeparateTime()
     {
-        $parser = new DateTimeParser;
-        $parser->addDefaultParsers();
-
         foreach ($this->dates as $format => $test) {
             if (!strpos($format, " ")) {
                 continue;
             }
 
             list($date, $time) = explode(" ", $test);
-            $result = $parser->parse($date, $time)->format($format);
+            $result = $this->parser->parse($date, $time)->format($format);
             $this->assertSame($test, $result);
         }
+    }
+
+
+    public function testNoDate()
+    {
+        $this->setExpectedException("InvalidArgumentException", "No date was passed");
+        $this->parser->parse(0);
+    }
+
+
+    public function testInvalidFormat()
+    {
+        $this->setExpectedException("InvalidArgumentException", "Invalid character found in date (Monday)");
+        $this->parser->parse("Monday");
+    }
+
+
+    public function testInvalidTime()
+    {
+        $date = $this->parser->parse("20141201", "7am");
+        $this->assertSame(mktime(12, 0, 0, 12, 1, 2014), $date->timestamp());
     }
 }

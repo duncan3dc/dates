@@ -2,6 +2,7 @@
 
 namespace duncan3dc\DateTests;
 
+use duncan3dc\Dates\Date;
 use duncan3dc\Dates\DateTime;
 use duncan3dc\Dates\Month;
 
@@ -47,5 +48,15 @@ class MonthTest extends \PHPUnit_Framework_TestCase
     public function testGetEnd3()
     {
         $this->assertEndTime(mktime(12, 0, 0, 6, 30, 2015), mktime(12, 0, 0, 5, 32, 2015));
+    }
+
+
+    public function testNow()
+    {
+        $date = Date::now();
+        $check = new Month($date);
+        $month = Month::now();
+        $this->assertSame($check->getStart()->timestamp(), $month->getStart()->timestamp());
+        $this->assertSame($check->getEnd()->timestamp(), $month->getEnd()->timestamp());
     }
 }

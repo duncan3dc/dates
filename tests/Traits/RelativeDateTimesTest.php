@@ -63,11 +63,17 @@ class RelativeDateTimesTest extends \PHPUnit_Framework_TestCase
     }
 
 
-    public function testAddSeconds()
+    public function testAddSeconds1()
     {
         $date = new DateTime(mktime(12, 0, 0, 3, 31, 2014));
         $result = $date->addSeconds(5);
         $this->assertSame(mktime(12, 0, 5, 3, 31, 2014), $result->timestamp());
+    }
+    public function testAddSeconds2()
+    {
+        $date = new DateTime(mktime(12, 0, 22, 3, 31, 2014));
+        $result = $date->addSeconds(0);
+        $this->assertSame(mktime(12, 0, 22, 3, 31, 2014), $result->timestamp());
     }
 
 
