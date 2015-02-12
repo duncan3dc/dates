@@ -61,7 +61,7 @@ class DateTimeParser
         }
 
         if (preg_match("/[a-z]/i", $date)) {
-            throw new \InvalidArgumentException("Invalid character found in date (" . $date . ")");
+            throw new \InvalidArgumentException("Invalid character found in date ({$date})");
         }
 
         if ($time === null && strpos($date, " ")) {
@@ -79,6 +79,6 @@ class DateTimeParser
             return new DateTime($unix);
         }
 
-        throw new \InvalidArgumentException("An unparsable date was passed (" . $date . ")");
+        throw new \InvalidArgumentException("An unparsable date was passed ({$date})");
     }
 }
