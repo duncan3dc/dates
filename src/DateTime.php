@@ -121,6 +121,17 @@ class DateTime
 
 
     /**
+     * Get a Year object for this date.
+     *
+     * @return Year
+     */
+    public function getYear()
+    {
+        return new Year($this);
+    }
+
+
+    /**
      * Get a unix timestamp for 12pm on this date.
      *
      * @return int

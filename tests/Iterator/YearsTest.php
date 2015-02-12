@@ -4,6 +4,7 @@ namespace duncan3dc\DateTests\Iterator;
 
 use duncan3dc\Dates\DateTime;
 use duncan3dc\Dates\Range;
+use duncan3dc\Dates\Year;
 
 class YearsTest extends \PHPUnit_Framework_TestCase
 {
@@ -15,7 +16,7 @@ class YearsTest extends \PHPUnit_Framework_TestCase
         $range = new Range($start, $end);
         $count = 0;
         foreach ($range->years() as $date) {
-            $this->assertInstanceOf("duncan3dc\\Dates\\DateTime", $date);
+            $this->assertInstanceOf(Year::class, $date);
             ++$count;
         }
         $this->assertSame($years, $count);
