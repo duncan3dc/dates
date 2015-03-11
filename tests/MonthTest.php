@@ -55,4 +55,13 @@ class MonthTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($check->getStart()->timestamp(), $month->getStart()->timestamp());
         $this->assertSame($check->getEnd()->timestamp(), $month->getEnd()->timestamp());
     }
+
+
+    public function testFormatPeriod()
+    {
+        $unix = mktime(12, 0, 0, 1, 1, 2014);
+        $date = new DateTime($unix);
+        $month = new Month($date);
+        $this->assertSame(13, $month->formatPeriod("y"));
+    }
 }

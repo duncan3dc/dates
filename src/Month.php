@@ -7,7 +7,7 @@ namespace Regatta\Dates;
  */
 class Month extends Range
 {
-    use Traits\Formatting;
+    use Traits\PeriodFormatting;
 
     /**
      * Create a new Month object representing the current date.
