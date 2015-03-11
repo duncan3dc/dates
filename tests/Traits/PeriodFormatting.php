@@ -2,7 +2,7 @@
 
 namespace Regatta\Dates;
 
-class PeriodTest extends \PHPUnit_Framework_TestCase
+class PeriodFormattingTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testFormatPeriod1()
