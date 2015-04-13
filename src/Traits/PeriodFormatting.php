@@ -33,7 +33,7 @@ trait PeriodFormatting
         }
 
         if (preg_match("/[^mnyY0-9]/", $format)) {
-            throw new \InvalidArgumentException("Invalid year format ({$format}), only 'm', 'n', 'y', 'Y', and numbers may be used");
+            throw new \InvalidArgumentException("Invalid period format ({$format}), only 'm', 'n', 'y', 'Y', and numbers may be used");
         }
 
         return $this->period->format($format);

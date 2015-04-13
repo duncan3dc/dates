@@ -21,7 +21,7 @@ class PeriodFormattingTest extends \PHPUnit_Framework_TestCase
     {
         $unix = mktime(12, 0, 0, 2, 1, 2014);
         $date = new DateTime($unix);
-        $this->setExpectedException("InvalidArgumentException", "Invalid year format (F), only 'm', 'n', 'y', 'Y', and numbers may be used");
+        $this->setExpectedException("InvalidArgumentException", "Invalid period format (F), only 'm', 'n', 'y', 'Y', and numbers may be used");
         $date->formatPeriod("F");
     }
 
