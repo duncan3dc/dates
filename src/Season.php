@@ -11,13 +11,13 @@ class Season extends Range
     const AUTUMN_WINTER = "AW";
 
     /**
-     * @var string $type The type of season is is (one of the class constants SPRING_SUMMER or AUTUMN_WINTER)
+     * @var string $type The type of season is is (one of the class constants SPRING_SUMMER or AUTUMN_WINTER).
      */
     protected $type;
 
 
     /**
-     * Cerate a new instance of the Season class from a numeric season code.
+     * Create a new instance of the Season class from a numeric season code.
      *
      * @param $code The season code, as returned by Season::getInt()
      *
@@ -67,7 +67,7 @@ class Season extends Range
 
 
     /**
-     * Get the season code as an integer (eg 140, 145, 150, etc)
+     * Get the season code as an integer (eg 140, 145, 150, etc).
      *
      * @return int
      */
@@ -82,7 +82,7 @@ class Season extends Range
 
 
     /**
-     * Get the season code as string (eg SS14, AW14, etc)
+     * Get the season code as string (eg SS14, AW14, etc).
      *
      * @return string
      */
@@ -93,7 +93,7 @@ class Season extends Range
 
 
     /**
-     * Get the long description of this season (eg Spring/Summer 2014, Autum/Winter 2014, etc)
+     * Get the long description of this season (eg Spring/Summer 2014, Autum/Winter 2014, etc).
      *
      * @return string
      */
@@ -107,5 +107,38 @@ class Season extends Range
 
         $desc .= " " . $this->start->string("Y");
         return $desc;
+    }
+
+
+    /**
+     * Get the type of this season (one of the class constants).
+     *
+     * @return string (either Season::SPRING_SUMMER or Season::AUTUMN_WINTER)
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+
+    /**
+     * Check if this season is a spring/summer season.
+     *
+     * @return bool
+     */
+    public function isSpringSummer()
+    {
+        return $this->type === self::SPRING_SUMMER;
+    }
+
+
+    /**
+     * Check if this season is a autumn/winter season.
+     *
+     * @return bool
+     */
+    public function isAutumnWinter()
+    {
+        return $this->type === self::AUTUMN_WINTER;
     }
 }

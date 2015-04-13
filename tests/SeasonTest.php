@@ -162,4 +162,40 @@ class SeasonTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($check->getStart()->timestamp(), $season->getStart()->timestamp());
         $this->assertSame($check->getEnd()->timestamp(), $season->getEnd()->timestamp());
     }
+
+
+    public function testGetType1()
+    {
+        $season = Season::fromInt(155);
+        $this->assertSame(Season::AUTUMN_WINTER, $season->getType());
+    }
+    public function testGetType2()
+    {
+        $season = Season::fromInt(150);
+        $this->assertSame(Season::SPRING_SUMMER, $season->getType());
+    }
+
+
+    public function testIsSpringSummer1()
+    {
+        $season = Season::fromInt(140);
+        $this->assertTrue($season->isSpringSummer());
+    }
+    public function testIsSpringSummer2()
+    {
+        $season = Season::fromInt(145);
+        $this->assertFalse($season->isSpringSummer());
+    }
+
+
+    public function testIsAutumnWinter1()
+    {
+        $season = Season::fromInt(95);
+        $this->assertTrue($season->isAutumnWinter());
+    }
+    public function testIsAutumnWinter2()
+    {
+        $season = Season::fromInt(90);
+        $this->assertFalse($season->isAutumnWinter());
+    }
 }
