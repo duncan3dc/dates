@@ -8,7 +8,7 @@ namespace Regatta\Dates;
 class DateParser extends DateTimeParser
 {
     /**
-     * Create a new Date object from a parsable date
+     * Create a new Date object from a parsable date.
      *
      * @param string|int The date to parse
      * @param string|int The time to parse (ignored, use the DateTimeParser for time parsing)

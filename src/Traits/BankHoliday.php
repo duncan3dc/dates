@@ -10,9 +10,9 @@ use Regatta\Dates\Date;
 trait BankHoliday
 {
     /**
-     * Check if this object is a bank holiday
+     * Check if this object is a bank holiday.
      *
-     * @return boolean
+     * @return bool
      */
     public function isBankHoliday()
     {

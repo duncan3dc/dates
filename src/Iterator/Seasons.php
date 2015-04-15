@@ -25,7 +25,7 @@ class Seasons extends AbstractIterator
 
 
     /**
-     * Get the current iterator value
+     * Get the current iterator value.
      *
      * @return Season
      */

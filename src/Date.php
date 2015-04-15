@@ -43,7 +43,7 @@ class Date extends DateTime
 
 
     /**
-     * Create a new instance from a unix timestamp
+     * Create a new instance from a unix timestamp.
      *
      * @param int A unix timestamp
      */

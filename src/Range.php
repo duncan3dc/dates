@@ -8,12 +8,12 @@ namespace Regatta\Dates;
 class Range
 {
     /**
-     * @var DateTime $start The start date of this range
+     * @var DateTime $start The start date of this range.
      */
     protected $start;
 
     /**
-     * @var DateTime $end The end date of this range
+     * @var DateTime $end The end date of this range.
      */
     protected $end;
 

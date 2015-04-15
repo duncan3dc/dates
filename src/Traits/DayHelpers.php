@@ -26,7 +26,7 @@ trait DayHelpers
     /**
      * Check if this date is a monday.
      *
-     * @return boolean
+     * @return bool
      */
     public function isMonday()
     {
@@ -37,7 +37,7 @@ trait DayHelpers
     /**
      * Check if this date is a tuesday.
      *
-     * @return boolean
+     * @return bool
      */
     public function isTuesday()
     {
@@ -48,7 +48,7 @@ trait DayHelpers
     /**
      * Check if this date is a wednesday.
      *
-     * @return boolean
+     * @return bool
      */
     public function isWednesday()
     {
@@ -59,7 +59,7 @@ trait DayHelpers
     /**
      * Check if this date is a thursday.
      *
-     * @return boolean
+     * @return bool
      */
     public function isThursday()
     {
@@ -70,7 +70,7 @@ trait DayHelpers
     /**
      * Check if this date is a friday.
      *
-     * @return boolean
+     * @return bool
      */
     public function isFriday()
     {
@@ -81,7 +81,7 @@ trait DayHelpers
     /**
      * Check if this date is a saturday.
      *
-     * @return boolean
+     * @return bool
      */
     public function isSaturday()
     {
@@ -92,7 +92,7 @@ trait DayHelpers
     /**
      * Check if this date is a sunday.
      *
-     * @return boolean
+     * @return bool
      */
     public function isSunday()
     {
@@ -103,7 +103,7 @@ trait DayHelpers
     /**
      * Check if this date is a weekday.
      *
-     * @return boolean
+     * @return bool
      */
     public function isWeekday()
     {
@@ -114,7 +114,7 @@ trait DayHelpers
     /**
      * Check if this date is a weekend.
      *
-     * @return boolean
+     * @return bool
      */
     public function isWeekend()
     {

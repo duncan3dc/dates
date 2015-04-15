@@ -3,7 +3,7 @@
 namespace Regatta\Dates\Interfaces;
 
 /**
- * Get a new DateTime object relative to the current one
+ * Constants to represent each day of the week.
  */
 interface Days
 {
