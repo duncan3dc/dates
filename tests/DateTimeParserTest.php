@@ -32,31 +32,47 @@ class DateTimeParserTest extends \PHPUnit_Framework_TestCase
         "U"             =>  1420027200,
     ];
 
+
     public function setUp()
     {
         $this->parser = new DateTimeParser;
         $this->parser->addDefaultParsers();
     }
 
-    public function testFormats()
+
+    public function dateFormatProvider()
     {
-        foreach ($this->dates as $format => $test) {
-            $result = $this->parser->parse($test)->format($format);
-            $this->assertSame($test, $result);
+        foreach ($this->dates as $format => $value) {
+            yield [$format, $value];
         }
     }
-
-    public function testSeparateTime()
+    /**
+     * @dataProvider dateFormatProvider
+     */
+    public function testFormat($format, $value)
     {
-        foreach ($this->dates as $format => $test) {
+        $result = $this->parser->parse($value)->format($format);
+        $this->assertSame($value, $result);
+    }
+
+
+    public function datetimeFormatProvider()
+    {
+        foreach ($this->dates as $format => $value) {
             if (!strpos($format, " ")) {
                 continue;
             }
-
-            list($date, $time) = explode(" ", $test);
-            $result = $this->parser->parse($date, $time)->format($format);
-            $this->assertSame($test, $result);
+            list($date, $time) = explode(" ", $value);
+            yield [$value, $value, $date, $time];
         }
+    }
+    /**
+     * @dataProvider datetimeFormatProvider
+     */
+    public function testSeparateTime($format, $value, $date, $time)
+    {
+        $result = $this->parser->parse($date, $time)->format($format);
+        $this->assertSame($value, $result);
     }
 
 
