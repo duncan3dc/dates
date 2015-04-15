@@ -52,7 +52,7 @@ abstract class AbstractIterator implements \Iterator, \Countable
 
 
     /**
-     * Get the current iterator value
+     * Get the current iterator value.
      *
      * @return DateTime
      */
@@ -63,7 +63,7 @@ abstract class AbstractIterator implements \Iterator, \Countable
 
 
     /**
-     * Get the current iterator position
+     * Get the current iterator position.
      *
      * @return int
      */
@@ -74,7 +74,7 @@ abstract class AbstractIterator implements \Iterator, \Countable
 
 
     /**
-     * Advance the iterator to the next position
+     * Advance the iterator to the next position.
      *
      * @return void
      */
@@ -86,7 +86,7 @@ abstract class AbstractIterator implements \Iterator, \Countable
 
 
     /**
-     * Reset the iterator to the start
+     * Reset the iterator to the start.
      *
      * @return void
      */
@@ -98,9 +98,9 @@ abstract class AbstractIterator implements \Iterator, \Countable
 
 
     /**
-     * Check if the current position is valid
+     * Check if the current position is valid.
      *
-     * @return boolean
+     * @return bool
      */
     public function valid()
     {

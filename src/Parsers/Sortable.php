@@ -3,7 +3,7 @@
 namespace duncan3dc\Dates\Parsers;
 
 /**
- * Sortable format (Ymd with optional separate time)
+ * Sortable format (Ymd with optional separate time).
  */
 class Sortable extends AbstractParser
 {

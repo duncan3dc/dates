@@ -47,7 +47,7 @@ class DateTimeParser
 
 
     /**
-     * Create a new DateTime object from a parsable date/time
+     * Create a new DateTime object from a parsable date/time.
      *
      * @param string|int The date to parse
      * @param string|int The time to parse

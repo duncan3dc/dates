@@ -25,7 +25,7 @@ class Months extends AbstractIterator
 
 
     /**
-     * Get the current iterator value
+     * Get the current iterator value.
      *
      * @return Month
      */

@@ -3,7 +3,7 @@
 namespace duncan3dc\Dates\Traits;
 
 /**
- * Get a new DateTime object relative to the current one
+ * Get a new DateTime object relative to the current one.
  */
 trait RelativeDateTimes
 {
