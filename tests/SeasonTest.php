@@ -217,4 +217,22 @@ class SeasonTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame("SS14", $season->getString());
     }
+
+
+    public function testPrevious()
+    {
+        $season = Season::fromInt(110);
+        $season = $season->previous();
+
+        $this->assertSame("AW10", $season->getString());
+    }
+
+
+    public function testNext()
+    {
+        $season = Season::fromInt(160);
+        $season = $season->next();
+
+        $this->assertSame("AW16", $season->getString());
+    }
 }

@@ -132,4 +132,26 @@ class Season extends Range
     {
         return $this->type === self::AUTUMN_WINTER;
     }
+
+
+    /**
+     * Get a new Season object for the next season.
+     *
+     * @return static
+     */
+    public function next()
+    {
+        return static::fromInt($this->getInt() + 5);
+    }
+
+
+    /**
+     * Get a new Season object for the previous season.
+     *
+     * @return static
+     */
+    public function previous()
+    {
+        return static::fromInt($this->getInt() - 5);
+    }
 }
