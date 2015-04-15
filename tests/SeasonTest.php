@@ -198,4 +198,23 @@ class SeasonTest extends \PHPUnit_Framework_TestCase
         $season = Season::fromInt(90);
         $this->assertFalse($season->isAutumnWinter());
     }
+
+
+
+    public function testAddYears()
+    {
+        $season = Season::fromInt(155);
+        $season = $season->addYears(1);
+
+        $this->assertSame("AW16", $season->getString());
+    }
+
+
+    public function testSubYears()
+    {
+        $season = Season::fromInt(160);
+        $season = $season->subYears(2);
+
+        $this->assertSame("SS14", $season->getString());
+    }
 }

@@ -64,4 +64,39 @@ class MonthTest extends \PHPUnit_Framework_TestCase
         $month = new Month($date);
         $this->assertSame(13, $month->formatPeriod("y"));
     }
+
+
+    public function assertRelativeTimes($start, $end, Month $month)
+    {
+        $this->assertSame($start, $month->getStart()->timestamp());
+        $this->assertSame($end, $month->getEnd()->timestamp());
+    }
+    public function testAddMonths()
+    {
+        $month = new Month(Date::mkdate(2015, 6, 1));
+        $month = $month->addMonths(2);
+
+        $this->assertRelativeTimes(mktime(12, 0, 0, 8, 1, 2015), mktime(12, 0, 0, 8, 31, 2015), $month);
+    }
+    public function testSubMonths()
+    {
+        $month = new Month(Date::mkdate(2015, 1, 1));
+        $month = $month->subMonths(1);
+
+        $this->assertRelativeTimes(mktime(12, 0, 0, 12, 1, 2014), mktime(12, 0, 0, 12, 31, 2014), $month);
+    }
+    public function testAddYears()
+    {
+        $month = new Month(Date::mkdate(2015, 6, 1));
+        $month = $month->addYears(2);
+
+        $this->assertRelativeTimes(mktime(12, 0, 0, 6, 1, 2017), mktime(12, 0, 0, 6, 30, 2017), $month);
+    }
+    public function testSubYears()
+    {
+        $month = new Month(Date::mkdate(2015, 1, 1));
+        $month = $month->subYears(1);
+
+        $this->assertRelativeTimes(mktime(12, 0, 0, 1, 1, 2014), mktime(12, 0, 0, 1, 31, 2014), $month);
+    }
 }

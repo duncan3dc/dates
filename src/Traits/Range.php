@@ -18,4 +18,58 @@ trait Range
     {
         return new static(Date::now());
     }
+
+
+    /**
+     * Get a new Range object for the specified number of months difference.
+     *
+     * @param int $months The number of months to add
+     *
+     * @return static
+     */
+    public function addMonths($months)
+    {
+        $date = $this->getStart();
+        $date = $date->addMonths($months);
+        return new static($date);
+    }
+
+
+    /**
+     * Get a new Range object for the specified number of months difference.
+     *
+     * @param int $months The number of months to subtract
+     *
+     * @return static
+     */
+    public function subMonths($months)
+    {
+        return $this->addMonths($months * -1);
+    }
+
+
+    /**
+     * Get a new Range object for the specified number of years difference.
+     *
+     * @param int $years The number of years to add
+     *
+     * @return static
+     */
+    public function addYears($years)
+    {
+        return $this->addMonths($years * 12);
+    }
+
+
+    /**
+     * Get a new Range object for the specified number of years difference.
+     *
+     * @param int $years The number of years to subtract
+     *
+     * @return static
+     */
+    public function subYears($years)
+    {
+        return $this->addYears($years * -1);
+    }
 }

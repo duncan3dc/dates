@@ -63,4 +63,25 @@ class YearTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($check->getStart()->timestamp(), $year->getStart()->timestamp());
         $this->assertSame($check->getEnd()->timestamp(), $year->getEnd()->timestamp());
     }
+
+
+    public function assertRelativeTimes($start, $end, Year $year)
+    {
+        $this->assertSame($start, $year->getStart()->timestamp());
+        $this->assertSame($end, $year->getEnd()->timestamp());
+    }
+    public function testAddYears()
+    {
+        $year = new Year(Date::mkdate(2015, 6, 1));
+        $year = $year->addYears(2);
+
+        $this->assertRelativeTimes(mktime(12, 0, 0, 1, 1, 2017), mktime(12, 0, 0, 12, 31, 2017), $year);
+    }
+    public function testSubYears()
+    {
+        $year = new Year(Date::mkdate(2015, 1, 1));
+        $year = $year->subYears(1);
+
+        $this->assertRelativeTimes(mktime(12, 0, 0, 1, 1, 2014), mktime(12, 0, 0, 12, 31, 2014), $year);
+    }
 }

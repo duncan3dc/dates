@@ -63,4 +63,25 @@ class FinancialYearTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($check->getStart()->timestamp(), $year->getStart()->timestamp());
         $this->assertSame($check->getEnd()->timestamp(), $year->getEnd()->timestamp());
     }
+
+
+    public function assertRelativeTimes($start, $end, FinancialYear $year)
+    {
+        $this->assertSame($start, $year->getStart()->timestamp());
+        $this->assertSame($end, $year->getEnd()->timestamp());
+    }
+    public function testAddYears()
+    {
+        $year = new FinancialYear(Date::mkdate(2015, 2, 1));
+        $year = $year->addYears(1);
+
+        $this->assertRelativeTimes(mktime(12, 0, 0, 2, 1, 2016), mktime(12, 0, 0, 1, 31, 2017), $year);
+    }
+    public function testSubYears()
+    {
+        $year = new FinancialYear(Date::mkdate(2015, 1, 31));
+        $year = $year->subYears(1);
+
+        $this->assertRelativeTimes(mktime(12, 0, 0, 2, 1, 2013), mktime(12, 0, 0, 1, 31, 2014), $year);
+    }
 }
