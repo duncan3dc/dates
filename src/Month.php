@@ -8,16 +8,7 @@ namespace duncan3dc\Dates;
 class Month extends Range
 {
     use Traits\Formatting;
-
-    /**
-     * Create a new Month object representing the current date.
-     *
-     * @return static
-     */
-    public static function now()
-    {
-        return new static(Date::now());
-    }
+    use Traits\Range;
 
     /**
      * Create a new instance from a date object.
