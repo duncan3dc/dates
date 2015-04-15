@@ -19,4 +19,17 @@ class AbstractIteratorTest extends \PHPUnit_Framework_TestCase
         }
         $this->assertSame(1, $count);
     }
+
+    public function testCount()
+    {
+        $date = Date::now();
+        $range = new Range($date, $date->addDays(4));
+        $iterator = $range->days();
+        $count = 0;
+        foreach ($iterator as $key => $date) {
+            ++$count;
+        }
+        $this->assertSame(5, count($iterator));
+        $this->assertSame(5, $count);
+    }
 }

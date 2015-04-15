@@ -7,7 +7,7 @@ use duncan3dc\Dates\DateTime;
 /**
  * An abstract class for creating iterators from a range of dates.
  */
-abstract class AbstractIterator implements \Iterator
+abstract class AbstractIterator implements \Iterator, \Countable
 {
     /**
      * @var int $start The unix timestamp for the start date of the range
@@ -29,6 +29,10 @@ abstract class AbstractIterator implements \Iterator
      */
     protected $date;
 
+    /**
+     * @var int|null $count The number of elements in the iterator
+     */
+    protected $count;
 
     /**
      * Create a new iterator for a range.
@@ -101,5 +105,20 @@ abstract class AbstractIterator implements \Iterator
     public function valid()
     {
         return $this->date->timestamp() <= $this->end;
+    }
+
+
+    /**
+     * Get the number of elements in the iterator.
+     *
+     * @return int
+     */
+    public function count()
+    {
+        if ($this->count === null) {
+            $this->count = count(iterator_to_array($this));
+        }
+
+        return $this->count;
     }
 }
