@@ -23,4 +23,15 @@ class Month extends Range
         $end = Date::mkdate($date->numeric("Y"), $date->numeric("n"), $date->numeric("t"));
         parent::__construct($start, $end);
     }
+
+
+    /**
+     * Get a Season object for this month.
+     *
+     * @return Season
+     */
+    public function getSeason()
+    {
+        return $this->getStart()->getSeason();
+    }
 }

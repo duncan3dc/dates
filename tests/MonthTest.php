@@ -66,6 +66,26 @@ class MonthTest extends \PHPUnit_Framework_TestCase
     }
 
 
+    public function testGetSeason1()
+    {
+        $month = new Month(Date::mkdate(2015, 6, 1));
+        $season = $month->getSeason();
+        $this->assertSame("SS15", $season->getString());
+    }
+    public function testGetSeason2()
+    {
+        $month = new Month(Date::mkdate(2015, 8, 1));
+        $season = $month->getSeason();
+        $this->assertSame("AW15", $season->getString());
+    }
+    public function testGetSeason3()
+    {
+        $month = new Month(Date::mkdate(2016, 1, 1));
+        $season = $month->getSeason();
+        $this->assertSame("AW15", $season->getString());
+    }
+
+
     public function assertRelativeTimes($start, $end, Month $month)
     {
         $this->assertSame($start, $month->getStart()->timestamp());
