@@ -8,16 +8,7 @@ namespace Regatta\Dates;
 class Year extends Range
 {
     use Traits\Formatting;
-
-    /**
-     * Create a new Year object representing the current date.
-     *
-     * @return static
-     */
-    public static function now()
-    {
-        return new static(Date::now());
-    }
+    use Traits\Range;
 
     /**
      * Create a new instance from a date object.

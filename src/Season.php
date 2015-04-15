@@ -7,6 +7,8 @@ namespace Regatta\Dates;
  */
 class Season extends Range
 {
+    use Traits\Range;
+
     const SPRING_SUMMER = "SS";
     const AUTUMN_WINTER = "AW";
 
@@ -31,17 +33,6 @@ class Season extends Range
 
         $date = Date::mkdate($year, $month, 1);
         return new static($date);
-    }
-
-
-    /**
-     * Create a new Season object representing the current date.
-     *
-     * @return static
-     */
-    public static function now()
-    {
-        return new static(Date::now());
     }
 
 
