@@ -41,6 +41,10 @@ class DateTimeParserTest extends \PHPUnit_Framework_TestCase
     public function dateFormatProvider()
     {
         foreach ($this->dates as $format => $value) {
+            # If we're on a 32bit machine then large integers will be cast to strings
+            if (is_double($value)) {
+                $value = (string) $value;
+            }
             yield [$format, $value];
         }
     }
