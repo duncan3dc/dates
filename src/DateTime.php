@@ -53,6 +53,10 @@ class DateTime
     {
         $datetime = \DateTime::createFromFormat($format, $date);
 
+        if ($datetime === false) {
+            throw new \InvalidArgumentException("Invalid date ({$date}) does not conform to format ({$format})");
+        }
+
         $unix = $datetime->getTimestamp();
 
         return new static($unix);
