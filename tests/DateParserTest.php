@@ -26,4 +26,13 @@ class DateParserTest extends \PHPUnit_Framework_TestCase
             $this->assertSame($test, $result);
         }
     }
+
+    public function testUnparsable()
+    {
+        $parser = new DateParser;
+
+        error_reporting(\E_ALL ^ \E_WARNING);
+        $this->setExpectedException("InvalidArgumentException", "An unparsable date was passed (/)");
+        $parser->parse("/");
+    }
 }
