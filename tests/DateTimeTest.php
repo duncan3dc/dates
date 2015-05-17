@@ -105,17 +105,21 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     }
 
 
-    public function testFromFormat1()
+    public function dateFormatProvider()
     {
-        $input = "28/02/2008 06:30:12";
-        $format = "d/m/Y H:i:s";
-        $result = DateTime::fromFormat($format, $input)->format($format);
-        $this->assertSame($input, $result);
+        $dates = [
+            "28/02/2008 06:30:12"       =>  "d/m/Y H:i:s",
+            "March Mon 2 06/30 (2015)"  =>  "F D j H/i (Y)",
+        ];
+        foreach ($dates as $input => $format) {
+            yield [$input, $format];
+        }
     }
-    public function testFromFormat2()
+    /**
+     * @dataProvider dateFormatProvider
+     */
+    public function testFromFormat($input, $format)
     {
-        $input = "March Mon 2 06/30 (2015)";
-        $format = "F D j H/i (Y)";
         $result = DateTime::fromFormat($format, $input)->format($format);
         $this->assertSame($input, $result);
     }
