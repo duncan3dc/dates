@@ -125,6 +125,13 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     }
 
 
+    public function testFromFormatFail()
+    {
+        $this->setExpectedException("InvalidArgumentException", "Invalid date (2015) does not conform to format (y)");
+        DateTime::fromFormat("y", "2015");
+    }
+
+
     public function testMktime()
     {
         $date = DateTime::mktime(12, 0, 0, 7, 1, 2014);
