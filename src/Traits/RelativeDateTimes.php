@@ -69,6 +69,37 @@ trait RelativeDateTimes
 
 
     /**
+     * Get a DateTime object for the specified number of weeks difference.
+     *
+     * @param int $weeks The number of weeks to add
+     *
+     * @return static
+     */
+    public function addWeeks($weeks)
+    {
+        $weeks = (int) $weeks;
+        if ($weeks === 0) {
+            return $this;
+        }
+
+        return $this->addDays($weeks * 7);
+    }
+
+
+    /**
+     * Get a DateTime object for the specified number of weeks difference.
+     *
+     * @param int $weeks The number of weeks to subtract
+     *
+     * @return static
+     */
+    public function subWeeks($weeks)
+    {
+        return $this->addWeeks($weeks * -1);
+    }
+
+
+    /**
      * Get a DateTime object for the specified number of months difference.
      *
      * @param int $months The number of months to add
