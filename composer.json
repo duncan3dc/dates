@@ -15,6 +15,9 @@
         "ext-date": "*",
         "php": ">=5.5.0"
     },
+    "require-dev": {
+        "phpunit/phpunit": "^4.7"
+    },
     "autoload": {
         "psr-4": {
             "duncan3dc\\Dates\\": "src/",
