@@ -20,4 +20,18 @@ class FinancialYear extends Range
         $end = Date::mkdate($date->getFinancialYear() + 1, 1, 31);
         parent::__construct($start, $end);
     }
+
+
+    /**
+     * Create a new instance from a numeric 4 digit year.
+     *
+     * @param $year The 4 digit year (eg 2015)
+     *
+     * @return static
+     */
+    public static function fromInt($year)
+    {
+        $date = Date::mkdate($year, 2, 1);
+        return new static($date);
+    }
 }

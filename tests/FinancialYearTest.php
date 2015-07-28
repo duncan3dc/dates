@@ -84,4 +84,13 @@ class FinancialYearTest extends \PHPUnit_Framework_TestCase
 
         $this->assertRelativeTimes(mktime(12, 0, 0, 2, 1, 2013), mktime(12, 0, 0, 1, 31, 2014), $year);
     }
+
+
+    public function testFromInt()
+    {
+        $year = FinancialYear::fromInt(2014);
+
+        $this->assertSame(2014, $year->getStart()->getFinancialYear());
+        $this->assertSame(2014, $year->getEnd()->getFinancialYear());
+    }
 }
