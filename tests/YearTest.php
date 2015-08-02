@@ -88,4 +88,12 @@ class YearTest extends \PHPUnit_Framework_TestCase
 
         $this->assertRelativeTimes(mktime(12, 0, 0, 1, 1, 2014), mktime(12, 0, 0, 12, 31, 2014), $year);
     }
+
+
+    public function testFromInt()
+    {
+        $year = Year::fromInt(2013);
+
+        $this->assertSame(2013, $year->numeric("Y"));
+    }
 }

@@ -23,4 +23,18 @@ class Year extends Range
         $end = Date::mkdate($date->numeric("Y"), 12, 31);
         parent::__construct($start, $end);
     }
+
+
+    /**
+     * Create a new instance of the Year class from a numeric 4 digit year.
+     *
+     * @param $year The 4 digit year (eg 2015)
+     *
+     * @return static
+     */
+    public static function fromInt($year)
+    {
+        $date = Date::mkdate($year, 1, 1);
+        return new static($date);
+    }
 }
