@@ -7,6 +7,38 @@ use duncan3dc\Dates\DateTime;
 class RelativeDateTimesTest extends \PHPUnit_Framework_TestCase
 {
 
+    public function testAddWeeks1()
+    {
+        $date = new DateTime(mktime(12, 0, 0, 2, 28, 2013));
+        $result = $date->addWeeks(2);
+        $this->assertSame(mktime(12, 0, 0, 3, 14, 2013), $result->timestamp());
+    }
+    public function testAddWeeks2()
+    {
+        $date = new DateTime(mktime(12, 0, 0, 2, 28, 2013));
+        $result = $date->addWeeks(-2);
+        $this->assertSame(mktime(12, 0, 0, 2, 14, 2013), $result->timestamp());
+    }
+    public function testAddWeeks3()
+    {
+        $date = new DateTime(mktime(12, 0, 0, 2, 28, 2013));
+        $result = $date->addWeeks(0);
+        $this->assertSame($date, $result);
+    }
+    public function testSubWeeks1()
+    {
+        $date = new DateTime(mktime(12, 0, 0, 10, 2, 2014));
+        $result = $date->subWeeks(2);
+        $this->assertSame(mktime(12, 0, 0, 9, 18, 2014), $result->timestamp());
+    }
+    public function testSubWeeks2()
+    {
+        $date = new DateTime(mktime(12, 0, 0, 10, 2, 2013));
+        $result = $date->subWeeks(-2);
+        $this->assertSame(mktime(12, 0, 0, 10, 16, 2013), $result->timestamp());
+    }
+
+
     public function testAddMonths1()
     {
         $date = new DateTime(mktime(12, 0, 0, 3, 31, 2014));
