@@ -98,4 +98,14 @@ class Range
     {
         return new Iterator\Seasons($this->start, $this->end);
     }
+
+    /**
+     * Get an iterator for the financial years covered by this date range.
+     *
+     * @return Iterator\FinancialYears
+     */
+    public function financialYears()
+    {
+        return new Iterator\FinancialYears($this->start, $this->end);
+    }
 }
