@@ -93,4 +93,18 @@ class FinancialYearTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(2014, $year->getStart()->getFinancialYear());
         $this->assertSame(2014, $year->getEnd()->getFinancialYear());
     }
+
+
+    public function testGetFinancialYear1()
+    {
+        $year = new FinancialYear(Date::mkdate(2015, 1, 31));
+        $this->assertSame(2014, $year->getFinancialYear());
+    }
+
+
+    public function testGetFinancialYear2()
+    {
+        $year = new FinancialYear(Date::mkdate(2015, 2, 1));
+        $this->assertSame(2015, $year->getFinancialYear());
+    }
 }

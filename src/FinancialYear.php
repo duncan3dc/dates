@@ -34,4 +34,15 @@ class FinancialYear extends Range
         $date = Date::mkdate($year, 2, 1);
         return new static($date);
     }
+
+
+    /**
+     * Get the financial year of this range.
+     *
+     * @return int
+     */
+    public function getFinancialYear()
+    {
+        return $this->start->numeric("Y");
+    }
 }
