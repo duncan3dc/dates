@@ -135,6 +135,17 @@ class Season extends Range
 
 
     /**
+     * Get the financial year of this season.
+     *
+     * @return int
+     */
+    public function getFinancialYear()
+    {
+        return $this->start->getFinancialYear();
+    }
+
+
+    /**
      * Get a new Season object for the next season.
      *
      * @return static

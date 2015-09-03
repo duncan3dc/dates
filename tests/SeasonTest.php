@@ -200,6 +200,17 @@ class SeasonTest extends \PHPUnit_Framework_TestCase
     }
 
 
+    public function testGetFinancialYear1()
+    {
+        $season = Season::fromInt(150);
+        $this->assertSame(2015, $season->getFinancialYear());
+    }
+    public function testGetFinancialYear2()
+    {
+        $season = Season::fromInt(155);
+        $this->assertSame(2015, $season->getFinancialYear());
+    }
+
 
     public function testAddYears()
     {
