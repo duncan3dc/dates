@@ -109,6 +109,20 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
         $result = DateTime::fromFormat($format, $input)->format($format);
         $this->assertSame($input, $result);
     }
+    public function testFromFormat3()
+    {
+        $input = "60504";
+        $format = "Gis";
+        $result = DateTime::fromFormat($format, $input)->string($format);
+        $this->assertSame($input, $result);
+    }
+    public function testFromFormat4()
+    {
+        $input = "20150923 60504";
+        $format = "Ymd Gis";
+        $result = DateTime::fromFormat($format, $input)->string($format);
+        $this->assertSame($input, $result);
+    }
 
 
     public function testMktime()
