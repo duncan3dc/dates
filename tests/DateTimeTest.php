@@ -110,6 +110,8 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
         $dates = [
             "28/02/2008 06:30:12"       =>  "d/m/Y H:i:s",
             "March Mon 2 06/30 (2015)"  =>  "F D j H/i (Y)",
+            "60504"                     =>  "Gis",
+            "20150923 60504"            =>  "Ymd Gis",
         ];
         foreach ($dates as $input => $format) {
             yield [$input, $format];

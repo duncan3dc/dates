@@ -51,6 +51,16 @@ class DateTime
      */
     public static function fromFormat($format, $date)
     {
+        # A couple of hacks to work around lack of support for single digit elements
+        if ($format === "Gis") {
+            $format = "His";
+            $date = sprintf("%06s", $date);
+        }
+        if (substr($format, -4) === " Gis") {
+            $format = substr($format, 0, -3) . "His";
+            $date = preg_replace("/ ([0-9]{5})$/", " 0$1", $date);
+        }
+
         $datetime = \DateTime::createFromFormat($format, $date);
 
         if ($datetime === false) {
