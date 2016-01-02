@@ -10,11 +10,11 @@ use duncan3dc\Dates\Interfaces\Days;
 trait DayHelpers
 {
     /**
-     * Get a DateTime object for the specified number of days difference.
+     * Check if this date is the specified day.
      *
-     * @param int $days The number of days to add
+     * @param int $day The ISO-8601 number of the day
      *
-     * @return DateTime
+     * @return bool
      */
     public function isDay($day)
     {
