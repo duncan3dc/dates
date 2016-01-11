@@ -47,30 +47,6 @@ trait RelativeDateTimes
 
 
     /**
-     * Get a DateTime object for the previous day.
-     *
-     * @return static
-     */
-    public function prevDay()
-    {
-        trigger_error("The prevDay() method is deprecated in favour of the subDays(1)", \E_USER_DEPRECATED);
-        return $this->addDays(-1);
-    }
-
-
-    /**
-     * Get a DateTime object for the next day.
-     *
-     * @return static
-     */
-    public function nextDay()
-    {
-        trigger_error("The nextDay() method is deprecated in favour of the addDays(1)", \E_USER_DEPRECATED);
-        return $this->addDays(1);
-    }
-
-
-    /**
      * Get a DateTime object for the specified number of weeks difference.
      *
      * @param int $weeks The number of weeks to add
@@ -156,30 +132,6 @@ trait RelativeDateTimes
 
 
     /**
-     * Get a DateTime object for the previous month.
-     *
-     * @return static
-     */
-    public function prevMonth()
-    {
-        trigger_error("The prevMonth() method is deprecated in favour of the subMonths(1)", \E_USER_DEPRECATED);
-        return $this->addMonths(-1);
-    }
-
-
-    /**
-     * Get a DateTime object for the next month.
-     *
-     * @return static
-     */
-    public function nextMonth()
-    {
-        trigger_error("The nextMonth() method is deprecated in favour of the addMonths(1)", \E_USER_DEPRECATED);
-        return $this->addMonths(1);
-    }
-
-
-    /**
      * Get a DateTime object for the specified number of years difference.
      *
      * @param int $years The number of years to add
@@ -203,30 +155,6 @@ trait RelativeDateTimes
     public function subYears($years)
     {
         return $this->addYears($years * -1);
-    }
-
-
-    /**
-     * Get a DateTime object for the previous year.
-     *
-     * @return static
-     */
-    public function prevYear()
-    {
-        trigger_error("The prevYear() method is deprecated in favour of the subYears(1)", \E_USER_DEPRECATED);
-        return $this->addYears(-1);
-    }
-
-
-    /**
-     * Get a DateTime object for the next year.
-     *
-     * @return static
-     */
-    public function nextYear()
-    {
-        trigger_error("The nextYear() method is deprecated in favour of the addYears(1)", \E_USER_DEPRECATED);
-        return $this->addYears(1);
     }
 
 
