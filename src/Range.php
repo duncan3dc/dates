@@ -2,10 +2,14 @@
 
 namespace duncan3dc\Dates;
 
+use duncan3dc\Dates\Interfaces\RangeInterface;
+use duncan3dc\Dates\Interfaces\DateTimeInterface;
+use duncan3dc\Dates\Interfaces\IteratorInterface;
+
 /**
  * A representation of a range of dates.
  */
-class Range
+class Range implements RangeInterface
 {
     /**
      * @var DateTime $start The start date of this range.
@@ -37,9 +41,9 @@ class Range
     /**
      * Get the start date of this range.
      *
-     * @return DateTime
+     * @return DateTimeInterface
      */
-    public function getStart()
+    public function getStart(): DateTimeInterface
     {
         return $this->start;
     }
@@ -48,9 +52,9 @@ class Range
     /**
      * Get the end date of this range.
      *
-     * @return DateTime
+     * @return DateTimeInterface
      */
-    public function getEnd()
+    public function getEnd(): DateTimeInterface
     {
         return $this->end;
     }
@@ -61,7 +65,7 @@ class Range
      *
      * @return Iterator\Days
      */
-    public function days()
+    public function days(): IteratorInterface
     {
         return new Iterator\Days($this->start, $this->end);
     }
@@ -72,7 +76,7 @@ class Range
      *
      * @return Iterator\Months
      */
-    public function months()
+    public function months(): IteratorInterface
     {
         return new Iterator\Months($this->start, $this->end);
     }
@@ -83,7 +87,7 @@ class Range
      *
      * @return Iterator\Years
      */
-    public function years()
+    public function years(): IteratorInterface
     {
         return new Iterator\Years($this->start, $this->end);
     }

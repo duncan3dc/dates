@@ -16,7 +16,7 @@ trait DayHelpers
      *
      * @return bool
      */
-    public function isDay($day)
+    public function isDay(int $day): bool
     {
         $day = (int) $day;
         return ($this->numeric("N") === $day);
@@ -28,7 +28,7 @@ trait DayHelpers
      *
      * @return bool
      */
-    public function isMonday()
+    public function isMonday(): bool
     {
         return $this->isDay(Days::MONDAY);
     }
@@ -39,7 +39,7 @@ trait DayHelpers
      *
      * @return bool
      */
-    public function isTuesday()
+    public function isTuesday(): bool
     {
         return $this->isDay(Days::TUESDAY);
     }
@@ -50,7 +50,7 @@ trait DayHelpers
      *
      * @return bool
      */
-    public function isWednesday()
+    public function isWednesday(): bool
     {
         return $this->isDay(Days::WEDNESDAY);
     }
@@ -61,7 +61,7 @@ trait DayHelpers
      *
      * @return bool
      */
-    public function isThursday()
+    public function isThursday(): bool
     {
         return $this->isDay(Days::THURSDAY);
     }
@@ -72,7 +72,7 @@ trait DayHelpers
      *
      * @return bool
      */
-    public function isFriday()
+    public function isFriday(): bool
     {
         return $this->isDay(Days::FRIDAY);
     }
@@ -83,7 +83,7 @@ trait DayHelpers
      *
      * @return bool
      */
-    public function isSaturday()
+    public function isSaturday(): bool
     {
         return $this->isDay(Days::SATURDAY);
     }
@@ -94,7 +94,7 @@ trait DayHelpers
      *
      * @return bool
      */
-    public function isSunday()
+    public function isSunday(): bool
     {
         return $this->isDay(Days::SUNDAY);
     }
@@ -105,7 +105,7 @@ trait DayHelpers
      *
      * @return bool
      */
-    public function isWeekday()
+    public function isWeekday(): bool
     {
         return ($this->numeric("N") <= Days::FRIDAY);
     }
@@ -116,7 +116,7 @@ trait DayHelpers
      *
      * @return bool
      */
-    public function isWeekend()
+    public function isWeekend(): bool
     {
         return ($this->numeric("N") >= Days::SATURDAY);
     }

@@ -13,9 +13,9 @@ trait RelativeDateTimes
      *
      * @param int $days The number of days to add
      *
-     * @return static
+     * @return self
      */
-    public function addDays($days)
+    public function addDays(int $days): self
     {
         $days = (int) $days;
         if ($days === 0) {
@@ -38,9 +38,9 @@ trait RelativeDateTimes
      *
      * @param int $days The number of days to subtract
      *
-     * @return static
+     * @return self
      */
-    public function subDays($days)
+    public function subDays(int $days): self
     {
         return $this->addDays($days * -1);
     }
@@ -51,9 +51,9 @@ trait RelativeDateTimes
      *
      * @param int $weeks The number of weeks to add
      *
-     * @return static
+     * @return self
      */
-    public function addWeeks($weeks)
+    public function addWeeks(int $weeks): self
     {
         $weeks = (int) $weeks;
         if ($weeks === 0) {
@@ -69,9 +69,9 @@ trait RelativeDateTimes
      *
      * @param int $weeks The number of weeks to subtract
      *
-     * @return static
+     * @return self
      */
-    public function subWeeks($weeks)
+    public function subWeeks(int $weeks): self
     {
         return $this->addWeeks($weeks * -1);
     }
@@ -82,9 +82,9 @@ trait RelativeDateTimes
      *
      * @param int $months The number of months to add
      *
-     * @return static
+     * @return self
      */
-    public function addMonths($months)
+    public function addMonths(int $months): self
     {
         $months = (int) $months;
         if ($months === 0) {
@@ -123,9 +123,9 @@ trait RelativeDateTimes
      *
      * @param int $months The number of months to subtract
      *
-     * @return static
+     * @return self
      */
-    public function subMonths($months)
+    public function subMonths(int $months): self
     {
         return $this->addMonths($months * -1);
     }
@@ -136,9 +136,9 @@ trait RelativeDateTimes
      *
      * @param int $years The number of years to add
      *
-     * @return static
+     * @return self
      */
-    public function addYears($years)
+    public function addYears(int $years): self
     {
         # Use addMonths to take advantage of the day wrapping handling, as years always have 12 months
         return $this->addMonths($years * 12);
@@ -150,9 +150,9 @@ trait RelativeDateTimes
      *
      * @param int $years The number of years to subtract
      *
-     * @return static
+     * @return self
      */
-    public function subYears($years)
+    public function subYears(int $years): self
     {
         return $this->addYears($years * -1);
     }
@@ -163,9 +163,9 @@ trait RelativeDateTimes
      *
      * @param int $seconds The number of seconds to add
      *
-     * @return static
+     * @return self
      */
-    public function addSeconds($seconds)
+    public function addSeconds(int $seconds): self
     {
         $seconds = (int) $seconds;
         if ($seconds === 0) {
@@ -188,9 +188,9 @@ trait RelativeDateTimes
      *
      * @param int $seconds The number of seconds to subtract
      *
-     * @return static
+     * @return self
      */
-    public function subSeconds($seconds)
+    public function subSeconds(int $seconds): self
     {
         return $this->addSeconds($seconds * -1);
     }
@@ -201,9 +201,9 @@ trait RelativeDateTimes
      *
      * @param int $minutes The number of minutes to add
      *
-     * @return static
+     * @return self
      */
-    public function addMinutes($minutes)
+    public function addMinutes(int $minutes): self
     {
         return $this->addSeconds($minutes * 60);
     }
@@ -214,9 +214,9 @@ trait RelativeDateTimes
      *
      * @param int $minutes The number of minutes to subtract
      *
-     * @return static
+     * @return self
      */
-    public function subMinutes($minutes)
+    public function subMinutes(int $minutes): self
     {
         return $this->addMinutes($minutes * -1);
     }
@@ -226,9 +226,9 @@ trait RelativeDateTimes
      *
      * @param int $hours The number of hours to add
      *
-     * @return static
+     * @return self
      */
-    public function addHours($hours)
+    public function addHours(int $hours): self
     {
         return $this->addMinutes($hours * 60);
     }
@@ -239,9 +239,9 @@ trait RelativeDateTimes
      *
      * @param int $hours The number of hours to subtract
      *
-     * @return static
+     * @return self
      */
-    public function subHours($hours)
+    public function subHours(int $hours): self
     {
         return $this->addHours($hours * -1);
     }

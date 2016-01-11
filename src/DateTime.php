@@ -2,10 +2,14 @@
 
 namespace duncan3dc\Dates;
 
+use duncan3dc\Dates\Interfaces\DateTimeInterface;
+use duncan3dc\Dates\Interfaces\MonthInterface;
+use duncan3dc\Dates\Interfaces\YearInterface;
+
 /**
  * A class to respresent a unix timestamp and allow convenient methods.
  */
-class DateTime
+class DateTime implements DateTimeInterface
 {
     use Traits\BankHoliday;
     use Traits\DayHelpers;
@@ -128,7 +132,7 @@ class DateTime
      *
      * @return int
      */
-    public function timestamp()
+    public function timestamp(): int
     {
         return $this->unix;
     }
@@ -139,7 +143,7 @@ class DateTime
      *
      * @return Month
      */
-    public function getMonth()
+    public function getMonth(): MonthInterface
     {
         return new Month($this);
     }
@@ -150,7 +154,7 @@ class DateTime
      *
      * @return Year
      */
-    public function getYear()
+    public function getYear(): YearInterface
     {
         return new Year($this);
     }
@@ -161,7 +165,7 @@ class DateTime
      *
      * @return int
      */
-    public function midday()
+    public function midday(): int
     {
         return mktime(12, 0, 0, $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
     }
@@ -172,7 +176,7 @@ class DateTime
      *
      * @return int
      */
-    public function start()
+    public function start(): int
     {
         return mktime(0, 0, 0, $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
     }
@@ -183,7 +187,7 @@ class DateTime
      *
      * @return int
      */
-    public function end()
+    public function end(): int
     {
         return mktime(23, 59, 59, $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
     }

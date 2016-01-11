@@ -20,7 +20,7 @@ trait Formatting
      *
      * @return int
      */
-    public function numeric($format)
+    public function numeric(string $format): int
     {
         return (int) $this->string($format);
     }
@@ -33,7 +33,7 @@ trait Formatting
      *
      * @return string
      */
-    public function string($format)
+    public function string(string $format): string
     {
         return date($format, $this->unix);
     }
@@ -48,7 +48,7 @@ trait Formatting
      *
      * @return string|int
      */
-    public function format($format)
+    public function format(string $format)
     {
         $return = $this->string($format);
 
