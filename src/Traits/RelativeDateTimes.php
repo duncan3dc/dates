@@ -53,6 +53,7 @@ trait RelativeDateTimes
      */
     public function prevDay()
     {
+        trigger_error("The prevDay() method is deprecated in favour of the subDays(1)", \E_USER_DEPRECATED);
         return $this->addDays(-1);
     }
 
@@ -64,6 +65,7 @@ trait RelativeDateTimes
      */
     public function nextDay()
     {
+        trigger_error("The nextDay() method is deprecated in favour of the addDays(1)", \E_USER_DEPRECATED);
         return $this->addDays(1);
     }
 
@@ -160,6 +162,7 @@ trait RelativeDateTimes
      */
     public function prevMonth()
     {
+        trigger_error("The prevMonth() method is deprecated in favour of the subMonths(1)", \E_USER_DEPRECATED);
         return $this->addMonths(-1);
     }
 
@@ -171,6 +174,7 @@ trait RelativeDateTimes
      */
     public function nextMonth()
     {
+        trigger_error("The nextMonth() method is deprecated in favour of the addMonths(1)", \E_USER_DEPRECATED);
         return $this->addMonths(1);
     }
 
@@ -209,6 +213,7 @@ trait RelativeDateTimes
      */
     public function prevYear()
     {
+        trigger_error("The prevYear() method is deprecated in favour of the subYears(1)", \E_USER_DEPRECATED);
         return $this->addYears(-1);
     }
 
@@ -220,6 +225,7 @@ trait RelativeDateTimes
      */
     public function nextYear()
     {
+        trigger_error("The nextYear() method is deprecated in favour of the addYears(1)", \E_USER_DEPRECATED);
         return $this->addYears(1);
     }
 

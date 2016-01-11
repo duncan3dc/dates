@@ -38,13 +38,13 @@ class RelativeDatesTest extends \PHPUnit_Framework_TestCase
     public function testNextDay()
     {
         $date = new Date(mktime(23, 59, 59, 3, 31, 1970));
-        $result = $date->nextDay();
+        $result = $date->addDays(1);
         $this->assertSame(mktime(12, 0, 0, 4, 1, 1970), $result->timestamp());
     }
     public function testPrevDay()
     {
         $date = new Date(mktime(0, 0, 0, 1, 1, 2001));
-        $result = $date->prevDay();
+        $result = $date->subDays(1);
         $this->assertSame(mktime(12, 0, 0, 12, 31, 2000), $result->timestamp());
     }
 
@@ -80,13 +80,13 @@ class RelativeDatesTest extends \PHPUnit_Framework_TestCase
     public function testNextMonth()
     {
         $date = new Date(mktime(23, 59, 59, 3, 31, 1970));
-        $result = $date->nextMonth();
+        $result = $date->addMonths(1);
         $this->assertSame(mktime(12, 0, 0, 4, 30, 1970), $result->timestamp());
     }
     public function testPrevMonth()
     {
         $date = new Date(mktime(0, 0, 0, 1, 1, 2001));
-        $result = $date->prevMonth();
+        $result = $date->subMonths(1);
         $this->assertSame(mktime(12, 0, 0, 12, 1, 2000), $result->timestamp());
     }
 
@@ -116,13 +116,13 @@ class RelativeDatesTest extends \PHPUnit_Framework_TestCase
     public function testNextYear()
     {
         $date = new Date(mktime(23, 59, 59, 31, 12, 1986));
-        $result = $date->nextYear();
+        $result = $date->addYears(1);
         $this->assertSame(mktime(12, 0, 0, 31, 12, 1987), $result->timestamp());
     }
     public function testPrevYear()
     {
         $date = new Date(mktime(0, 0, 0, 1, 1, 2001));
-        $result = $date->prevYear();
+        $result = $date->subYears(1);
         $this->assertSame(mktime(12, 0, 0, 1, 1, 2000), $result->timestamp());
     }
 }
