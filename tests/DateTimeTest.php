@@ -3,6 +3,7 @@
 namespace duncan3dc\DateTests;
 
 use duncan3dc\Dates\DateTime;
+use duncan3dc\Dates\Interfaces\Days;
 
 class DateTimeTest extends \PHPUnit_Framework_TestCase
 {
@@ -30,6 +31,19 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
         $unix = time();
         $date = DateTime::now();
         $this->assertSame($unix, $date->timestamp());
+    }
+
+
+    public function testStrtotime1()
+    {
+        $expected = DateTime::now()->getNext(Days::TUESDAY);
+        $date = DateTime::strtotime("next tuesday");
+        $this->assertSame($expected->format("Y-m-d"), $date->format("Y-m-d"));
+    }
+    public function testStrtotime2()
+    {
+        $this->setExpectedException(\InvalidArgumentException::class, "An invalid unix timestamp was passed");
+        DateTime::strtotime("nope");
     }
 
 

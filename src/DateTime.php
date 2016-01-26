@@ -94,6 +94,21 @@ class DateTime
 
 
     /**
+     * Convert a free format date to an instance.
+     *
+     * @param string $date The date to parse
+     *
+     * @return static
+     */
+    public static function strtotime($date)
+    {
+        $unix = strtotime($date);
+
+        return new static($unix);
+    }
+
+
+    /**
      * Create a new instance from a unix timestamp.
      *
      * @param int A unix timestamp

@@ -5,6 +5,14 @@ Changelog
 
 --------
 
+## 1.3.0 - 2017-08-14
+
+### Added
+
+* [DateTime] Add a strtotime() method to make use of the standard php parsing.
+
+--------
+
 ## 1.2.1 - 2017-07-24
 
 ### Added
