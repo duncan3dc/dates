@@ -3,7 +3,7 @@
 namespace Regatta\Dates\Traits;
 
 use Regatta\Dates\Date;
-use Regatta\Dates\Range;
+use Regatta\Dates\Range as RangeInstance;
 
 /**
  * Format the internal unix timestamp in a specified way.
@@ -74,7 +74,7 @@ trait PeriodFormatting
         $year = $this->getFinancialYear();
         $start = Date::mkdate($year, 2, 1);
 
-        $range = new Range($start, $this);
+        $range = new RangeInstance($start, $this);
 
         $weekNumber = 0;
 
