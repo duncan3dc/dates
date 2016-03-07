@@ -3,6 +3,7 @@
 namespace Regatta\Dates\Traits;
 
 use Regatta\Dates\Date;
+use Regatta\Dates\Range;
 
 /**
  * Format the internal unix timestamp in a specified way.
@@ -59,5 +60,36 @@ trait PeriodFormatting
     public function getFinancialPeriod()
     {
         return (int) $this->formatPeriod("n");
+    }
+
+
+    /**
+     * Get the financial week of this date.
+     *
+     * @return int
+     */
+    public function getFinancialWeek()
+    {
+        # Get the start date of this financial year
+        $year = $this->getFinancialYear();
+        $start = Date::mkdate($year, 2, 1);
+
+        $range = new Range($start, $this);
+
+        $weekNumber = 0;
+
+        # If this year doesn't start on a monday then count the first few days as week 1
+        if (!$start->isMonday()) {
+            ++$weekNumber;
+        }
+
+        # Then for each monday that starts a new week we increase our week number
+        foreach ($range->days() as $day) {
+            if ($day->isMonday()) {
+                ++$weekNumber;
+            }
+        }
+
+        return $weekNumber;
     }
 }

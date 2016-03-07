@@ -69,4 +69,21 @@ class PeriodFormattingTest extends \PHPUnit_Framework_TestCase
         $date = new DateTime($unix);
         $this->assertSame(6, $date->getFinancialPeriod());
     }
+
+
+    public function weekDateProvider()
+    {
+        $csv = fopen(__DIR__ . "/weeks.csv", "r");
+        while ($row = fgetcsv($csv)) {
+            yield $row;
+        }
+    }
+    /**
+     * @dataProvider weekDateProvider
+     */
+    public function testFinancialWeek($date, $week)
+    {
+        $date = Date::fromFormat("Ymd", $date);
+        $this->assertEquals($week, $date->getFinancialWeek());
+    }
 }
