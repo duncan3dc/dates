@@ -108,12 +108,12 @@ trait PeriodFormatting
 
         $weekNumber = 0;
 
-        # If this year doesn't start on a monday then count the first few days as week 1
+        # If this year doesn't start on a sunday then count the first few days as week 1
         if (!$start->isSunday()) {
             ++$weekNumber;
         }
 
-        # Then for each monday that starts a new week we increase our week number
+        # Then for each sunday that starts a new week we increase our week number
         foreach ($range->days() as $day) {
             if ($day->isSunday()) {
                 ++$weekNumber;
