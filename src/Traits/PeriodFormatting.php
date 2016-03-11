@@ -92,4 +92,34 @@ trait PeriodFormatting
 
         return $weekNumber;
     }
+
+    /**
+     * Get the retail week of this date.
+     *
+     * @return int
+     */
+    public function getRetailWeek()
+    {
+        # Get the start date of this financial year
+        $year = $this->getFinancialYear();
+        $start = Date::mkdate($year, 2, 1);
+
+        $range = new RangeInstance($start, $this);
+
+        $weekNumber = 0;
+
+        # If this year doesn't start on a sunday then count the first few days as week 1
+        if (!$start->isSunday()) {
+            ++$weekNumber;
+        }
+
+        # Then for each sunday that starts a new week we increase our week number
+        foreach ($range->days() as $day) {
+            if ($day->isSunday()) {
+                ++$weekNumber;
+            }
+        }
+
+        return $weekNumber;
+    }
 }
