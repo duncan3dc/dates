@@ -130,4 +130,58 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
         $date = DateTime::mktime(12, 0, 0, 7, 1, 2014);
         $this->assertSame(mktime(12, 0, 0, 7, 1, 2014), $date->timestamp());
     }
+
+
+    public function testWithYear()
+    {
+        $date = DateTime::mktime(11, 30, 59, 2, 29, 2016);
+        $date = $date->withYear(2017);
+        $this->assertSame("2017-02-28 11:30:59", $date->format("Y-m-d H:i:s"));
+    }
+
+
+    public function testWithMonth()
+    {
+        $date = DateTime::mktime(11, 30, 59, 8, 31, 2016);
+        $date = $date->withMonth(9);
+        $this->assertSame("2016-09-30 11:30:59", $date->format("Y-m-d H:i:s"));
+    }
+
+
+    public function testWithDay()
+    {
+        $date = DateTime::mktime(11, 30, 59, 2, 20, 2016);
+        $date = $date->withDay(10);
+        $this->assertSame("2016-02-10 11:30:59", $date->format("Y-m-d H:i:s"));
+    }
+    public function testWithInvalidDay()
+    {
+        $this->setExpectedException(\UnexpectedValueException::class, "Unable to set the day to 30 as this month only has 29 days, use withMonth() first");
+        $date = DateTime::mktime(11, 30, 59, 2, 20, 2016);
+        $date = $date->withDay(30);
+    }
+
+
+    public function testWithHours()
+    {
+        $date = DateTime::mktime(11, 30, 59, 2, 20, 2016);
+        $date = $date->withHours(10);
+        $this->assertSame("2016-02-20 10:30:59", $date->format("Y-m-d H:i:s"));
+    }
+
+
+    public function testWithMinutes()
+    {
+        $date = DateTime::mktime(11, 30, 59, 2, 20, 2016);
+        $date = $date->withMinutes(10);
+        $this->assertSame("2016-02-20 11:10:59", $date->format("Y-m-d H:i:s"));
+    }
+
+
+    public function testWithSeconds()
+    {
+        $date = DateTime::mktime(11, 30, 59, 2, 20, 2016);
+        $date = $date->withSeconds(10);
+        $this->assertSame("2016-02-20 11:30:10", $date->format("Y-m-d H:i:s"));
+    }
 }

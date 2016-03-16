@@ -34,4 +34,31 @@ class DateTest extends \PHPUnit_Framework_TestCase
         $date = Date::mkdate(2014, 6, 12);
         $this->assertSame(mktime(12, 0, 0, 6, 12, 2014), $date->timestamp());
     }
+
+
+    public function testWithHours()
+    {
+        $date = Date::mkdate(2016, 2, 20);
+        $date = $date->withHours(10);
+        $this->assertInstanceOf(DateTime::class, $date);
+        $this->assertSame("2016-02-20 10:00:00", $date->format("Y-m-d H:i:s"));
+    }
+
+
+    public function testWithMinutes()
+    {
+        $date = Date::mkdate(2016, 2, 20);
+        $date = $date->withMinutes(10);
+        $this->assertInstanceOf(DateTime::class, $date);
+        $this->assertSame("2016-02-20 12:10:00", $date->format("Y-m-d H:i:s"));
+    }
+
+
+    public function testWithSeconds()
+    {
+        $date = Date::mkdate(2016, 2, 20);
+        $date = $date->withSeconds(10);
+        $this->assertInstanceOf(DateTime::class, $date);
+        $this->assertSame("2016-02-20 12:00:10", $date->format("Y-m-d H:i:s"));
+    }
 }

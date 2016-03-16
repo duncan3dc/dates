@@ -183,4 +183,127 @@ class DateTime
     {
         return mktime(23, 59, 59, $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
     }
+
+
+    /**
+     * Get a new instance but with the specified year.
+     *
+     * @param int $year The year to use
+     *
+     * @return static
+     */
+    public function withYear($year)
+    {
+        $year = (int) $year;
+
+        # Use addYears() to handle the variable number of days in each month
+        $years = $year - $this->numeric("Y");
+        return $this->addyears($years);
+    }
+
+
+    /**
+     * Get a new instance but with the specified month.
+     *
+     * @param int $month The month to use
+     *
+     * @return static
+     */
+    public function withMonth($month)
+    {
+        $month = (int) $month;
+
+        # Use addMonths() to handle the variable number of days in each month
+        $months = $month - $this->numeric("n");
+        return $this->addMonths($months);
+    }
+
+
+    /**
+     * Get a new instance but with the specified day.
+     *
+     * @param int $day The day to use
+     *
+     * @return static
+     */
+    public function withDay($day)
+    {
+        $day = (int) $day;
+
+        $max = $this->numeric("t");
+        if ($day > $max) {
+            throw new \UnexpectedValueException("Unable to set the day to {$day} as this month only has {$max} days, use withMonth() first");
+        }
+
+        $date = static::mktime($this->numeric("H"), $this->numeric("i"), $this->numeric("s"), $this->numeric("n"), $day, $this->numeric("Y"));
+
+        if ($date->numeric("j") !== $day) {
+            throw new \RunetimeException("Unable to change the day of " . $this->string("Y-m-d H:i:s") . "to {$day}");
+        }
+
+        return $date;
+    }
+
+
+    /**
+     * Get a new instance but with the specified hour.
+     *
+     * @param int $hour The hour to use
+     *
+     * @return DateTime
+     */
+    public function withHours($hour)
+    {
+        $hour = (int) $hour;
+
+        $date = DateTime::mktime($hour, $this->numeric("i"), $this->numeric("s"), $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
+
+        if ($date->numeric("G") !== $hour) {
+            throw new \RunetimeException("Unable to change the hour of " . $this->string("Y-m-d H:i:s") . "to {$hour}");
+        }
+
+        return $date;
+    }
+
+
+    /**
+     * Get a new instance but with the specified minute.
+     *
+     * @param int $minute The minute to use
+     *
+     * @return DateTime
+     */
+    public function withMinutes($minute)
+    {
+        $minute = (int) $minute;
+
+        $date = DateTime::mktime($this->numeric("G"), $minute, $this->numeric("s"), $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
+
+        if ($date->numeric("i") !== $minute) {
+            throw new \RunetimeException("Unable to change the minute of " . $this->string("Y-m-d H:i:s") . "to {$minute}");
+        }
+
+        return $date;
+    }
+
+
+    /**
+     * Get a new instance but with the specified second.
+     *
+     * @param int $second The second to use
+     *
+     * @return static
+     */
+    public function withSeconds($second)
+    {
+        $second = (int) $second;
+
+        $date = DateTime::mktime($this->numeric("G"), $this->numeric("i"), $second, $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
+
+        if ($date->numeric("s") !== $second) {
+            throw new \RunetimeException("Unable to change the second of " . $this->string("Y-m-d H:i:s") . "to {$second}");
+        }
+
+        return $date;
+    }
 }
