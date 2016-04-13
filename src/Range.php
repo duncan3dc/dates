@@ -87,4 +87,37 @@ class Range
     {
         return new Iterator\Years($this->start, $this->end);
     }
+
+
+    /**
+     * Get an iterator for the hours covered by this date range.
+     *
+     * @return Iterator\Hours
+     */
+    public function hours()
+    {
+        return new Iterator\Hours($this->start, $this->end);
+    }
+
+
+    /**
+     * Get an iterator for the minutes covered by this date range.
+     *
+     * @return Iterator\Minutes
+     */
+    public function minutes()
+    {
+        return new Iterator\Minutes($this->start, $this->end);
+    }
+
+
+    /**
+     * Get an iterator for the seconds covered by this date range.
+     *
+     * @return Iterator\Seconds
+     */
+    public function seconds()
+    {
+        return new Iterator\Seconds($this->start, $this->end);
+    }
 }
