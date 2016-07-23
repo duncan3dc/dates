@@ -17,6 +17,8 @@ class DateParser extends DateTimeParser
      */
     public function parse($date, $time = null)
     {
-        return parent::parse($date, 0);
+        $result = parent::parse($date, 0);
+
+        return new Date($result->timestamp());
     }
 }
