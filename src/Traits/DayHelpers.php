@@ -120,4 +120,54 @@ trait DayHelpers
     {
         return ($this->numeric("N") >= Days::SATURDAY);
     }
+
+
+    /**
+     * Get a date object for the previous occurence of a specified day.
+     *
+     * @param int $day The numeric representation of the day.
+     *
+     * @return Date
+     */
+    public function getPrevious($day)
+    {
+        $day = (int) $day;
+
+        # Don't include today as we want the 'previous' instance
+        $date = $this->subDays(1);
+
+        $current = $date->format("N");
+        if ($current < $day) {
+            $day -= 7;
+        }
+
+        $adjust = $current - $day;
+
+        return $date->subDays($adjust);
+    }
+
+
+    /**
+     * Get a date object for the next occurence of a specified day.
+     *
+     * @param int $day The numeric representation of the day.
+     *
+     * @return Date
+     */
+    public function getNext($day)
+    {
+        $day = (int) $day;
+
+        # Don't include today as we want the 'next' instance
+        $date = $this->addDays(1);
+
+        $current = $date->format("N");
+        if ($current > $day) {
+            $day += 7;
+        }
+
+        $adjust = $day - $current;
+
+        return $date->addDays($adjust);
+    }
 }
