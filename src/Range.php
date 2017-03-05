@@ -120,4 +120,85 @@ class Range
     {
         return new Iterator\Seconds($this->start, $this->end);
     }
+
+
+    /**
+     * Get the range represented in a human readable format.
+     *
+     * @return string
+     */
+    public function asString()
+    {
+        $plural = function ($number, $word) {
+            $number = (int) $number;
+            if ($number !== 1) {
+                $word .= "s";
+            }
+            return "{$number} {$word}";
+        };
+
+        $seconds = $this->end->timestamp() - $this->start->timestamp();
+
+        if ($seconds < 60) {
+            return $plural($seconds, "second");
+        }
+
+        $minutes = floor($seconds / 60);
+        $seconds %= 60;
+
+        if ($minutes < 60) {
+            if ($seconds >= 30) {
+                ++$minutes;
+            }
+            return $plural($minutes, "minute");
+        }
+
+        $hours = floor($minutes / 60);
+        $minutes %= 60;
+
+        if ($hours < 24) {
+            if ($minutes >= 30) {
+                $hours++;
+            }
+            return $plural($hours, "hour");
+        }
+
+        $days = floor($hours / 24);
+        $hours %= 24;
+
+        if ($days < 7) {
+            if ($hours >= 12) {
+                ++$days;
+            }
+            return $plural($days, "day");
+        }
+
+        $weeks = floor($days / 7);
+        $days %= 7;
+
+        if ($weeks < 4) {
+            if ($days > 3) {
+                ++$weeks;
+            }
+            return $plural($weeks, "week");
+        }
+
+        $months = floor($weeks / 4);
+        $weeks %= 4;
+
+        if ($months < 12) {
+            if ($weeks > 1.9) {
+                ++$months;
+            }
+            return $plural($months, "month");
+        }
+
+        $years = floor($months / 12);
+        $months %= 12;
+
+        if ($months > 6) {
+            ++$years;
+        }
+        return $plural($years, "year");
+    }
 }
