@@ -5,6 +5,18 @@ Changelog
 
 --------
 
+## 1.2.1 - 2017-07-24
+
+### Added
+
+* [Support] Add support for PHP 7.2
+
+### Fixed
+
+* [DateTime] Ensure single digits are treated as numbers by format().
+
+--------
+
 ## 1.2.0 - 2017-03-05
 
 ### Added

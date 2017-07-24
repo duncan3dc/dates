@@ -55,6 +55,16 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
         $date = DateTime::mktime(4, 22, 33, 1, 18, 2016);
         $this->assertSame("042233", $date->format("His"));
     }
+    public function testFormat5()
+    {
+        $date = DateTime::mktime(4, 22, 33, 1, 18, 2016);
+        $this->assertSame(1, $date->format("n"));
+    }
+    public function testFormat6()
+    {
+        $date = DateTime::mktime(0, 22, 33, 1, 18, 2016);
+        $this->assertSame(0, $date->format("G"));
+    }
     public function testNumeric()
     {
         $unix = time();

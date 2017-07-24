@@ -53,7 +53,7 @@ trait Formatting
         $return = $this->string($format);
 
         # If the result looks like a number then return it as an int
-        if (preg_match("/^[1-9][0-9]+$/", $return)) {
+        if (preg_match("/^([1-9][0-9]+|[0-9])$/", $return)) {
             # Only attempt to cast a number in the range supported by this install
             if ($return < \PHP_INT_MAX) {
                 $return = (int) $return;
