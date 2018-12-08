@@ -24,5 +24,11 @@
     },
     "autoload-dev": {
         "psr-4": {"duncan3dc\\DateTests\\": "tests/"}
+    },
+    "scripts": {
+        "test": [
+            "vendor/bin/phpunit",
+            "@composer validate --strict"
+        ]
     }
 }
