@@ -4,9 +4,9 @@ A simple library for working with dates and ranges using the default timezone
 Full documentation is available at http://duncan3dc.github.io/dates/  
 PHPDoc API documentation is also available at [http://duncan3dc.github.io/dates/api/](http://duncan3dc.github.io/dates/api/namespaces/duncan3dc.Laravel.html)  
 
-[![Latest Stable Version](https://poser.pugx.org/duncan3dc/dates/version.svg)](https://packagist.org/packages/duncan3dc/dates)
-[![Build Status](https://travis-ci.org/duncan3dc/dates.svg?branch=master)](https://travis-ci.org/duncan3dc/dates)
-[![Coverage Status](https://coveralls.io/repos/github/duncan3dc/dates/badge.svg)](https://coveralls.io/github/duncan3dc/dates)
+[![release](https://poser.pugx.org/duncan3dc/dates/version.svg)](https://packagist.org/packages/duncan3dc/dates)
+[![build](https://travis-ci.org/duncan3dc/dates.svg?branch=master)](https://travis-ci.org/duncan3dc/dates)
+[![coverage](https://codecov.io/gh/duncan3dc/dates/graph/badge.svg)](https://codecov.io/gh/duncan3dc/dates)
 
 
 ## Installation
