@@ -12,10 +12,12 @@
         "role": "Developer"
     }],
     "require": {
+        "ext-calendar": "*",
         "ext-date": "*",
         "php": "^7.1"
     },
     "require-dev": {
+        "maglnet/composer-require-checker": "^1.1",
         "phpunit/phpunit": "^5.1"
     },
     "autoload": {
@@ -27,6 +29,7 @@
     "scripts": {
         "test": [
             "vendor/bin/phpunit",
+            "vendor/bin/composer-require-checker",
             "@composer validate --strict"
         ]
     }

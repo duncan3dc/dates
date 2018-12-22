@@ -242,7 +242,7 @@ class DateTime
         $date = static::mktime($this->numeric("H"), $this->numeric("i"), $this->numeric("s"), $this->numeric("n"), $day, $this->numeric("Y"));
 
         if ($date->numeric("j") !== $day) {
-            throw new \RunetimeException("Unable to change the day of " . $this->string("Y-m-d H:i:s") . "to {$day}");
+            throw new \RuntimeException("Unable to change the day of " . $this->string("Y-m-d H:i:s") . "to {$day}");
         }
 
         return $date;
@@ -263,7 +263,7 @@ class DateTime
         $date = DateTime::mktime($hour, $this->numeric("i"), $this->numeric("s"), $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
 
         if ($date->numeric("G") !== $hour) {
-            throw new \RunetimeException("Unable to change the hour of " . $this->string("Y-m-d H:i:s") . "to {$hour}");
+            throw new \RuntimeException("Unable to change the hour of " . $this->string("Y-m-d H:i:s") . "to {$hour}");
         }
 
         return $date;
@@ -284,7 +284,7 @@ class DateTime
         $date = DateTime::mktime($this->numeric("G"), $minute, $this->numeric("s"), $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
 
         if ($date->numeric("i") !== $minute) {
-            throw new \RunetimeException("Unable to change the minute of " . $this->string("Y-m-d H:i:s") . "to {$minute}");
+            throw new \RuntimeException("Unable to change the minute of " . $this->string("Y-m-d H:i:s") . "to {$minute}");
         }
 
         return $date;
@@ -305,7 +305,7 @@ class DateTime
         $date = DateTime::mktime($this->numeric("G"), $this->numeric("i"), $second, $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
 
         if ($date->numeric("s") !== $second) {
-            throw new \RunetimeException("Unable to change the second of " . $this->string("Y-m-d H:i:s") . "to {$second}");
+            throw new \RuntimeException("Unable to change the second of " . $this->string("Y-m-d H:i:s") . "to {$second}");
         }
 
         return $date;
