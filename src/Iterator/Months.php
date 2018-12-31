@@ -3,10 +3,12 @@
 namespace duncan3dc\Dates\Iterator;
 
 use duncan3dc\Dates\Interfaces\DateTimeInterface;
+use duncan3dc\Dates\Interfaces\MonthInterface;
 use duncan3dc\Dates\Month;
 
 /**
  * An iterator for the number of months in a range.
+ * @extends AbstractIterator<MonthInterface>
  */
 final class Months extends AbstractIterator
 {

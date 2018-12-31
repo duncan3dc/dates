@@ -35,7 +35,7 @@ final class DateTime implements DateTimeInterface
      * Create a new DateTime object from a parsable date/time.
      *
      * @param string|int $date The date to parse
-     * @param string|int $time The time to parse
+     * @param string|int|null $time The time to parse
      */
     public static function parse(string|int $date, string|int|null $time = null): DateTimeInterface
     {
@@ -65,7 +65,7 @@ final class DateTime implements DateTimeInterface
             $date = preg_replace("/ ([0-9]{5})$/", " 0$1", $date);
         }
 
-        $datetime = \DateTime::createFromFormat($format, $date);
+        $datetime = \DateTime::createFromFormat($format, (string) $date);
 
         if ($datetime === false) {
             throw new \InvalidArgumentException("Invalid date ({$date}) does not conform to format ({$format})");
@@ -89,7 +89,7 @@ final class DateTime implements DateTimeInterface
      */
     public static function mktime(int $hour, int $minute, int $second, int $month, int $day, int $year): DateTimeInterface
     {
-        $unix = mktime($hour, $minute, $second, $month, $day, $year);
+        $unix = (int) mktime($hour, $minute, $second, $month, $day, $year);
 
         return new self($unix);
     }
@@ -102,7 +102,7 @@ final class DateTime implements DateTimeInterface
      */
     public static function strtotime(string $date): DateTimeInterface
     {
-        $unix = strtotime($date);
+        $unix = (int) strtotime($date);
 
         return new self($unix);
     }
@@ -173,7 +173,7 @@ final class DateTime implements DateTimeInterface
      */
     public function midday(): int
     {
-        return mktime(12, 0, 0, $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
+        return (int) mktime(12, 0, 0, $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
     }
 
 
@@ -182,7 +182,7 @@ final class DateTime implements DateTimeInterface
      */
     public function start(): int
     {
-        return mktime(0, 0, 0, $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
+        return (int) mktime(0, 0, 0, $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
     }
 
 
@@ -191,7 +191,7 @@ final class DateTime implements DateTimeInterface
      */
     public function end(): int
     {
-        return mktime(23, 59, 59, $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
+        return (int) mktime(23, 59, 59, $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
     }
 
 

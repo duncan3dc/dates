@@ -73,7 +73,7 @@ final class IsDayTest extends TestCase
 
 
     /**
-     * @return DateTimeInterface
+     * @return iterable<array<DateTimeInterface|int|string>>
      */
     public function nextDayProvider(): iterable
     {
@@ -111,7 +111,7 @@ final class IsDayTest extends TestCase
 
 
     /**
-     * @return DateTimeInterface
+     * @return iterable<array<DateTimeInterface|int|string>>
      */
     public function previousDayProvider(): iterable
     {

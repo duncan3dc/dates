@@ -6,6 +6,7 @@ use duncan3dc\Dates\Interfaces\DateTimeInterface;
 
 /**
  * An iterator for the number of minutes in a range.
+ * @extends AbstractIterator<DateTimeInterface>
  */
 final class Minutes extends AbstractIterator
 {
@@ -20,6 +21,15 @@ final class Minutes extends AbstractIterator
         $this->start = $start->withSeconds(0)->timestamp();
         $this->end = $end->withSeconds(0)->timestamp();
         $this->rewind();
+    }
+
+
+    /**
+     * Get the current iterator value.
+     */
+    public function current(): DateTimeInterface
+    {
+        return $this->date;
     }
 
 

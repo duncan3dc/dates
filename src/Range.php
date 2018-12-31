@@ -83,7 +83,7 @@ class Range implements RangeInterface
 
     public function asString(): string
     {
-        $plural = function ($number, $word) {
+        $plural = function (int|float $number, string $word) {
             $number = (int) $number;
             if ($number !== 1) {
                 $word .= "s";

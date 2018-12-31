@@ -6,6 +6,7 @@ use duncan3dc\Dates\Interfaces\DateTimeInterface;
 
 /**
  * An iterator for the number of days in a range.
+ * @extends AbstractIterator<DateTimeInterface>
  */
 final class Days extends AbstractIterator
 {
@@ -20,6 +21,15 @@ final class Days extends AbstractIterator
         $this->start = $start->midday();
         $this->end = $end->midday();
         $this->rewind();
+    }
+
+
+    /**
+     * Get the current iterator value.
+     */
+    public function current(): DateTimeInterface
+    {
+        return $this->date;
     }
 
 

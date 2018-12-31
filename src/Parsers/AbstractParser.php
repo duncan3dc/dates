@@ -34,24 +34,25 @@ abstract class AbstractParser
             return $return;
         }
 
-        if (preg_match("/[a-z]/i", $time)) {
+        if (preg_match("/[a-z]/i", (string) $time)) {
             return $return;
         }
 
         # Human readable format (h:i:s)
-        if (strpos($time, ":")) {
-            $bits = explode(":", $time);
+        if (strpos((string) $time, ":")) {
+            $bits = explode(":", (string) $time);
             return [
-                "h" =>  $bits[0],
-                "m" =>  isset($bits[1]) ? $bits[1] : 0,
-                "s" =>  isset($bits[2]) ? $bits[2] : 0,
+                "h" =>  (int) $bits[0],
+                "m" =>  isset($bits[1]) ? (int) $bits[1] : 0,
+                "s" =>  isset($bits[2]) ? (int) $bits[2] : 0,
             ];
         }
 
         # Sortable format (His)
+        $time = (int) $time;
         return [
-            "h" =>  floor($time / 10000),
-            "m" =>  floor((int) ($time / 100) % 100),
+            "h" =>  (int) floor($time / 10000),
+            "m" =>  floor($time / 100) % 100,
             "s" =>  $time % 100,
         ];
     }

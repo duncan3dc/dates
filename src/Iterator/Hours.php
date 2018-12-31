@@ -6,6 +6,7 @@ use duncan3dc\Dates\Interfaces\DateTimeInterface;
 
 /**
  * An iterator for the number of hours in a range.
+ * @extends AbstractIterator<DateTimeInterface>
  */
 final class Hours extends AbstractIterator
 {
@@ -20,6 +21,15 @@ final class Hours extends AbstractIterator
         $this->start = $start->withMinutes(0)->withSeconds(0)->timestamp();
         $this->end = $end->withMinutes(0)->withSeconds(0)->timestamp();
         $this->rewind();
+    }
+
+
+    /**
+     * Get the current iterator value.
+     */
+    public function current(): DateTimeInterface
+    {
+        return $this->date;
     }
 
 

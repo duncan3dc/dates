@@ -22,7 +22,8 @@ final class DateTest extends TestCase
     public function testNow(): void
     {
         $date = Date::now();
-        $this->assertSame(mktime(12, 0, 0, date("n"), date("j"), date("Y")), $date->timestamp());
+        $result = mktime(12, 0, 0, (int) date("n"), (int) date("j"), (int) date("Y"));
+        $this->assertSame($result, $date->timestamp());
     }
 
 
