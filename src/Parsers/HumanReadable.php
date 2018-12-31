@@ -18,7 +18,6 @@ class HumanReadable extends AbstractParser
     public function parse($date, $time)
     {
         if (strpos($date, "/") || strpos($date, "-")) {
-
             $char = strpos($date, "/") ? "/" : "-";
             list($d, $m, $y) = explode($char, $date);
 

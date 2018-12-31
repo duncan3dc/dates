@@ -34,13 +34,13 @@ class DateTimeParser
      */
     public function addDefaultParsers()
     {
-        $this->addParser(new Parsers\ISO8601);
-        $this->addParser(new Parsers\Sql);
-        $this->addParser(new Parsers\HumanReadable);
-        $this->addParser(new Parsers\SortableDateTime);
-        $this->addParser(new Parsers\SortableYearMonth);
-        $this->addParser(new Parsers\IbmDb2);
-        $this->addParser(new Parsers\Sortable);
+        $this->addParser(new Parsers\ISO8601());
+        $this->addParser(new Parsers\Sql());
+        $this->addParser(new Parsers\HumanReadable());
+        $this->addParser(new Parsers\SortableDateTime());
+        $this->addParser(new Parsers\SortableYearMonth());
+        $this->addParser(new Parsers\IbmDb2());
+        $this->addParser(new Parsers\Sortable());
 
         return $this;
     }

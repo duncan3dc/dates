@@ -35,7 +35,7 @@ class DateTimeParserTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->parser = new DateTimeParser;
+        $this->parser = new DateTimeParser();
         $this->parser->addDefaultParsers();
     }
 
