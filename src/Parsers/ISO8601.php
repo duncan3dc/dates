@@ -2,24 +2,23 @@
 
 namespace duncan3dc\Dates\Parsers;
 
+use duncan3dc\Dates\Interfaces\ParserInterface;
+
 /**
  * Parse an ISO8601 formatted date/time into a unix timestamp.
  */
-class ISO8601 extends AbstractParser
+class ISO8601 extends AbstractParser implements ParserInterface
 {
     /**
-     * Convert a parsable date/time into a unix timestamp.
-     *
-     * @param string|int The date to parse
-     * @param string|int The time to parse
-     *
-     * @return int
+     * @inheritdoc
      */
-    public function parse($date, $time)
+    public function parse($date, $time): ?int
     {
         if (preg_match("/^([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})$/", $date, $matches)) {
             $time = $this->parseTime($time);
             return mktime($time["h"], $time["m"], $time["s"], $matches[2], $matches[3], $matches[1]);
         }
+
+        return null;
     }
 }

@@ -21,12 +21,6 @@ class DateTimeTest extends TestCase
         $this->expectExceptionMessage("An invalid unix timestamp was passed");
         new DateTime(0);
     }
-    public function testConstructor3()
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage("An invalid unix timestamp was passed");
-        new DateTime("ABC");
-    }
 
 
     public function testNow()

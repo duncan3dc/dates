@@ -12,9 +12,9 @@ trait Range
     /**
      * Create a new range object representing the current date.
      *
-     * @return static
+     * @return self
      */
-    public static function now()
+    public static function now(): self
     {
         return new static(Date::now());
     }
@@ -25,9 +25,9 @@ trait Range
      *
      * @param int $months The number of months to add
      *
-     * @return static
+     * @return self
      */
-    public function addMonths($months)
+    public function addMonths(int $months): self
     {
         $date = $this->getStart();
         $date = $date->addMonths($months);
@@ -40,9 +40,9 @@ trait Range
      *
      * @param int $months The number of months to subtract
      *
-     * @return static
+     * @return self
      */
-    public function subMonths($months)
+    public function subMonths(int $months): self
     {
         return $this->addMonths($months * -1);
     }
@@ -53,9 +53,9 @@ trait Range
      *
      * @param int $years The number of years to add
      *
-     * @return static
+     * @return self
      */
-    public function addYears($years)
+    public function addYears(int $years): self
     {
         return $this->addMonths($years * 12);
     }
@@ -66,9 +66,9 @@ trait Range
      *
      * @param int $years The number of years to subtract
      *
-     * @return static
+     * @return self
      */
-    public function subYears($years)
+    public function subYears(int $years): self
     {
         return $this->addYears($years * -1);
     }

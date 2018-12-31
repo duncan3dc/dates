@@ -8,23 +8,13 @@ namespace duncan3dc\Dates\Parsers;
 abstract class AbstractParser
 {
     /**
-     * Convert a parsable date/time into a unix timestamp.
-     *
-     * @param string|int The date to parse
-     * @param string|int The time to parse
-     *
-     * @return int
-     */
-    abstract public function parse($date, $time);
-
-    /**
      * Convert the time to an array of hours, minutes and seconds.
      *
      * @param string|int $time The value to parse.
      *
      * @return array
      */
-    protected function parseTime($time)
+    protected function parseTime($time): array
     {
         $return = [
             "h" =>  12,

@@ -2,20 +2,17 @@
 
 namespace duncan3dc\Dates;
 
+use duncan3dc\Dates\Interfaces\DateTimeInterface;
+
 /**
  * The date only portion of a DateTime object.
  */
 class Date extends DateTime
 {
     /**
-     * Parse dates in a variety of formats and create a Date object.
-     *
-     * @param string|int The date to parse
-     * @param string|int The time to parse (ignored, use the DateTime class for time parsing)
-     *
-     * @return Date
+     * @inheritdoc
      */
-    public static function parse($date, $time = null)
+    public static function parse($date, $time = null): DateTimeInterface
     {
         $parser = new DateParser();
 
@@ -34,7 +31,7 @@ class Date extends DateTime
      *
      * @return static
      */
-    public static function mkdate($year, $month, $day)
+    public static function mkdate($year, $month, $day): Date
     {
         $unix = mktime(12, 0, 0, $month, $day, $year);
 
@@ -43,11 +40,9 @@ class Date extends DateTime
 
 
     /**
-     * Create a new instance from a unix timestamp.
-     *
-     * @param int A unix timestamp
+     * @inheritdoc
      */
-    public function __construct($unix)
+    public function __construct(int $unix)
     {
         parent::__construct($unix);
 

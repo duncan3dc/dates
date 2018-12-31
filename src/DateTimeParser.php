@@ -2,7 +2,8 @@
 
 namespace duncan3dc\Dates;
 
-use duncan3dc\Dates\DateTime;
+use duncan3dc\Dates\Interfaces\DateTimeInterface;
+use duncan3dc\Dates\Interfaces\ParserInterface;
 
 /**
  * Parse dates/times in a variety of formats and create a DateTime object.
@@ -10,18 +11,18 @@ use duncan3dc\Dates\DateTime;
 class DateTimeParser
 {
     /**
-     * @var Parsers\AbstractParser[] $parsers The parsers to use for parsing dates/times.
+     * @var ParserInterface[] $parsers The parsers to use for parsing dates/times.
      */
     protected $parsers = [];
 
     /**
      * Add a parser to the stack.
      *
-     * @param Parsers\AbstractParser The parser object to add
+     * @param ParserInterface $parser The parser object to add
      *
      * @return static
      */
-    public function addParser(Parsers\AbstractParser $parser)
+    public function addParser(ParserInterface $parser)
     {
         $this->parsers[] = $parser;
     }
@@ -49,12 +50,12 @@ class DateTimeParser
     /**
      * Create a new DateTime object from a parsable date/time.
      *
-     * @param string|int The date to parse
-     * @param string|int The time to parse
+     * @param string|int $date The date to parse
+     * @param string|int $time The time to parse
      *
-     * @return DateTime
+     * @return DateTimeInterface
      */
-    public function parse($date, $time = null)
+    public function parse($date, $time = null): DateTimeInterface
     {
         if (!$date = trim($date)) {
             throw new \InvalidArgumentException("No date was passed");

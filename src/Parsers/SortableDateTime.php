@@ -2,20 +2,17 @@
 
 namespace duncan3dc\Dates\Parsers;
 
+use duncan3dc\Dates\Interfaces\ParserInterface;
+
 /**
  * Sortable format (YmdHi/YmdHis).
  */
-class SortableDateTime extends AbstractParser
+class SortableDateTime implements ParserInterface
 {
     /**
-     * Convert a parsable date/time into a unix timestamp.
-     *
-     * @param string|int The date to parse
-     * @param string|int The time to parse
-     *
-     * @return int
+     * @inheritdoc
      */
-    public function parse($date, $time)
+    public function parse($date, $time): ?int
     {
         if ($date > 200000000000) {
             $y = substr($date, 0, 4);
@@ -33,5 +30,7 @@ class SortableDateTime extends AbstractParser
 
             return mktime($h, $i, $s, $m, $d, $y);
         }
+
+        return null;
     }
 }

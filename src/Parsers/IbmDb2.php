@@ -2,20 +2,17 @@
 
 namespace duncan3dc\Dates\Parsers;
 
+use duncan3dc\Dates\Interfaces\ParserInterface;
+
 /**
  * IBM DB2 format (cymd with optional separate time).
  */
-class IbmDb2 extends AbstractParser
+class IbmDb2 extends AbstractParser implements ParserInterface
 {
     /**
-     * Convert a parsable date/time into a unix timestamp.
-     *
-     * @param string|int The date to parse
-     * @param string|int The time to parse
-     *
-     * @return int
+     * @inheritdoc
      */
-    public function parse($date, $time)
+    public function parse($date, $time): ?int
     {
         if ($date < 9999999) {
             $y = floor($date / 10000) + 1900;
@@ -26,5 +23,7 @@ class IbmDb2 extends AbstractParser
 
             return mktime($time["h"], $time["m"], $time["s"], $m, $d, $y);
         }
+
+        return null;
     }
 }

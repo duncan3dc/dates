@@ -2,7 +2,7 @@
 
 namespace duncan3dc\Dates\Iterator;
 
-use duncan3dc\Dates\DateTime;
+use duncan3dc\Dates\Interfaces\DateTimeInterface;
 use duncan3dc\Dates\Year;
 
 /**
@@ -13,10 +13,10 @@ class Years extends AbstractIterator
     /**
      * Create a new iterator for the number of years in a range.
      *
-     * @param DateTime $start The start date of the range
-     * @param DateTime $end The end date of the range
+     * @param DateTimeInterface $start The start date of the range
+     * @param DateTimeInterface $end The end date of the range
      */
-    public function __construct(DateTime $start, DateTime $end)
+    public function __construct(DateTimeInterface $start, DateTimeInterface $end)
     {
         $this->start = $start->getYear()->getStart()->timestamp();
         $this->end = $end->getYear()->getStart()->timestamp();
@@ -29,7 +29,7 @@ class Years extends AbstractIterator
      *
      * @return Year
      */
-    public function current()
+    public function current(): Year
     {
         return new Year($this->date);
     }

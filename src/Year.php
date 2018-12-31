@@ -2,10 +2,13 @@
 
 namespace duncan3dc\Dates;
 
+use duncan3dc\Dates\Interfaces\DateTimeInterface;
+use duncan3dc\Dates\Interfaces\YearInterface;
+
 /**
  * A representation of a year.
  */
-class Year extends Range
+class Year extends Range implements YearInterface
 {
     use Traits\Formatting;
     use Traits\Range;
@@ -13,9 +16,9 @@ class Year extends Range
     /**
      * Create a new instance from a date object.
      *
-     * @param DateTime $date A date within the season
+     * @param DateTimeInterface $date A date within the season
      */
-    public function __construct(DateTime $date)
+    public function __construct(DateTimeInterface $date)
     {
         $this->unix = $date->timestamp();
 
@@ -30,9 +33,9 @@ class Year extends Range
      *
      * @param $year The 4 digit year (eg 2015)
      *
-     * @return static
+     * @return Year
      */
-    public static function fromInt($year)
+    public static function fromInt(int $year): Year
     {
         $date = Date::mkdate($year, 1, 1);
         return new static($date);

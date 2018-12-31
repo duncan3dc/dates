@@ -2,10 +2,14 @@
 
 namespace duncan3dc\Dates;
 
+use duncan3dc\Dates\Interfaces\DateTimeInterface;
+use duncan3dc\Dates\Interfaces\MonthInterface;
+use duncan3dc\Dates\Interfaces\YearInterface;
+
 /**
  * A class to respresent a unix timestamp and allow convenient methods.
  */
-class DateTime
+class DateTime implements DateTimeInterface
 {
     use Traits\BankHoliday;
     use Traits\DayHelpers;
@@ -17,7 +21,7 @@ class DateTime
      *
      * @return static
      */
-    public static function now()
+    public static function now(): DateTime
     {
         return new static(time());
     }
@@ -27,11 +31,11 @@ class DateTime
      * Create a new DateTime object from a parsable date/time.
      *
      * @param string|int $date The date to parse
-     * @param string|int $time The time to parse
+     * @param string|int|null $time The time to parse
      *
-     * @return static
+     * @return DateTimeInterface
      */
-    public static function parse($date, $time = null)
+    public static function parse($date, $time = null): DateTimeInterface
     {
         $parser = new DateTimeParser();
 
@@ -49,7 +53,7 @@ class DateTime
      *
      * @return static
      */
-    public static function fromFormat($format, $date)
+    public static function fromFormat(string $format, string $date): DateTime
     {
         # A couple of hacks to work around lack of support for single digit elements
         if ($format === "Gis") {
@@ -85,7 +89,7 @@ class DateTime
      *
      * @return static
      */
-    public static function mktime($hour, $minute, $second, $month, $day, $year)
+    public static function mktime(int $hour, int $minute, int $second, int $month, int $day, int $year): DateTime
     {
         $unix = mktime($hour, $minute, $second, $month, $day, $year);
 
@@ -111,11 +115,11 @@ class DateTime
     /**
      * Create a new instance from a unix timestamp.
      *
-     * @param int A unix timestamp
+     * @param int $unix A unix timestamp
      */
-    public function __construct($unix)
+    public function __construct(int $unix)
     {
-        if (!$unix = (int) $unix) {
+        if (!$unix) {
             throw new \InvalidArgumentException("An invalid unix timestamp was passed");
         }
 
@@ -128,7 +132,7 @@ class DateTime
      *
      * @return int
      */
-    public function timestamp()
+    public function timestamp(): int
     {
         return $this->unix;
     }
@@ -139,7 +143,7 @@ class DateTime
      *
      * @return Month
      */
-    public function getMonth()
+    public function getMonth(): MonthInterface
     {
         return new Month($this);
     }
@@ -150,7 +154,7 @@ class DateTime
      *
      * @return Year
      */
-    public function getYear()
+    public function getYear(): YearInterface
     {
         return new Year($this);
     }
@@ -161,7 +165,7 @@ class DateTime
      *
      * @return int
      */
-    public function midday()
+    public function midday(): int
     {
         return mktime(12, 0, 0, $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
     }
@@ -172,7 +176,7 @@ class DateTime
      *
      * @return int
      */
-    public function start()
+    public function start(): int
     {
         return mktime(0, 0, 0, $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
     }
@@ -183,23 +187,17 @@ class DateTime
      *
      * @return int
      */
-    public function end()
+    public function end(): int
     {
         return mktime(23, 59, 59, $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
     }
 
 
     /**
-     * Get a new instance but with the specified year.
-     *
-     * @param int $year The year to use
-     *
-     * @return static
+     * @inheritdoc
      */
-    public function withYear($year)
+    public function withYear(int $year): DateTimeInterface
     {
-        $year = (int) $year;
-
         # Use addYears() to handle the variable number of days in each month
         $years = $year - $this->numeric("Y");
         return $this->addyears($years);
@@ -207,16 +205,10 @@ class DateTime
 
 
     /**
-     * Get a new instance but with the specified month.
-     *
-     * @param int $month The month to use
-     *
-     * @return static
+     * @inheritdoc
      */
-    public function withMonth($month)
+    public function withMonth(int $month): DateTimeInterface
     {
-        $month = (int) $month;
-
         # Use addMonths() to handle the variable number of days in each month
         $months = $month - $this->numeric("n");
         return $this->addMonths($months);
@@ -224,16 +216,10 @@ class DateTime
 
 
     /**
-     * Get a new instance but with the specified day.
-     *
-     * @param int $day The day to use
-     *
-     * @return static
+     * @inheritdoc
      */
-    public function withDay($day)
+    public function withDay(int $day): DateTimeInterface
     {
-        $day = (int) $day;
-
         $max = $this->numeric("t");
         if ($day > $max) {
             throw new \UnexpectedValueException("Unable to set the day to {$day} as this month only has {$max} days, use withMonth() first");
@@ -250,16 +236,10 @@ class DateTime
 
 
     /**
-     * Get a new instance but with the specified hour.
-     *
-     * @param int $hour The hour to use
-     *
-     * @return DateTime
+     * @inheritdoc
      */
-    public function withHours($hour)
+    public function withHours(int $hour): DateTimeInterface
     {
-        $hour = (int) $hour;
-
         $date = DateTime::mktime($hour, $this->numeric("i"), $this->numeric("s"), $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
 
         if ($date->numeric("G") !== $hour) {
@@ -271,16 +251,10 @@ class DateTime
 
 
     /**
-     * Get a new instance but with the specified minute.
-     *
-     * @param int $minute The minute to use
-     *
-     * @return DateTime
+     * @inheritdoc
      */
-    public function withMinutes($minute)
+    public function withMinutes(int $minute): DateTimeInterface
     {
-        $minute = (int) $minute;
-
         $date = DateTime::mktime($this->numeric("G"), $minute, $this->numeric("s"), $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
 
         if ($date->numeric("i") !== $minute) {
@@ -292,16 +266,10 @@ class DateTime
 
 
     /**
-     * Get a new instance but with the specified second.
-     *
-     * @param int $second The second to use
-     *
-     * @return static
+     * @inheritdoc
      */
-    public function withSeconds($second)
+    public function withSeconds(int $second): DateTimeInterface
     {
-        $second = (int) $second;
-
         $date = DateTime::mktime($this->numeric("G"), $this->numeric("i"), $second, $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
 
         if ($date->numeric("s") !== $second) {
