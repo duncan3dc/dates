@@ -5,8 +5,9 @@ namespace duncan3dc\DateTests;
 use duncan3dc\Dates\Date;
 use duncan3dc\Dates\DateTime;
 use duncan3dc\Dates\Range;
+use PHPUnit\Framework\TestCase;
 
-class RangeTest extends \PHPUnit_Framework_TestCase
+class RangeTest extends TestCase
 {
 
     public function testGetStart()
@@ -28,8 +29,9 @@ class RangeTest extends \PHPUnit_Framework_TestCase
     public function testInvalidRange()
     {
         $date = Date::now();
-        $this->setExpectedException("InvalidArgumentException", "Invalid range, the start date must be before the end date");
-        $range = new Range($date, $date->subDays(1));
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage("Invalid range, the start date must be before the end date");
+        new Range($date, $date->subDays(1));
     }
 
 

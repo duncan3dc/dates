@@ -4,8 +4,9 @@ namespace duncan3dc\DateTests;
 
 use duncan3dc\Dates\Date;
 use duncan3dc\Dates\Interfaces\Days;
+use PHPUnit\Framework\TestCase;
 
-class DayHelpersTest extends \PHPUnit_Framework_TestCase
+class DayHelpersTest extends TestCase
 {
 
     public function testIsMonday()

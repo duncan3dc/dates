@@ -3,10 +3,11 @@
 namespace duncan3dc\DateTests\Iterator;
 
 use duncan3dc\Dates\DateTime;
-use duncan3dc\Dates\Range;
 use duncan3dc\Dates\Month;
+use duncan3dc\Dates\Range;
+use PHPUnit\Framework\TestCase;
 
-class MonthsTest extends \PHPUnit_Framework_TestCase
+class MonthsTest extends TestCase
 {
 
     public function assertRangeMonths($months, $start, $end)

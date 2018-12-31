@@ -4,8 +4,9 @@ namespace duncan3dc\Dates\Iterator;
 
 use duncan3dc\Dates\DateTime;
 use duncan3dc\Dates\Range;
+use PHPUnit\Framework\TestCase;
 
-class HoursTest extends \PHPUnit_Framework_TestCase
+class HoursTest extends TestCase
 {
 
     public function assertRangeHours($hours, $start, $end)

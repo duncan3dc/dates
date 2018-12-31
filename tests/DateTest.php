@@ -4,8 +4,9 @@ namespace duncan3dc\DateTests;
 
 use duncan3dc\Dates\Date;
 use duncan3dc\Dates\DateTime;
+use PHPUnit\Framework\TestCase;
 
-class DateTest extends \PHPUnit_Framework_TestCase
+class DateTest extends TestCase
 {
 
     public function testConstructor()

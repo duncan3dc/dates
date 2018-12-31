@@ -4,8 +4,9 @@ namespace duncan3dc\DateTests;
 
 use duncan3dc\Dates\DateTime;
 use duncan3dc\Dates\Interfaces\Days;
+use PHPUnit\Framework\TestCase;
 
-class DateTimeTest extends \PHPUnit_Framework_TestCase
+class DateTimeTest extends TestCase
 {
 
     public function testConstructor1()
@@ -16,13 +17,15 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     }
     public function testConstructor2()
     {
-        $this->setExpectedException("InvalidArgumentException", "An invalid unix timestamp was passed");
-        $date = new DateTime(0);
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage("An invalid unix timestamp was passed");
+        new DateTime(0);
     }
     public function testConstructor3()
     {
-        $this->setExpectedException("InvalidArgumentException", "An invalid unix timestamp was passed");
-        $date = new DateTime("ABC");
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage("An invalid unix timestamp was passed");
+        new DateTime("ABC");
     }
 
 
@@ -42,7 +45,8 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     }
     public function testStrtotime2()
     {
-        $this->setExpectedException(\InvalidArgumentException::class, "An invalid unix timestamp was passed");
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage("An invalid unix timestamp was passed");
         DateTime::strtotime("nope");
     }
 
@@ -163,7 +167,8 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
 
     public function testFromFormatFail()
     {
-        $this->setExpectedException("InvalidArgumentException", "Invalid date (2015) does not conform to format (y)");
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage("Invalid date (2015) does not conform to format (y)");
         DateTime::fromFormat("y", "2015");
     }
 
@@ -199,9 +204,10 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     }
     public function testWithInvalidDay()
     {
-        $this->setExpectedException(\UnexpectedValueException::class, "Unable to set the day to 30 as this month only has 29 days, use withMonth() first");
+        $this->expectException(\UnexpectedValueException::class);
+        $this->expectExceptionMessage("Unable to set the day to 30 as this month only has 29 days, use withMonth() first");
         $date = DateTime::mktime(11, 30, 59, 2, 20, 2016);
-        $date = $date->withDay(30);
+        $date->withDay(30);
     }
 
 
