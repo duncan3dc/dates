@@ -6,6 +6,7 @@ use duncan3dc\Dates\Interfaces\DateTimeInterface;
 
 /**
  * An iterator for the number of seconds in a range.
+ * @extends AbstractIterator<DateTimeInterface>
  */
 final class Seconds extends AbstractIterator
 {
@@ -20,6 +21,15 @@ final class Seconds extends AbstractIterator
         $this->start = $start->timestamp();
         $this->end = $end->timestamp();
         $this->rewind();
+    }
+
+
+    /**
+     * Get the current iterator value.
+     */
+    public function current(): DateTimeInterface
+    {
+        return $this->date;
     }
 
 

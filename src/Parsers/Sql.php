@@ -11,8 +11,10 @@ final class Sql implements ParserInterface
 {
     public function parse(string|int $date, string|int|null $time): ?int
     {
+        $date = (string) $date;
+
         if (preg_match("/^([0-9]{4})-([0-9]{2})-([0-9]{2})[\s-]([0-9]{2})[:\.]([0-9]{2})[:\.]([0-9]{2})(\.[0-9]{6})?$/", $date, $matches)) {
-            return mktime($matches[4], $matches[5], $matches[6], $matches[2], $matches[3], $matches[1]);
+            return mktime((int) $matches[4], (int) $matches[5], (int) $matches[6], (int) $matches[2], (int) $matches[3], (int) $matches[1]) ?: null;
         }
 
         return null;

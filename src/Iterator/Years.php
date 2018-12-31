@@ -8,6 +8,7 @@ use duncan3dc\Dates\Year;
 
 /**
  * An iterator for the number of years in a range.
+ * @extends AbstractIterator<YearInterface>
  */
 final class Years extends AbstractIterator
 {

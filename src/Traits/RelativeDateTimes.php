@@ -21,7 +21,7 @@ trait RelativeDateTimes
             return $this;
         }
 
-        return new DateTime(mktime(
+        return new DateTime((int) mktime(
             $this->numeric("H"),
             $this->numeric("i"),
             $this->numeric("s"),
@@ -80,7 +80,7 @@ trait RelativeDateTimes
             return $this;
         }
 
-        $date = new DateTime(mktime(
+        $date = new DateTime((int) mktime(
             $this->numeric("H"),
             $this->numeric("i"),
             $this->numeric("s"),
@@ -96,7 +96,7 @@ trait RelativeDateTimes
             $day = $max;
         }
 
-        return new DateTime(mktime(
+        return new DateTime((int) mktime(
             $this->numeric("H"),
             $this->numeric("i"),
             $this->numeric("s"),
@@ -152,7 +152,7 @@ trait RelativeDateTimes
             return $this;
         }
 
-        return new DateTime(mktime(
+        return new DateTime((int) mktime(
             $this->numeric("H"),
             $this->numeric("i"),
             $this->numeric("s") + $seconds,

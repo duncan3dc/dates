@@ -8,6 +8,8 @@ use duncan3dc\Dates\Interfaces\IteratorInterface;
 
 /**
  * An abstract class for creating iterators from a range of dates.
+ * @template T of object
+ * @implements IteratorInterface<T>
  */
 abstract class AbstractIterator implements IteratorInterface
 {
@@ -32,7 +34,7 @@ abstract class AbstractIterator implements IteratorInterface
     protected DateTimeInterface $date;
 
     /**
-     * @var int|null $count The number of elements in the iterator
+     * @var int<0, max>|null $count The number of elements in the iterator
      */
     protected ?int $count = null;
 
@@ -49,15 +51,6 @@ abstract class AbstractIterator implements IteratorInterface
      * Increment the internal date to the next position in the range.
      */
     abstract protected function increment(): void;
-
-
-    /**
-     * Get the current iterator value.
-     */
-    public function current(): mixed
-    {
-        return $this->date;
-    }
 
 
     /**

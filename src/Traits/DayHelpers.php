@@ -112,7 +112,7 @@ trait DayHelpers
         # Don't include today as we want the 'previous' instance
         $date = $this->subDays(1);
 
-        $current = $date->format("N");
+        $current = $date->numeric("N");
         if ($current < $day) {
             $day -= 7;
         }
@@ -133,7 +133,7 @@ trait DayHelpers
         # Don't include today as we want the 'next' instance
         $date = $this->addDays(1);
 
-        $current = $date->format("N");
+        $current = $date->numeric("N");
         if ($current > $day) {
             $day += 7;
         }
