@@ -2,6 +2,9 @@
 
 namespace duncan3dc\Dates\Traits;
 
+use duncan3dc\Dates\DateTime;
+use duncan3dc\Dates\Interfaces\DateTimeInterface;
+
 /**
  * Get a new DateTime object relative to the current one.
  */
@@ -12,14 +15,13 @@ trait RelativeDateTimes
      *
      * @param int $days The number of days to add
      */
-    public function addDays(int $days): static
+    public function addDays(int $days): DateTimeInterface
     {
-        $days = (int) $days;
         if ($days === 0) {
             return $this;
         }
 
-        return new static(mktime(
+        return new DateTime(mktime(
             $this->numeric("H"),
             $this->numeric("i"),
             $this->numeric("s"),
@@ -35,7 +37,7 @@ trait RelativeDateTimes
      *
      * @param int $days The number of days to subtract
      */
-    public function subDays(int $days): static
+    public function subDays(int $days): DateTimeInterface
     {
         return $this->addDays($days * -1);
     }
@@ -46,9 +48,8 @@ trait RelativeDateTimes
      *
      * @param int $weeks The number of weeks to add
      */
-    public function addWeeks(int $weeks): static
+    public function addWeeks(int $weeks): DateTimeInterface
     {
-        $weeks = (int) $weeks;
         if ($weeks === 0) {
             return $this;
         }
@@ -62,7 +63,7 @@ trait RelativeDateTimes
      *
      * @param int $weeks The number of weeks to subtract
      */
-    public function subWeeks(int $weeks): static
+    public function subWeeks(int $weeks): DateTimeInterface
     {
         return $this->addWeeks($weeks * -1);
     }
@@ -73,14 +74,13 @@ trait RelativeDateTimes
      *
      * @param int $months The number of months to add
      */
-    public function addMonths(int $months): static
+    public function addMonths(int $months): DateTimeInterface
     {
-        $months = (int) $months;
         if ($months === 0) {
             return $this;
         }
 
-        $date = new static(mktime(
+        $date = new DateTime(mktime(
             $this->numeric("H"),
             $this->numeric("i"),
             $this->numeric("s"),
@@ -96,7 +96,7 @@ trait RelativeDateTimes
             $day = $max;
         }
 
-        return new static(mktime(
+        return new DateTime(mktime(
             $this->numeric("H"),
             $this->numeric("i"),
             $this->numeric("s"),
@@ -112,7 +112,7 @@ trait RelativeDateTimes
      *
      * @param int $months The number of months to subtract
      */
-    public function subMonths(int $months): static
+    public function subMonths(int $months): DateTimeInterface
     {
         return $this->addMonths($months * -1);
     }
@@ -123,7 +123,7 @@ trait RelativeDateTimes
      *
      * @param int $years The number of years to add
      */
-    public function addYears(int $years): static
+    public function addYears(int $years): DateTimeInterface
     {
         # Use addMonths to take advantage of the day wrapping handling, as years always have 12 months
         return $this->addMonths($years * 12);
@@ -135,7 +135,7 @@ trait RelativeDateTimes
      *
      * @param int $years The number of years to subtract
      */
-    public function subYears(int $years): static
+    public function subYears(int $years): DateTimeInterface
     {
         return $this->addYears($years * -1);
     }
@@ -146,14 +146,13 @@ trait RelativeDateTimes
      *
      * @param int $seconds The number of seconds to add
      */
-    public function addSeconds(int $seconds): static
+    public function addSeconds(int $seconds): DateTimeInterface
     {
-        $seconds = (int) $seconds;
         if ($seconds === 0) {
             return $this;
         }
 
-        return new static(mktime(
+        return new DateTime(mktime(
             $this->numeric("H"),
             $this->numeric("i"),
             $this->numeric("s") + $seconds,
@@ -169,7 +168,7 @@ trait RelativeDateTimes
      *
      * @param int $seconds The number of seconds to subtract
      */
-    public function subSeconds(int $seconds): static
+    public function subSeconds(int $seconds): DateTimeInterface
     {
         return $this->addSeconds($seconds * -1);
     }
@@ -180,7 +179,7 @@ trait RelativeDateTimes
      *
      * @param int $minutes The number of minutes to add
      */
-    public function addMinutes(int $minutes): static
+    public function addMinutes(int $minutes): DateTimeInterface
     {
         return $this->addSeconds($minutes * 60);
     }
@@ -191,7 +190,7 @@ trait RelativeDateTimes
      *
      * @param int $minutes The number of minutes to subtract
      */
-    public function subMinutes(int $minutes): static
+    public function subMinutes(int $minutes): DateTimeInterface
     {
         return $this->addMinutes($minutes * -1);
     }
@@ -201,7 +200,7 @@ trait RelativeDateTimes
      *
      * @param int $hours The number of hours to add
      */
-    public function addHours(int $hours): static
+    public function addHours(int $hours): DateTimeInterface
     {
         return $this->addMinutes($hours * 60);
     }
@@ -212,7 +211,7 @@ trait RelativeDateTimes
      *
      * @param int $hours The number of hours to subtract
      */
-    public function subHours(int $hours): static
+    public function subHours(int $hours): DateTimeInterface
     {
         return $this->addHours($hours * -1);
     }

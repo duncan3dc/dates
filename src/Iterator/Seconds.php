@@ -2,20 +2,20 @@
 
 namespace duncan3dc\Dates\Iterator;
 
-use duncan3dc\Dates\DateTime;
+use duncan3dc\Dates\Interfaces\DateTimeInterface;
 
 /**
  * An iterator for the number of seconds in a range.
  */
-class Seconds extends AbstractIterator
+final class Seconds extends AbstractIterator
 {
     /**
      * Create a new iterator for the number of seconds in a range.
      *
-     * @param DateTime $start The start date of the range
-     * @param DateTime $end The end date of the range
+     * @param DateTimeInterface $start The start date of the range
+     * @param DateTimeInterface $end The end date of the range
      */
-    public function __construct(DateTime $start, DateTime $end)
+    public function __construct(DateTimeInterface $start, DateTimeInterface $end)
     {
         $this->start = $start->timestamp();
         $this->end = $end->timestamp();

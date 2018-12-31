@@ -2,10 +2,12 @@
 
 namespace duncan3dc\Dates\Parsers;
 
+use duncan3dc\Dates\Interfaces\ParserInterface;
+
 /**
  * Human readable format (d/m/y or d-m-y).
  */
-class HumanReadable extends AbstractParser
+final class HumanReadable extends AbstractParser implements ParserInterface
 {
     public function parse(string|int $date, string|int|null $time): ?int
     {

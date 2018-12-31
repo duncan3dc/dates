@@ -2,25 +2,78 @@
 
 namespace duncan3dc\Dates;
 
+use duncan3dc\Dates\Interfaces\DateTimeInterface;
+use duncan3dc\Dates\Interfaces\MonthInterface;
+
 /**
  * A representation of a month.
  */
-class Month extends Range
+final class Month extends Range implements MonthInterface
 {
     use Traits\Formatting;
-    use Traits\Range;
+
 
     /**
-     * Create a new instance from a date object.
-     *
-     * @param DateTime $date A date within the season
+     * Get an instance for the current month.
      */
-    public function __construct(DateTime $date)
+    public static function now(): MonthInterface
+    {
+        return new self(Date::now());
+    }
+
+
+    public function __construct(DateTimeInterface $date)
     {
         $this->unix = $date->timestamp();
 
         $start = Date::mkdate($date->numeric("Y"), $date->numeric("n"), 1);
         $end = Date::mkdate($date->numeric("Y"), $date->numeric("n"), $date->numeric("t"));
         parent::__construct($start, $end);
+    }
+
+
+    /**
+     * Get a new Range object for the specified number of months difference.
+     *
+     * @param int $months The number of months to add
+     */
+    public function addMonths(int $months): MonthInterface
+    {
+        $date = $this->getStart();
+        $date = $date->addMonths($months);
+        return new self($date);
+    }
+
+
+    /**
+     * Get a new Range object for the specified number of months difference.
+     *
+     * @param int $months The number of months to subtract
+     */
+    public function subMonths(int $months): MonthInterface
+    {
+        return $this->addMonths($months * -1);
+    }
+
+
+    /**
+     * Get a new Range object for the specified number of years difference.
+     *
+     * @param int $years The number of years to add
+     */
+    public function addYears(int $years): MonthInterface
+    {
+        return $this->addMonths($years * 12);
+    }
+
+
+    /**
+     * Get a new Range object for the specified number of years difference.
+     *
+     * @param int $years The number of years to subtract
+     */
+    public function subYears(int $years): MonthInterface
+    {
+        return $this->addYears($years * -1);
     }
 }

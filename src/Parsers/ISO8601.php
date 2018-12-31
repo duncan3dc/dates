@@ -2,10 +2,12 @@
 
 namespace duncan3dc\Dates\Parsers;
 
+use duncan3dc\Dates\Interfaces\ParserInterface;
+
 /**
  * Parse an ISO8601 formatted date/time into a unix timestamp.
  */
-class ISO8601 extends AbstractParser
+final class ISO8601 extends AbstractParser implements ParserInterface
 {
     public function parse(string|int $date, string|int|null $time): ?int
     {

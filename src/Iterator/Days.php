@@ -2,20 +2,20 @@
 
 namespace duncan3dc\Dates\Iterator;
 
-use duncan3dc\Dates\DateTime;
+use duncan3dc\Dates\Interfaces\DateTimeInterface;
 
 /**
  * An iterator for the number of days in a range.
  */
-class Days extends AbstractIterator
+final class Days extends AbstractIterator
 {
     /**
      * Create a new iterator for the number of days in a range.
      *
-     * @param DateTime $start The start date of the range
-     * @param DateTime $end The end date of the range
+     * @param DateTimeInterface $start The start date of the range
+     * @param DateTimeInterface $end The end date of the range
      */
-    public function __construct(DateTime $start, DateTime $end)
+    public function __construct(DateTimeInterface $start, DateTimeInterface $end)
     {
         $this->start = $start->midday();
         $this->end = $end->midday();

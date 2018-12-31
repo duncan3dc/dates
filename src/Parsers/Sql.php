@@ -2,10 +2,12 @@
 
 namespace duncan3dc\Dates\Parsers;
 
+use duncan3dc\Dates\Interfaces\ParserInterface;
+
 /**
  * Sql date format (yyyy-mm-dd hh:ii:ss) (with optional milliseconds).
  */
-class Sql extends AbstractParser
+final class Sql implements ParserInterface
 {
     public function parse(string|int $date, string|int|null $time): ?int
     {

@@ -3,11 +3,13 @@
 namespace duncan3dc\Dates\Iterator;
 
 use duncan3dc\Dates\DateTime;
+use duncan3dc\Dates\Interfaces\DateTimeInterface;
+use duncan3dc\Dates\Interfaces\IteratorInterface;
 
 /**
  * An abstract class for creating iterators from a range of dates.
  */
-abstract class AbstractIterator implements \Iterator, \Countable
+abstract class AbstractIterator implements IteratorInterface
 {
     /**
      * @var int $start The unix timestamp for the start date of the range
@@ -25,9 +27,9 @@ abstract class AbstractIterator implements \Iterator, \Countable
     protected int $position;
 
     /**
-     * @var DateTime $date The date object for the current iterator position
+     * @var DateTimeInterface $date The date object for the current iterator position
      */
-    protected DateTime $date;
+    protected DateTimeInterface $date;
 
     /**
      * @var int|null $count The number of elements in the iterator
@@ -37,10 +39,10 @@ abstract class AbstractIterator implements \Iterator, \Countable
     /**
      * Create a new iterator for a range.
      *
-     * @param DateTime $start The start date of the range
-     * @param DateTime $end The end date of the range
+     * @param DateTimeInterface $start The start date of the range
+     * @param DateTimeInterface $end The end date of the range
      */
-    abstract public function __construct(DateTime $start, DateTime $end);
+    abstract public function __construct(DateTimeInterface $start, DateTimeInterface $end);
 
 
     /**

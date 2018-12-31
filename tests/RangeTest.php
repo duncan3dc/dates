@@ -4,6 +4,7 @@ namespace duncan3dc\DateTests;
 
 use duncan3dc\Dates\Date;
 use duncan3dc\Dates\DateTime;
+use duncan3dc\Dates\Interfaces\DateTimeInterface;
 use duncan3dc\Dates\Range;
 use PHPUnit\Framework\TestCase;
 
@@ -35,7 +36,7 @@ final class RangeTest extends TestCase
 
 
     /**
-     * @return iterable<array<DateTime|string>>
+     * @return iterable<array<DateTimeInterface|string>>
      */
     public function rangeProvider(): iterable
     {
