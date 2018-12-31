@@ -18,6 +18,7 @@
     },
     "require-dev": {
         "maglnet/composer-require-checker": "^1.1",
+        "squizlabs/php_codesniffer": "^3.3.2",
         "phpunit/phpunit": "^5.1"
     },
     "autoload": {
@@ -30,6 +31,7 @@
         "test": [
             "vendor/bin/phpunit",
             "vendor/bin/composer-require-checker",
+            "vendor/bin/phpcs --standard=phpcs.xml src tests",
             "@composer validate --strict"
         ]
     }

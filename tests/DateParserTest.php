@@ -18,7 +18,7 @@ class DateParserTest extends \PHPUnit_Framework_TestCase
 
     public function testFormats()
     {
-        $parser = new DateParser;
+        $parser = new DateParser();
         $parser->addDefaultParsers();
 
         foreach ($this->dates as $format => $test) {
@@ -29,7 +29,7 @@ class DateParserTest extends \PHPUnit_Framework_TestCase
 
     public function testUnparsable()
     {
-        $parser = new DateParser;
+        $parser = new DateParser();
 
         error_reporting(\E_ALL ^ \E_WARNING);
         $this->setExpectedException("InvalidArgumentException", "An unparsable date was passed (/)");
