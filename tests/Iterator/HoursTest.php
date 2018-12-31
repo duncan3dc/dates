@@ -1,6 +1,6 @@
 <?php
 
-namespace duncan3dc\Dates\Iterator;
+namespace duncan3dc\DateTests\Iterator;
 
 use duncan3dc\Dates\DateTime;
 use duncan3dc\Dates\Range;

@@ -20,7 +20,7 @@ class HumanReadable extends AbstractParser implements ParserInterface
 
             $time = $this->parseTime($time);
 
-            return mktime($time["h"], $time["m"], $time["s"], $m, $d, $y);
+            return mktime($time["h"], $time["m"], $time["s"], (int) $m, (int) $d, (int) $y);
         }
 
         return null;

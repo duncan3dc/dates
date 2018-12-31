@@ -65,7 +65,7 @@ class DateTime implements DateTimeInterface
             $date = preg_replace("/ ([0-9]{5})$/", " 0$1", $date);
         }
 
-        $datetime = \DateTime::createFromFormat($format, $date);
+        $datetime = \DateTime::createFromFormat($format, (string) $date);
 
         if ($datetime === false) {
             throw new \InvalidArgumentException("Invalid date ({$date}) does not conform to format ({$format})");

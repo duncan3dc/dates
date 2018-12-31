@@ -57,7 +57,8 @@ class DateTimeParser
      */
     public function parse($date, $time = null): DateTimeInterface
     {
-        if (!$date = trim($date)) {
+        $date = trim((string) $date);
+        if (!$date) {
             throw new \InvalidArgumentException("No date was passed");
         }
 
@@ -65,8 +66,12 @@ class DateTimeParser
             throw new \InvalidArgumentException("Invalid character found in date ({$date})");
         }
 
-        if ($time === null && strpos($date, " ")) {
-            list($date, $time) = explode(" ", $date);
+        if ($time === null) {
+            if (strpos($date, " ")) {
+                list($date, $time) = explode(" ", $date);
+            } else {
+                $time = "";
+            }
         }
 
         foreach ($this->parsers as $parser) {
@@ -76,10 +81,12 @@ class DateTimeParser
             }
         }
 
-        if ($unix = (int) date("U", $date)) {
-            return new DateTime($unix);
+        $unix = (int) date("U", (int) $date);
+
+        if ($unix === 0) {
+            throw new \InvalidArgumentException("An unparsable date was passed ({$date})");
         }
 
-        throw new \InvalidArgumentException("An unparsable date was passed ({$date})");
+        return new DateTime($unix);
     }
 }

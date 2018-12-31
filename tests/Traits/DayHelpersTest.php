@@ -1,6 +1,6 @@
 <?php
 
-namespace duncan3dc\DateTests;
+namespace duncan3dc\DateTests\Traits;
 
 use duncan3dc\Dates\Date;
 use duncan3dc\Dates\Interfaces\Days;

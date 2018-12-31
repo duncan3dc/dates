@@ -31,7 +31,7 @@ class Year extends Range implements YearInterface
     /**
      * Create a new instance of the Year class from a numeric 4 digit year.
      *
-     * @param $year The 4 digit year (eg 2015)
+     * @param int $year The 4 digit year (eg 2015)
      *
      * @return Year
      */

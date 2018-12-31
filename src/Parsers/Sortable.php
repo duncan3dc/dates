@@ -15,9 +15,9 @@ class Sortable extends AbstractParser implements ParserInterface
     public function parse($date, $time): ?int
     {
         if ($date < 99999999) {
-            $y = substr($date, 0, 4);
-            $m = substr($date, 4, 2);
-            $d = substr($date, 6, 2);
+            $y = (int) substr($date, 0, 4);
+            $m = (int) substr($date, 4, 2);
+            $d = (int) substr($date, 6, 2);
 
             $time = $this->parseTime($time);
 

@@ -26,13 +26,13 @@ abstract class AbstractParser
             return $return;
         }
 
-        if (preg_match("/[a-z]/i", $time)) {
+        if (preg_match("/[a-z]/i", (string) $time)) {
             return $return;
         }
 
         # Human readable format (h:i:s)
-        if (strpos($time, ":")) {
-            $bits = explode(":", $time);
+        if (strpos((string) $time, ":")) {
+            $bits = explode(":", (string) $time);
             return [
                 "h" =>  $bits[0],
                 "m" =>  isset($bits[1]) ? $bits[1] : 0,

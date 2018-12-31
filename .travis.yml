@@ -20,7 +20,6 @@ install:
 
 script:
   - vendor/bin/phpunit
-  - tests/lint.sh
 
 jobs:
   include:
@@ -32,6 +31,10 @@ jobs:
     - stage: coding standards
       script:
         - vendor/bin/phpcs --standard=phpcs.xml src tests
+
+    - stage: code quality
+      script:
+        - vendor/bin/phpstan analyse --level=max src tests
 
     - stage: coverage
       script:

@@ -15,8 +15,8 @@ class IbmDb2 extends AbstractParser implements ParserInterface
     public function parse($date, $time): ?int
     {
         if ($date < 9999999) {
-            $y = floor($date / 10000) + 1900;
-            $m = floor(($date / 100) % 100);
+            $y = (int) floor($date / 10000) + 1900;
+            $m = (int) floor(($date / 100) % 100);
             $d = $date % 100;
 
             $time = $this->parseTime($time);

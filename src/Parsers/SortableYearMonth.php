@@ -15,7 +15,7 @@ class SortableYearMonth implements ParserInterface
     public function parse($date, $time): ?int
     {
         if ($date < 999999) {
-            $y = floor($date / 100);
+            $y = (int) floor($date / 100);
             $m = $date % 100;
             return mktime(12, 0, 0, $m, 1, $y);
         }
