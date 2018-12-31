@@ -1,0 +1,12 @@
+{
+    "source": {
+        "directories": [
+            "src"
+        ]
+    },
+    "mutators": {
+        "@default": true,
+        "@cast": false
+    },
+    "timeout": 10
+}

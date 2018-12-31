@@ -39,6 +39,9 @@ jobs:
       - name: Static Analysis
         run: docker exec ci vendor/bin/phpstan analyse --level=max --configuration=phpstan.neon src tests
 
+      - name: Mutation Testing
+        run: docker exec ci vendor/bin/infection --show-mutations
+
       - name: Coding Standards
         run: docker exec ci vendor/bin/phpcs --standard=phpcs.xml
 

@@ -17,6 +17,7 @@
         "php": "^8.0"
     },
     "require-dev": {
+        "infection/infection": "^0.26.19",
         "maglnet/composer-require-checker": "^4.4",
         "phpstan/phpstan": "^2.1",
         "squizlabs/php_codesniffer": "^3.11",
@@ -35,7 +36,13 @@
             "vendor/bin/composer-require-checker",
             "vendor/bin/phpstan analyse --level=max --configuration=phpstan.neon src tests",
             "vendor/bin/phpcs --standard=phpcs.xml src tests",
+            "vendor/bin/infection --show-mutations",
             "@composer validate --strict"
         ]
+    },
+    "config": {
+        "allow-plugins": {
+            "infection/extension-installer": true
+        }
     }
 }
