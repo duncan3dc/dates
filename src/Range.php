@@ -2,22 +2,27 @@
 
 namespace duncan3dc\Dates;
 
+use duncan3dc\Dates\Interfaces\DateTimeInterface;
+use duncan3dc\Dates\Interfaces\IteratorInterface;
+use duncan3dc\Dates\Interfaces\RangeInterface;
+
 /**
  * A representation of a range of dates.
  */
-class Range
+class Range implements RangeInterface
 {
-    protected DateTime $start;
+    protected DateTimeInterface $start;
 
-    protected DateTime $end;
+    protected DateTimeInterface $end;
+
 
     /**
      * Create a new range from 2 dates.
      *
-     * @param DateTime $start The start date of the range
-     * @param DateTime $end The end date of the range
+     * @param DateTimeInterface $start The start date of the range
+     * @param DateTimeInterface $end The end date of the range
      */
-    public function __construct(DateTime $start, DateTime $end)
+    public function __construct(DateTimeInterface $start, DateTimeInterface $end)
     {
         $this->start = $start;
         $this->end = $end;
@@ -28,81 +33,54 @@ class Range
     }
 
 
-    /**
-     * Get the start date of this range.
-     */
-    public function getStart(): DateTime
+    public function getStart(): DateTimeInterface
     {
         return $this->start;
     }
 
 
-    /**
-     * Get the end date of this range.
-     */
-    public function getEnd(): DateTime
+    public function getEnd(): DateTimeInterface
     {
         return $this->end;
     }
 
 
-    /**
-     * Get an iterator for the days covered by this date range.
-     */
-    public function days(): Iterator\Days
+    public function days(): IteratorInterface
     {
         return new Iterator\Days($this->start, $this->end);
     }
 
 
-    /**
-     * Get an iterator for the months covered by this date range.
-     */
-    public function months(): Iterator\Months
+    public function months(): IteratorInterface
     {
         return new Iterator\Months($this->start, $this->end);
     }
 
 
-    /**
-     * Get an iterator for the years covered by this date range.
-     */
-    public function years(): Iterator\Years
+    public function years(): IteratorInterface
     {
         return new Iterator\Years($this->start, $this->end);
     }
 
 
-    /**
-     * Get an iterator for the hours covered by this date range.
-     */
-    public function hours(): Iterator\Hours
+    public function hours(): IteratorInterface
     {
         return new Iterator\Hours($this->start, $this->end);
     }
 
 
-    /**
-     * Get an iterator for the minutes covered by this date range.
-     */
-    public function minutes(): Iterator\Minutes
+    public function minutes(): IteratorInterface
     {
         return new Iterator\Minutes($this->start, $this->end);
     }
 
 
-    /**
-     * Get an iterator for the seconds covered by this date range.
-     */
-    public function seconds(): Iterator\Seconds
+    public function seconds(): IteratorInterface
     {
         return new Iterator\Seconds($this->start, $this->end);
     }
 
 
-    /**
-     * Get the range represented in a human readable format.
-     */
     public function asString(): string
     {
         $plural = function ($number, $word) {

@@ -2,10 +2,12 @@
 
 namespace duncan3dc\Dates\Parsers;
 
+use duncan3dc\Dates\Interfaces\ParserInterface;
+
 /**
  * IBM DB2 format (cymd with optional separate time).
  */
-class IbmDb2 extends AbstractParser
+final class IbmDb2 extends AbstractParser implements ParserInterface
 {
     public function parse(string|int $date, string|int|null $time): ?int
     {

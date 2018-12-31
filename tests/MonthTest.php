@@ -4,6 +4,7 @@ namespace duncan3dc\DateTests;
 
 use duncan3dc\Dates\Date;
 use duncan3dc\Dates\DateTime;
+use duncan3dc\Dates\Interfaces\MonthInterface;
 use duncan3dc\Dates\Month;
 use PHPUnit\Framework\TestCase;
 
@@ -61,7 +62,7 @@ final class MonthTest extends TestCase
     }
 
 
-    private function assertRelativeTimes(int $start, int $end, Month $month): void
+    private function assertRelativeTimes(int $start, int $end, MonthInterface $month): void
     {
         $this->assertSame($start, $month->getStart()->timestamp());
         $this->assertSame($end, $month->getEnd()->timestamp());

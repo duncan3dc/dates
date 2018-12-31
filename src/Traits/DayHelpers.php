@@ -2,8 +2,7 @@
 
 namespace duncan3dc\Dates\Traits;
 
-use duncan3dc\Dates\Date;
-use duncan3dc\Dates\DateTime;
+use duncan3dc\Dates\Interfaces\DateTimeInterface;
 use duncan3dc\Dates\Interfaces\Days;
 
 /**
@@ -18,7 +17,6 @@ trait DayHelpers
      */
     public function isDay(int $day): bool
     {
-        $day = (int) $day;
         return ($this->numeric("N") === $day);
     }
 
@@ -109,7 +107,7 @@ trait DayHelpers
      *
      * @param int $day The numeric representation of the day.
      */
-    public function getPrevious(int $day): DateTime
+    public function getPrevious(int $day): DateTimeInterface
     {
         # Don't include today as we want the 'previous' instance
         $date = $this->subDays(1);
@@ -130,7 +128,7 @@ trait DayHelpers
      *
      * @param int $day The numeric representation of the day.
      */
-    public function getNext(int $day): DateTime
+    public function getNext(int $day): DateTimeInterface
     {
         # Don't include today as we want the 'next' instance
         $date = $this->addDays(1);

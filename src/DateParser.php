@@ -2,21 +2,37 @@
 
 namespace duncan3dc\Dates;
 
-/**
- * The date only portion of a DateTimeParser object.
- */
-class DateParser extends DateTimeParser
-{
-    /**
-     * Create a new Date object from a parsable date.
-     *
-     * @param string|int The date to parse
-     * @param string|int The time to parse (ignored, use the DateTimeParser for time parsing)
-     */
-    public function parse(string|int $date, string|int|null $time = null): Date
-    {
-        $result = parent::parse($date, 0);
+use duncan3dc\Dates\Interfaces\DateTimeInterface;
+use duncan3dc\Dates\Interfaces\ParserInterface;
 
-        return new Date($result->timestamp());
+/**
+ * @deprecated Just use DateTimeParser
+ */
+final class DateParser
+{
+    private DateTimeParser $parser;
+
+
+    public function __construct()
+    {
+        $this->parser = new DateTimeParser();
+    }
+
+
+    public function addParser(ParserInterface $parser): DateTimeParser
+    {
+        return $this->parser->addParser($parser);
+    }
+
+
+    public function addDefaultParsers(): DateTimeParser
+    {
+        return $this->parser->addDefaultParsers();
+    }
+
+
+    public function parse(string|int $date, string|int|null $time = null): DateTimeInterface
+    {
+        return $this->parser->parse($date, $time);
     }
 }

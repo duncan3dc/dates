@@ -4,6 +4,7 @@ namespace duncan3dc\DateTests;
 
 use duncan3dc\Dates\Date;
 use duncan3dc\Dates\DateTime;
+use duncan3dc\Dates\Interfaces\YearInterface;
 use duncan3dc\Dates\Year;
 use PHPUnit\Framework\TestCase;
 
@@ -69,7 +70,7 @@ final class YearTest extends TestCase
     }
 
 
-    private function assertRelativeTimes(int $start, int $end, Year $year): void
+    private function assertRelativeTimes(int $start, int $end, YearInterface $year): void
     {
         $this->assertSame($start, $year->getStart()->timestamp());
         $this->assertSame($end, $year->getEnd()->timestamp());

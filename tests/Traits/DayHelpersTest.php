@@ -3,6 +3,7 @@
 namespace duncan3dc\DateTests\Traits;
 
 use duncan3dc\Dates\Date;
+use duncan3dc\Dates\Interfaces\DateTimeInterface;
 use duncan3dc\Dates\Interfaces\Days;
 use PHPUnit\Framework\TestCase;
 
@@ -72,7 +73,7 @@ final class DayHelpersTest extends TestCase
 
 
     /**
-     * @return iterable<array<Date|int|string>>
+     * @return iterable<array<DateTimeInterface|int|string>>
      */
     public function nextDayProvider(): iterable
     {
@@ -97,7 +98,7 @@ final class DayHelpersTest extends TestCase
     /**
      * @dataProvider nextDayProvider
      */
-    public function testGetNext(Date $date, int $day, string $expected): void
+    public function testGetNext(DateTimeInterface $date, int $day, string $expected): void
     {
         $original = $date->format("Y-m-d");
 
@@ -110,7 +111,7 @@ final class DayHelpersTest extends TestCase
 
 
     /**
-     * @return iterable<array<Date|int|string>>
+     * @return iterable<array<DateTimeInterface|int|string>>
      */
     public function previousDayProvider(): iterable
     {
@@ -135,7 +136,7 @@ final class DayHelpersTest extends TestCase
     /**
      * @dataProvider previousDayProvider
      */
-    public function testGetPrevious(Date $date, int $day, string $expected): void
+    public function testGetPrevious(DateTimeInterface $date, int $day, string $expected): void
     {
         $original = $date->format("Y-m-d");
 

@@ -2,10 +2,12 @@
 
 namespace duncan3dc\Dates\Parsers;
 
+use duncan3dc\Dates\Interfaces\ParserInterface;
+
 /**
  * Sortable format (Year and month only).
  */
-class SortableYearMonth extends AbstractParser
+final class SortableYearMonth implements ParserInterface
 {
     public function parse(string|int $date, string|int|null $time): ?int
     {
