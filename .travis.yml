@@ -28,6 +28,10 @@ jobs:
       script:
         - vendor/bin/composer-require-checker
 
+    - stage: mutations
+      script:
+        - vendor/bin/infection
+
     - stage: coding standards
       script:
         - vendor/bin/phpcs --standard=phpcs.xml src tests
