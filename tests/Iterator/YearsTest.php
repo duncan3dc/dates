@@ -5,8 +5,9 @@ namespace duncan3dc\DateTests\Iterator;
 use duncan3dc\Dates\DateTime;
 use duncan3dc\Dates\Range;
 use duncan3dc\Dates\Year;
+use PHPUnit\Framework\TestCase;
 
-class YearsTest extends \PHPUnit_Framework_TestCase
+class YearsTest extends TestCase
 {
 
     public function assertRangeYears($years, $start, $end)

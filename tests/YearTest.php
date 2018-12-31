@@ -5,8 +5,9 @@ namespace duncan3dc\DateTests;
 use duncan3dc\Dates\Date;
 use duncan3dc\Dates\DateTime;
 use duncan3dc\Dates\Year;
+use PHPUnit\Framework\TestCase;
 
-class YearTest extends \PHPUnit_Framework_TestCase
+class YearTest extends TestCase
 {
 
     protected function assertStartTime($expected, $unix)

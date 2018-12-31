@@ -5,8 +5,9 @@ namespace duncan3dc\DateTests;
 use duncan3dc\Dates\Date;
 use duncan3dc\Dates\DateTime;
 use duncan3dc\Dates\Month;
+use PHPUnit\Framework\TestCase;
 
-class MonthTest extends \PHPUnit_Framework_TestCase
+class MonthTest extends TestCase
 {
 
     protected function assertStartTime($expected, $unix)

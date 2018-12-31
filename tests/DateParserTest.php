@@ -3,8 +3,9 @@
 namespace duncan3dc\DateTests;
 
 use duncan3dc\Dates\DateParser;
+use PHPUnit\Framework\TestCase;
 
-class DateParserTest extends \PHPUnit_Framework_TestCase
+class DateParserTest extends TestCase
 {
     protected $dates = [
         "Y-m-d"         =>  "2008-02-22",
@@ -32,7 +33,8 @@ class DateParserTest extends \PHPUnit_Framework_TestCase
         $parser = new DateParser();
 
         error_reporting(\E_ALL ^ \E_WARNING);
-        $this->setExpectedException("InvalidArgumentException", "An unparsable date was passed (/)");
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage("An unparsable date was passed (/)");
         $parser->parse("/");
     }
 }

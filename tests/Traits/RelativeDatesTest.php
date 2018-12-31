@@ -3,8 +3,9 @@
 namespace duncan3dc\DateTests;
 
 use duncan3dc\Dates\Date;
+use PHPUnit\Framework\TestCase;
 
-class RelativeDatesTest extends \PHPUnit_Framework_TestCase
+class RelativeDatesTest extends TestCase
 {
 
     public function testAddDays1()

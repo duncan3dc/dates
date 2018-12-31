@@ -3,8 +3,9 @@
 namespace duncan3dc\DateTests;
 
 use duncan3dc\Dates\Date;
+use PHPUnit\Framework\TestCase;
 
-class BankHolidayTest extends \PHPUnit_Framework_TestCase
+class BankHolidayTest extends TestCase
 {
     protected $holidays = [
         2013    =>  [

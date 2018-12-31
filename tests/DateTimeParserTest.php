@@ -3,8 +3,9 @@
 namespace duncan3dc\DateTests;
 
 use duncan3dc\Dates\DateTimeParser;
+use PHPUnit\Framework\TestCase;
 
-class DateTimeParserTest extends \PHPUnit_Framework_TestCase
+class DateTimeParserTest extends TestCase
 {
     protected $parser;
 
@@ -82,14 +83,16 @@ class DateTimeParserTest extends \PHPUnit_Framework_TestCase
 
     public function testNoDate()
     {
-        $this->setExpectedException("InvalidArgumentException", "No date was passed");
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage("No date was passed");
         $this->parser->parse(0);
     }
 
 
     public function testInvalidFormat()
     {
-        $this->setExpectedException("InvalidArgumentException", "Invalid character found in date (Monday)");
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage("Invalid character found in date (Monday)");
         $this->parser->parse("Monday");
     }
 
