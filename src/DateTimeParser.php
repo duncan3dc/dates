@@ -75,7 +75,7 @@ class DateTimeParser
             }
         }
 
-        if ($unix = (int) date("U", $date)) {
+        if ($unix = (int) date("U", (int) $date)) {
             return new DateTime($unix);
         }
 
