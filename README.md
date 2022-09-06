@@ -5,7 +5,7 @@ Full documentation is available at http://duncan3dc.github.io/dates/
 PHPDoc API documentation is also available at [http://duncan3dc.github.io/dates/api/](http://duncan3dc.github.io/dates/api/namespaces/duncan3dc.Laravel.html)  
 
 [![release](https://poser.pugx.org/duncan3dc/dates/version.svg)](https://packagist.org/packages/duncan3dc/dates)
-[![build](https://travis-ci.org/duncan3dc/dates.svg?branch=master)](https://travis-ci.org/duncan3dc/dates)
+[![build](https://github.com/duncan3dc/dates/workflows/.github/workflows/buildcheck.yml/badge.svg?branch=main))](https://github.com/duncan3dc/dates/actions/workflows/coverage.yml)
 [![coverage](https://codecov.io/gh/duncan3dc/dates/graph/badge.svg)](https://codecov.io/gh/duncan3dc/dates)
 
 
