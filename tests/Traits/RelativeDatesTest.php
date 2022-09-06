@@ -7,7 +7,6 @@ use PHPUnit\Framework\TestCase;
 
 class RelativeDatesTest extends TestCase
 {
-
     public function testAddDays1()
     {
         $date = new Date(mktime(12, 0, 0, 3, 31, 2014));

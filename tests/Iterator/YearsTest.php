@@ -9,7 +9,6 @@ use PHPUnit\Framework\TestCase;
 
 class YearsTest extends TestCase
 {
-
     public function assertRangeYears($years, $start, $end)
     {
         $start = new DateTime($start);

@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
 
 class DayHelpersTest extends TestCase
 {
-
     public function testIsMonday()
     {
         $date = new Date(mktime(12, 0, 0, 1, 12, 2015));

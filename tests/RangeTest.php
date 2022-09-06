@@ -9,7 +9,6 @@ use PHPUnit\Framework\TestCase;
 
 class RangeTest extends TestCase
 {
-
     public function testGetStart()
     {
         $date = Date::now();

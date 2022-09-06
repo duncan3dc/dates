@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
 
 class DaysTest extends TestCase
 {
-
     public function assertRangeDays($days, $start, $end)
     {
         $start = new DateTime($start);

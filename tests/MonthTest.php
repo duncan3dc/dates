@@ -9,7 +9,6 @@ use PHPUnit\Framework\TestCase;
 
 class MonthTest extends TestCase
 {
-
     protected function assertStartTime($expected, $unix)
     {
         $date = new DateTime($unix);

@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
 
 class DateTimeTest extends TestCase
 {
-
     public function testConstructor1()
     {
         $unix = time() - 100;

@@ -7,7 +7,6 @@ namespace duncan3dc\Dates\Traits;
  */
 trait RelativeDateTimes
 {
-
     /**
      * Get a DateTime object for the specified number of days difference.
      *

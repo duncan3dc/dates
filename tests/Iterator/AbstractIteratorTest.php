@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
 
 class AbstractIteratorTest extends TestCase
 {
-
     public function testCurrent()
     {
         $date = Date::now();

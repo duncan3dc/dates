@@ -9,7 +9,6 @@ use PHPUnit\Framework\TestCase;
 
 class MonthsTest extends TestCase
 {
-
     public function assertRangeMonths($months, $start, $end)
     {
         $start = new DateTime($start);

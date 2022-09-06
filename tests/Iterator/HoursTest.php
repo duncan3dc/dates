@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
 
 class HoursTest extends TestCase
 {
-
     public function assertRangeHours($hours, $start, $end)
     {
         $start = new DateTime($start);
