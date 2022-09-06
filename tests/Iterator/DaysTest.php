@@ -22,67 +22,67 @@ class DaysTest extends TestCase
     }
 
 
-    public function test1Day()
+    public function test1Day(): void
     {
         $this->assertRangeDays(2, mktime(12, 0, 0, 3, 20, 2014), mktime(12, 0, 0, 3, 21, 2014));
     }
 
 
-    public function test31Days()
+    public function test31Days(): void
     {
         $this->assertRangeDays(32, mktime(12, 0, 0, 1, 1, 2014), mktime(12, 0, 0, 2, 1, 2014));
     }
 
 
-    public function testMonthChange()
+    public function testMonthChange(): void
     {
         $this->assertRangeDays(11, mktime(12, 0, 0, 11, 21, 2014), mktime(12, 0, 0, 12, 1, 2014));
     }
 
 
-    public function testYearChange()
+    public function testYearChange(): void
     {
         $this->assertRangeDays(2, mktime(12, 0, 0, 12, 31, 2013), mktime(12, 0, 0, 1, 1, 2014));
     }
 
 
-    public function testEarlyStartTime()
+    public function testEarlyStartTime(): void
     {
         $this->assertRangeDays(3, mktime(0, 0, 0, 6, 20, 2014), mktime(12, 0, 0, 6, 22, 2014));
     }
 
 
-    public function testEarlyEndTime()
+    public function testEarlyEndTime(): void
     {
         $this->assertRangeDays(3, mktime(12, 0, 0, 5, 5, 2014), mktime(0, 0, 0, 5, 7, 2014));
     }
 
 
-    public function testEarlyTimes()
+    public function testEarlyTimes(): void
     {
         $this->assertRangeDays(4, mktime(0, 0, 0, 4, 14, 2014), mktime(0, 0, 0, 4, 17, 2014));
     }
 
 
-    public function testLateStartTime()
+    public function testLateStartTime(): void
     {
         $this->assertRangeDays(11, mktime(23, 59, 59, 2, 10, 2014), mktime(12, 0, 0, 2, 20, 2014));
     }
 
 
-    public function testLateEndTime()
+    public function testLateEndTime(): void
     {
         $this->assertRangeDays(8, mktime(12, 0, 0, 2, 20, 2014), mktime(23, 59, 59, 2, 27, 2014));
     }
 
 
-    public function testLateTimes()
+    public function testLateTimes(): void
     {
         $this->assertRangeDays(4, mktime(23, 59, 59, 4, 14, 2014), mktime(23, 59, 59, 4, 17, 2014));
     }
 
 
-    public function testEarlyAndLateTimes()
+    public function testEarlyAndLateTimes(): void
     {
         $this->assertRangeDays(4, mktime(0, 0, 0, 4, 14, 2014), mktime(23, 59, 59, 4, 17, 2014));
     }

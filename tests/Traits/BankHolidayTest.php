@@ -50,7 +50,7 @@ class BankHolidayTest extends TestCase
         ],
     ];
 
-    public function testBankHolidays()
+    public function testBankHolidays(): void
     {
         foreach ($this->holidays as $year => $dates) {
             foreach ($dates as list($month, $day)) {
@@ -60,7 +60,7 @@ class BankHolidayTest extends TestCase
         }
     }
 
-    public function testNonBankHolidays()
+    public function testNonBankHolidays(): void
     {
         foreach ($this->holidays as $year => $dates) {
             foreach ($dates as list($month, $day)) {
@@ -80,7 +80,7 @@ class BankHolidayTest extends TestCase
     }
 
 
-    public function testBankHoliday1()
+    public function testBankHoliday1(): void
     {
         $date = Date::mkdate(2014, 1, 2);
         $this->assertFalse($date->isBankHoliday());

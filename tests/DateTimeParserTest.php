@@ -34,14 +34,14 @@ class DateTimeParserTest extends TestCase
     ];
 
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->parser = new DateTimeParser();
         $this->parser->addDefaultParsers();
     }
 
 
-    public function dateFormatProvider()
+    public function dateFormatProvider(): iterable
     {
         foreach ($this->dates as $format => $value) {
             # If we're on a 32bit machine then large integers will be cast to strings
@@ -54,14 +54,14 @@ class DateTimeParserTest extends TestCase
     /**
      * @dataProvider dateFormatProvider
      */
-    public function testFormat($format, $value)
+    public function testFormat($format, $value): void
     {
         $result = $this->parser->parse($value)->format($format);
         $this->assertSame($value, $result);
     }
 
 
-    public function datetimeFormatProvider()
+    public function datetimeFormatProvider(): iterable
     {
         foreach ($this->dates as $format => $value) {
             if (!strpos($format, " ")) {
@@ -74,14 +74,14 @@ class DateTimeParserTest extends TestCase
     /**
      * @dataProvider datetimeFormatProvider
      */
-    public function testSeparateTime($format, $value, $date, $time)
+    public function testSeparateTime($format, $value, $date, $time): void
     {
         $result = $this->parser->parse($date, $time)->format($format);
         $this->assertSame($value, $result);
     }
 
 
-    public function testNoDate()
+    public function testNoDate(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage("No date was passed");
@@ -89,7 +89,7 @@ class DateTimeParserTest extends TestCase
     }
 
 
-    public function testInvalidFormat()
+    public function testInvalidFormat(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage("Invalid character found in date (Monday)");
@@ -97,7 +97,7 @@ class DateTimeParserTest extends TestCase
     }
 
 
-    public function testInvalidTime()
+    public function testInvalidTime(): void
     {
         $date = $this->parser->parse("20141201", "7am");
         $this->assertSame(mktime(12, 0, 0, 12, 1, 2014), $date->timestamp());

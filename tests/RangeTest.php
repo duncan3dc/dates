@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class RangeTest extends TestCase
 {
-    public function testGetStart()
+    public function testGetStart(): void
     {
         $date = Date::now();
         $range = new Range($date, $date);
@@ -17,7 +17,7 @@ class RangeTest extends TestCase
     }
 
 
-    public function testGetEnd()
+    public function testGetEnd(): void
     {
         $date = Date::now();
         $range = new Range($date, $date);
@@ -25,7 +25,7 @@ class RangeTest extends TestCase
     }
 
 
-    public function testInvalidRange()
+    public function testInvalidRange(): void
     {
         $date = Date::now();
         $this->expectException(\InvalidArgumentException::class);
@@ -34,7 +34,7 @@ class RangeTest extends TestCase
     }
 
 
-    public function rangeProvider()
+    public function rangeProvider(): iterable
     {
         $data = [
             ["2017-01-01 13:00:00", "0 seconds"],
@@ -72,7 +72,7 @@ class RangeTest extends TestCase
     /**
      * @dataProvider rangeProvider
      */
-    public function testSsString(DateTime $from, DateTime $to, $expected)
+    public function testSsString(DateTime $from, DateTime $to, $expected): void
     {
         $range = new Range($from, $to);
         $this->assertSame($expected, $range->asString());

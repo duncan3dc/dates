@@ -17,7 +17,7 @@ class DateParserTest extends TestCase
         "1ymd"          =>  1070420,
     ];
 
-    public function testFormats()
+    public function testFormats(): void
     {
         $parser = new DateParser();
         $parser->addDefaultParsers();
@@ -28,7 +28,7 @@ class DateParserTest extends TestCase
         }
     }
 
-    public function testUnparsable()
+    public function testUnparsable(): void
     {
         $parser = new DateParser();
 

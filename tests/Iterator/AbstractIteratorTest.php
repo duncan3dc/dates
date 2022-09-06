@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class AbstractIteratorTest extends TestCase
 {
-    public function testCurrent()
+    public function testCurrent(): void
     {
         $date = Date::now();
         $range = new Range($date, $date);
@@ -20,7 +20,7 @@ class AbstractIteratorTest extends TestCase
         $this->assertSame(1, $count);
     }
 
-    public function testCount()
+    public function testCount(): void
     {
         $date = Date::now();
         $range = new Range($date, $date->addDays(4));

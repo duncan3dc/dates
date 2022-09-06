@@ -23,25 +23,25 @@ class YearsTest extends TestCase
     }
 
 
-    public function test1Year()
+    public function test1Year(): void
     {
         $this->assertRangeYears(2, mktime(12, 0, 0, 6, 15, 2014), mktime(12, 0, 0, 6, 15, 2015));
     }
 
 
-    public function testLateStartDate()
+    public function testLateStartDate(): void
     {
         $this->assertRangeYears(1, mktime(12, 0, 0, 6, 15, 2014), mktime(23, 59, 59, 12, 31, 2014));
     }
 
 
-    public function testLateEndDate()
+    public function testLateEndDate(): void
     {
         $this->assertRangeYears(2, mktime(12, 0, 0, 6, 15, 2014), mktime(23, 59, 59, 12, 31, 2015));
     }
 
 
-    public function testLateDates()
+    public function testLateDates(): void
     {
         $this->assertRangeYears(3, mktime(23, 59, 59, 12, 31, 2014), mktime(23, 59, 59, 12, 31, 2016));
     }

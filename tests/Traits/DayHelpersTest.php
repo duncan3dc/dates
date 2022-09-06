@@ -8,70 +8,70 @@ use PHPUnit\Framework\TestCase;
 
 class DayHelpersTest extends TestCase
 {
-    public function testIsMonday()
+    public function testIsMonday(): void
     {
         $date = new Date(mktime(12, 0, 0, 1, 12, 2015));
         $this->assertTrue($date->isMonday());
     }
 
 
-    public function testIsTuesday()
+    public function testIsTuesday(): void
     {
         $date = new Date(mktime(12, 0, 0, 1, 13, 2015));
         $this->assertTrue($date->isTuesday());
     }
 
 
-    public function testIsWednesday()
+    public function testIsWednesday(): void
     {
         $date = new Date(mktime(12, 0, 0, 1, 14, 2015));
         $this->assertTrue($date->isWednesday());
     }
 
 
-    public function testIsThursday()
+    public function testIsThursday(): void
     {
         $date = new Date(mktime(12, 0, 0, 1, 15, 2015));
         $this->assertTrue($date->isThursday());
     }
 
 
-    public function testIsFriday()
+    public function testIsFriday(): void
     {
         $date = new Date(mktime(12, 0, 0, 1, 16, 2015));
         $this->assertTrue($date->isFriday());
     }
 
 
-    public function testIsSaturday()
+    public function testIsSaturday(): void
     {
         $date = new Date(mktime(12, 0, 0, 1, 17, 2015));
         $this->assertTrue($date->isSaturday());
     }
 
 
-    public function testIsSunday()
+    public function testIsSunday(): void
     {
         $date = new Date(mktime(12, 0, 0, 1, 18, 2015));
         $this->assertTrue($date->isSunday());
     }
 
 
-    public function testIsWeekend()
+    public function testIsWeekend(): void
     {
         $date = new Date(mktime(12, 0, 0, 1, 18, 2015));
         $this->assertTrue($date->isWeekend());
     }
 
 
-    public function testIsWeekday()
+    public function testIsWeekday(): void
     {
         $date = new Date(mktime(12, 0, 0, 1, 14, 2015));
         $this->assertTrue($date->isWeekday());
     }
 
 
-    public function nextDayProvider()
+    public function nextDayProvider(): iterable
     {
         $data = [
             ["2016-06-08", Days::SUNDAY, "2016-06-12"],
@@ -94,7 +94,7 @@ class DayHelpersTest extends TestCase
     /**
      * @dataProvider nextDayProvider
      */
-    public function testGetNext(Date $date, $day, $expected)
+    public function testGetNext(Date $date, $day, $expected): void
     {
         $original = $date->format("Y-m-d");
 
@@ -106,7 +106,7 @@ class DayHelpersTest extends TestCase
     }
 
 
-    public function previousDayProvider()
+    public function previousDayProvider(): iterable
     {
         $data = [
             ["2016-06-08", Days::SUNDAY, "2016-06-05"],
@@ -129,7 +129,7 @@ class DayHelpersTest extends TestCase
     /**
      * @dataProvider previousDayProvider
      */
-    public function testGetPrevious(Date $date, $day, $expected)
+    public function testGetPrevious(Date $date, $day, $expected): void
     {
         $original = $date->format("Y-m-d");
 

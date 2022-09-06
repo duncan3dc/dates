@@ -16,15 +16,15 @@ class MonthTest extends TestCase
         $result = $month->getStart()->timestamp();
         $this->assertSame($expected, $result);
     }
-    public function testGetStart1()
+    public function testGetStart1(): void
     {
         $this->assertStartTime(mktime(12, 0, 0, 2, 1, 2015), mktime(12, 0, 0, 2, 27, 2015));
     }
-    public function testGetStart2()
+    public function testGetStart2(): void
     {
         $this->assertStartTime(mktime(12, 0, 0, 7, 1, 2015), mktime(12, 0, 0, 7, 1, 2015));
     }
-    public function testGetStart3()
+    public function testGetStart3(): void
     {
         $this->assertStartTime(mktime(12, 0, 0, 5, 1, 2015), mktime(12, 0, 0, 6, 0, 2015));
     }
@@ -37,21 +37,21 @@ class MonthTest extends TestCase
         $result = $month->getEnd()->timestamp();
         $this->assertSame($expected, $result);
     }
-    public function testGetEnd1()
+    public function testGetEnd1(): void
     {
         $this->assertEndTime(mktime(12, 0, 0, 7, 31, 2014), mktime(12, 0, 0, 7, 15, 2014));
     }
-    public function testGetEnd2()
+    public function testGetEnd2(): void
     {
         $this->assertEndTime(mktime(12, 0, 0, 2, 29, 2012), mktime(12, 0, 0, 2, 28, 2012));
     }
-    public function testGetEnd3()
+    public function testGetEnd3(): void
     {
         $this->assertEndTime(mktime(12, 0, 0, 6, 30, 2015), mktime(12, 0, 0, 5, 32, 2015));
     }
 
 
-    public function testNow()
+    public function testNow(): void
     {
         $date = Date::now();
         $check = new Month($date);
@@ -66,28 +66,28 @@ class MonthTest extends TestCase
         $this->assertSame($start, $month->getStart()->timestamp());
         $this->assertSame($end, $month->getEnd()->timestamp());
     }
-    public function testAddMonths()
+    public function testAddMonths(): void
     {
         $month = new Month(Date::mkdate(2015, 6, 1));
         $month = $month->addMonths(2);
 
         $this->assertRelativeTimes(mktime(12, 0, 0, 8, 1, 2015), mktime(12, 0, 0, 8, 31, 2015), $month);
     }
-    public function testSubMonths()
+    public function testSubMonths(): void
     {
         $month = new Month(Date::mkdate(2015, 1, 1));
         $month = $month->subMonths(1);
 
         $this->assertRelativeTimes(mktime(12, 0, 0, 12, 1, 2014), mktime(12, 0, 0, 12, 31, 2014), $month);
     }
-    public function testAddYears()
+    public function testAddYears(): void
     {
         $month = new Month(Date::mkdate(2015, 6, 1));
         $month = $month->addYears(2);
 
         $this->assertRelativeTimes(mktime(12, 0, 0, 6, 1, 2017), mktime(12, 0, 0, 6, 30, 2017), $month);
     }
-    public function testSubYears()
+    public function testSubYears(): void
     {
         $month = new Month(Date::mkdate(2015, 1, 1));
         $month = $month->subYears(1);

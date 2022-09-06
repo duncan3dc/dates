@@ -22,47 +22,47 @@ class MinutesTest extends TestCase
     }
 
 
-    public function testSeconds()
+    public function testSeconds(): void
     {
         $this->assertRangeMinutes(1, mktime(12, 0, 0, 3, 20, 2014), mktime(12, 0, 59, 3, 20, 2014));
     }
 
 
-    public function test1Minute()
+    public function test1Minute(): void
     {
         $this->assertRangeMinutes(2, mktime(12, 0, 0, 3, 20, 2014), mktime(12, 1, 0, 3, 20, 2014));
     }
 
 
-    public function test60Minutes()
+    public function test60Minutes(): void
     {
         $this->assertRangeMinutes(61, mktime(12, 0, 0, 1, 1, 2014), mktime(13, 0, 0, 1, 1, 2014));
     }
 
 
-    public function testLateStartTime()
+    public function testLateStartTime(): void
     {
         $this->assertRangeMinutes(2, mktime(23, 59, 59, 2, 10, 2014), mktime(0, 0, 0, 2, 11, 2014));
     }
 
 
-    public function testLateEndTime()
+    public function testLateEndTime(): void
     {
         $this->assertRangeMinutes(2, mktime(12, 0, 0, 2, 20, 2014), mktime(12, 1, 59, 2, 20, 2014));
     }
 
 
-    public function testLateTimes1()
+    public function testLateTimes1(): void
     {
         $this->assertRangeMinutes(1, mktime(23, 59, 59, 4, 14, 2014), mktime(23, 59, 59, 4, 14, 2014));
     }
-    public function testLateTimes2()
+    public function testLateTimes2(): void
     {
         $this->assertRangeMinutes(2, mktime(23, 58, 59, 4, 14, 2014), mktime(23, 59, 59, 4, 14, 2014));
     }
 
 
-    public function testEarlyAndLateTimes()
+    public function testEarlyAndLateTimes(): void
     {
         $this->assertRangeMinutes(1440, mktime(0, 0, 0, 4, 14, 2014), mktime(23, 59, 59, 4, 14, 2014));
     }
