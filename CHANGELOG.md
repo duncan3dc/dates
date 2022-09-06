@@ -5,6 +5,19 @@ Changelog
 
 --------
 
+## 1.4.0 - 2022-09-06
+
+### Added
+
+* [Support] Added support for PHP 7.3, 7.4, 8.0, and 8.1.
+* [Support] Dropped support for PHP 5.6, 7.0, and 7.1.
+
+### Removed
+
+* Removed the deprecated nextDay(), nextMonth(), nextYear(), prevDay(), prevMonth(), and prevYear() methods.
+
+--------
+
 ## 1.3.0 - 2017-08-14
 
 ### Added
