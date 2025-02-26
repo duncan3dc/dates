@@ -19,19 +19,19 @@ final class YearTest extends TestCase
     }
     public function testGetStart1(): void
     {
-        $this->assertStartTime(mktime(12, 0, 0, 1, 1, 2015), mktime(12, 0, 0, 2, 1, 2015));
+        $this->assertStartTime(testtime(2015, 1, 1), testtime(2015, 2, 1));
     }
     public function testGetStart2(): void
     {
-        $this->assertStartTime(mktime(12, 0, 0, 1, 1, 2015), mktime(12, 0, 0, 7, 31, 2015));
+        $this->assertStartTime(testtime(2015, 1, 1), testtime(2015, 7, 31));
     }
     public function testGetStart3(): void
     {
-        $this->assertStartTime(mktime(12, 0, 0, 1, 1, 2015), mktime(12, 0, 0, 8, 1, 2015));
+        $this->assertStartTime(testtime(2015, 1, 1), testtime(2015, 8, 1));
     }
     public function testGetStart4(): void
     {
-        $this->assertStartTime(mktime(12, 0, 0, 1, 1, 2015), mktime(12, 0, 0, 1, 31, 2015));
+        $this->assertStartTime(testtime(2015, 1, 1), testtime(2015, 1, 31));
     }
 
 
@@ -44,19 +44,19 @@ final class YearTest extends TestCase
     }
     public function testGetEnd1(): void
     {
-        $this->assertEndTime(mktime(12, 0, 0, 12, 31, 2014), mktime(12, 0, 0, 2, 1, 2014));
+        $this->assertEndTime(testtime(2014, 12, 31), testtime(2014, 2, 1));
     }
     public function testGetEnd2(): void
     {
-        $this->assertEndTime(mktime(12, 0, 0, 12, 31, 2014), mktime(12, 0, 0, 7, 31, 2014));
+        $this->assertEndTime(testtime(2014, 12, 31), testtime(2014, 7, 31));
     }
     public function testGetEnd3(): void
     {
-        $this->assertEndTime(mktime(12, 0, 0, 12, 31, 2014), mktime(12, 0, 0, 8, 1, 2014));
+        $this->assertEndTime(testtime(2014, 12, 31), testtime(2014, 8, 1));
     }
     public function testGetEnd4(): void
     {
-        $this->assertEndTime(mktime(12, 0, 0, 12, 31, 2015), mktime(12, 0, 0, 1, 31, 2015));
+        $this->assertEndTime(testtime(2015, 12, 31), testtime(2015, 1, 31));
     }
 
 
@@ -80,14 +80,14 @@ final class YearTest extends TestCase
         $year = new Year(Date::mkdate(2015, 6, 1));
         $year = $year->addYears(2);
 
-        $this->assertRelativeTimes(mktime(12, 0, 0, 1, 1, 2017), mktime(12, 0, 0, 12, 31, 2017), $year);
+        $this->assertRelativeTimes(testtime(2017, 1, 1), testtime(2017, 12, 31), $year);
     }
     public function testSubYears(): void
     {
         $year = new Year(Date::mkdate(2015, 1, 1));
         $year = $year->subYears(1);
 
-        $this->assertRelativeTimes(mktime(12, 0, 0, 1, 1, 2014), mktime(12, 0, 0, 12, 31, 2014), $year);
+        $this->assertRelativeTimes(testtime(2014, 1, 1), testtime(2014, 12, 31), $year);
     }
 
 

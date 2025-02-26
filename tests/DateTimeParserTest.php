@@ -106,6 +106,6 @@ final class DateTimeParserTest extends TestCase
     public function testInvalidTime(): void
     {
         $date = $this->parser->parse("20141201", "7am");
-        $this->assertSame(mktime(12, 0, 0, 12, 1, 2014), $date->timestamp());
+        $this->assertSame(testtime(2014, 12, 1), $date->timestamp());
     }
 }

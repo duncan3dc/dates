@@ -7,6 +7,8 @@ use duncan3dc\Dates\Month;
 use duncan3dc\Dates\Range;
 use PHPUnit\Framework\TestCase;
 
+use function duncan3dc\DateTests\testtime;
+
 final class MonthsTest extends TestCase
 {
     public function assertRangeMonths(int $months, int $start, int $end): void
@@ -25,60 +27,60 @@ final class MonthsTest extends TestCase
 
     public function test1Month(): void
     {
-        $this->assertRangeMonths(2, mktime(12, 0, 0, 3, 20, 2014), mktime(12, 0, 0, 4, 20, 2014));
+        $this->assertRangeMonths(2, testtime(2014, 3, 20), testtime(2014, 4, 20));
     }
 
 
     public function test12Months(): void
     {
-        $this->assertRangeMonths(12, mktime(12, 0, 0, 2, 1, 2014), mktime(12, 0, 0, 1, 1, 2015));
+        $this->assertRangeMonths(12, testtime(2014, 2, 1), testtime(2015, 1, 1));
     }
 
 
     public function testYearChange(): void
     {
-        $this->assertRangeMonths(2, mktime(12, 0, 0, 12, 31, 2013), mktime(12, 0, 0, 1, 1, 2014));
+        $this->assertRangeMonths(2, testtime(2013, 12, 31), testtime(2014, 1, 1));
     }
 
 
     public function testEarlyStartDate(): void
     {
-        $this->assertRangeMonths(2, mktime(0, 0, 0, 6, 1, 2014), mktime(12, 0, 0, 7, 15, 2014));
+        $this->assertRangeMonths(2, testtime(2014, 6, 1, 0), testtime(2014, 7, 15));
     }
 
 
     public function testEarlyEndDate(): void
     {
-        $this->assertRangeMonths(3, mktime(12, 0, 0, 5, 15, 2014), mktime(0, 0, 0, 7, 1, 2014));
+        $this->assertRangeMonths(3, testtime(2014, 5, 15), testtime(2014, 7, 1, 0));
     }
 
 
     public function testEarlyDates(): void
     {
-        $this->assertRangeMonths(4, mktime(0, 0, 0, 4, 1, 2014), mktime(0, 0, 0, 7, 1, 2014));
+        $this->assertRangeMonths(4, testtime(2014, 4, 1, 0), testtime(2014, 7, 1, 0));
     }
 
 
     public function testLateStartDate(): void
     {
-        $this->assertRangeMonths(1, mktime(23, 59, 59, 6, 15, 2014), mktime(12, 0, 0, 6, 30, 2014));
+        $this->assertRangeMonths(1, testtime(2014, 6, 15, 23, 59, 59), testtime(2014, 6, 30));
     }
 
 
     public function testLateEndDate(): void
     {
-        $this->assertRangeMonths(8, mktime(12, 0, 0, 8, 15, 2014), mktime(23, 59, 59, 3, 31, 2015));
+        $this->assertRangeMonths(8, testtime(2014, 8, 15), testtime(2015, 3, 31, 23, 59, 59));
     }
 
 
     public function testLateDates(): void
     {
-        $this->assertRangeMonths(4, mktime(23, 59, 59, 1, 31, 2014), mktime(23, 59, 59, 4, 30, 2014));
+        $this->assertRangeMonths(4, testtime(2014, 1, 31, 23, 59, 59), testtime(2014, 4, 30, 23, 59, 59));
     }
 
 
     public function testEarlyAndLateDates(): void
     {
-        $this->assertRangeMonths(2, mktime(0, 0, 0, 4, 1, 2014), mktime(23, 59, 59, 5, 31, 2014));
+        $this->assertRangeMonths(2, testtime(2014, 4, 1, 0), testtime(2014, 5, 31, 23, 59, 59));
     }
 }

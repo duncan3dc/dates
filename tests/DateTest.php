@@ -6,6 +6,8 @@ use duncan3dc\Dates\Date;
 use duncan3dc\Dates\DateTime;
 use PHPUnit\Framework\TestCase;
 
+use function mktime;
+
 final class DateTest extends TestCase
 {
     public function testConstructor(): void
@@ -36,7 +38,7 @@ final class DateTest extends TestCase
     public function testMkdate(): void
     {
         $date = Date::mkdate(2014, 6, 12);
-        $this->assertSame(mktime(12, 0, 0, 6, 12, 2014), $date->timestamp());
+        $this->assertSame(testtime(2014, 6, 12), $date->timestamp());
     }
 
 

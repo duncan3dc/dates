@@ -26,7 +26,8 @@
         "psr-4": {"duncan3dc\\Dates\\": "src/"}
     },
     "autoload-dev": {
-        "psr-4": {"duncan3dc\\DateTests\\": "tests/"}
+        "psr-4": {"duncan3dc\\DateTests\\": "tests/"},
+        "files": ["tests/functions.php"]
     },
     "scripts": {
         "test": [

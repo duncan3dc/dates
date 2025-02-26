@@ -7,67 +7,69 @@ use duncan3dc\Dates\Interfaces\DateTimeInterface;
 use duncan3dc\Dates\Interfaces\Days;
 use PHPUnit\Framework\TestCase;
 
+use function duncan3dc\DateTests\testtime;
+
 final class DayHelpersTest extends TestCase
 {
     public function testIsMonday(): void
     {
-        $date = new Date(mktime(12, 0, 0, 1, 12, 2015));
+        $date = new Date(testtime(2015, 1, 12));
         $this->assertTrue($date->isMonday());
     }
 
 
     public function testIsTuesday(): void
     {
-        $date = new Date(mktime(12, 0, 0, 1, 13, 2015));
+        $date = new Date(testtime(2015, 1, 13));
         $this->assertTrue($date->isTuesday());
     }
 
 
     public function testIsWednesday(): void
     {
-        $date = new Date(mktime(12, 0, 0, 1, 14, 2015));
+        $date = new Date(testtime(2015, 1, 14));
         $this->assertTrue($date->isWednesday());
     }
 
 
     public function testIsThursday(): void
     {
-        $date = new Date(mktime(12, 0, 0, 1, 15, 2015));
+        $date = new Date(testtime(2015, 1, 15));
         $this->assertTrue($date->isThursday());
     }
 
 
     public function testIsFriday(): void
     {
-        $date = new Date(mktime(12, 0, 0, 1, 16, 2015));
+        $date = new Date(testtime(2015, 1, 16));
         $this->assertTrue($date->isFriday());
     }
 
 
     public function testIsSaturday(): void
     {
-        $date = new Date(mktime(12, 0, 0, 1, 17, 2015));
+        $date = new Date(testtime(2015, 1, 17));
         $this->assertTrue($date->isSaturday());
     }
 
 
     public function testIsSunday(): void
     {
-        $date = new Date(mktime(12, 0, 0, 1, 18, 2015));
+        $date = new Date(testtime(2015, 1, 18));
         $this->assertTrue($date->isSunday());
     }
 
 
     public function testIsWeekend(): void
     {
-        $date = new Date(mktime(12, 0, 0, 1, 18, 2015));
+        $date = new Date(testtime(2015, 1, 18));
         $this->assertTrue($date->isWeekend());
     }
 
 
     public function testIsWeekday(): void
     {
-        $date = new Date(mktime(12, 0, 0, 1, 14, 2015));
+        $date = new Date(testtime(2015, 1, 14));
         $this->assertTrue($date->isWeekday());
     }
 
