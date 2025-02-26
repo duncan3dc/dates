@@ -10,30 +10,26 @@ trait Formatting
     /**
      * @var int $unix Unix timestamp representing the datetime of this object
      */
-    protected $unix;
+    protected int $unix;
 
 
     /**
-     * Format the date unsing the specified format and return a number.
+     * Format the date using the specified format and return a number.
      *
      * @var string $format The format to apply to the date
-     *
-     * @return int
      */
-    public function numeric($format)
+    public function numeric(string $format): int
     {
         return (int) $this->string($format);
     }
 
 
     /**
-     * Format the date unsing the specified format and return a string.
+     * Format the date using the specified format and return a string.
      *
      * @var string $format The format to apply to the date
-     *
-     * @return string
      */
-    public function string($format)
+    public function string(string $format): string
     {
         return date($format, $this->unix);
     }
@@ -48,7 +44,7 @@ trait Formatting
      *
      * @return string|int
      */
-    public function format($format)
+    public function format(string $format): string|int
     {
         $return = $this->string($format);
 

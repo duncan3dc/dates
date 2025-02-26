@@ -5,9 +5,12 @@ namespace duncan3dc\DateTests;
 use duncan3dc\Dates\DateParser;
 use PHPUnit\Framework\TestCase;
 
-class DateParserTest extends TestCase
+final class DateParserTest extends TestCase
 {
-    protected $dates = [
+    /**
+     * @var array<string, string|int>
+     */
+    private array $dates = [
         "Y-m-d"         =>  "2008-02-22",
         "d/m/Y"         =>  "28/02/2008",
         "d/m/y"         =>  "31/01/97",

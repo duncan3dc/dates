@@ -7,18 +7,12 @@ namespace duncan3dc\Dates\Parsers;
  */
 class Sql extends AbstractParser
 {
-    /**
-     * Convert a parsable date/time into a unix timestamp.
-     *
-     * @param string|int The date to parse
-     * @param string|int The time to parse
-     *
-     * @return int
-     */
-    public function parse($date, $time)
+    public function parse(string|int $date, string|int|null $time): ?int
     {
         if (preg_match("/^([0-9]{4})-([0-9]{2})-([0-9]{2})[\s-]([0-9]{2})[:\.]([0-9]{2})[:\.]([0-9]{2})(\.[0-9]{6})?$/", $date, $matches)) {
             return mktime($matches[4], $matches[5], $matches[6], $matches[2], $matches[3], $matches[1]);
         }
+
+        return null;
     }
 }

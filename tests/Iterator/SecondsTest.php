@@ -1,14 +1,14 @@
 <?php
 
-namespace duncan3dc\Dates\Iterator;
+namespace duncan3dc\DateTests\Iterator;
 
 use duncan3dc\Dates\DateTime;
 use duncan3dc\Dates\Range;
 use PHPUnit\Framework\TestCase;
 
-class SecondsTest extends TestCase
+final class SecondsTest extends TestCase
 {
-    public function assertRangeSeconds($seconds, $start, $end)
+    public function assertRangeSeconds(int $seconds, int $start, int $end): void
     {
         $start = new DateTime($start);
         $end = new DateTime($end);

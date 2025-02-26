@@ -1,12 +1,12 @@
 <?php
 
-namespace duncan3dc\DateTests;
+namespace duncan3dc\DateTests\Traits;
 
 use duncan3dc\Dates\Date;
 use duncan3dc\Dates\Interfaces\Days;
 use PHPUnit\Framework\TestCase;
 
-class DayHelpersTest extends TestCase
+final class DayHelpersTest extends TestCase
 {
     public function testIsMonday(): void
     {
@@ -71,6 +71,9 @@ class DayHelpersTest extends TestCase
     }
 
 
+    /**
+     * @return iterable<array<Date|int|string>>
+     */
     public function nextDayProvider(): iterable
     {
         $data = [
@@ -94,7 +97,7 @@ class DayHelpersTest extends TestCase
     /**
      * @dataProvider nextDayProvider
      */
-    public function testGetNext(Date $date, $day, $expected): void
+    public function testGetNext(Date $date, int $day, string $expected): void
     {
         $original = $date->format("Y-m-d");
 
@@ -106,6 +109,9 @@ class DayHelpersTest extends TestCase
     }
 
 
+    /**
+     * @return iterable<array<Date|int|string>>
+     */
     public function previousDayProvider(): iterable
     {
         $data = [
@@ -129,7 +135,7 @@ class DayHelpersTest extends TestCase
     /**
      * @dataProvider previousDayProvider
      */
-    public function testGetPrevious(Date $date, $day, $expected): void
+    public function testGetPrevious(Date $date, int $day, string $expected): void
     {
         $original = $date->format("Y-m-d");
 

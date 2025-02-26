@@ -7,9 +7,9 @@ use duncan3dc\Dates\DateTime;
 use duncan3dc\Dates\Year;
 use PHPUnit\Framework\TestCase;
 
-class YearTest extends TestCase
+final class YearTest extends TestCase
 {
-    protected function assertStartTime($expected, $unix)
+    private function assertStartTime(int $expected, int $unix): void
     {
         $date = new DateTime($unix);
         $year = new Year($date);
@@ -34,7 +34,7 @@ class YearTest extends TestCase
     }
 
 
-    protected function assertEndTime($expected, $unix)
+    private function assertEndTime(int $expected, int $unix): void
     {
         $date = new DateTime($unix);
         $year = new Year($date);
@@ -69,7 +69,7 @@ class YearTest extends TestCase
     }
 
 
-    public function assertRelativeTimes($start, $end, Year $year)
+    private function assertRelativeTimes(int $start, int $end, Year $year): void
     {
         $this->assertSame($start, $year->getStart()->timestamp());
         $this->assertSame($end, $year->getEnd()->timestamp());

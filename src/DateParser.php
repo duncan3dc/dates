@@ -12,10 +12,8 @@ class DateParser extends DateTimeParser
      *
      * @param string|int The date to parse
      * @param string|int The time to parse (ignored, use the DateTimeParser for time parsing)
-     *
-     * @return Date
      */
-    public function parse($date, $time = null)
+    public function parse(string|int $date, string|int|null $time = null): Date
     {
         $result = parent::parse($date, 0);
 

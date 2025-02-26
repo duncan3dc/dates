@@ -12,10 +12,8 @@ class Date extends DateTime
      *
      * @param string|int The date to parse
      * @param string|int The time to parse (ignored, use the DateTime class for time parsing)
-     *
-     * @return Date
      */
-    public static function parse($date, $time = null)
+    public static function parse(string|int $date, string|int|null $time = null): static
     {
         $parser = new DateParser();
 
@@ -31,10 +29,8 @@ class Date extends DateTime
      * @param int $year The year
      * @param int $month The month
      * @param int $day The day
-     *
-     * @return static
      */
-    public static function mkdate($year, $month, $day)
+    public static function mkdate(int $year, int $month, int $day): static
     {
         $unix = mktime(12, 0, 0, $month, $day, $year);
 
@@ -47,7 +43,7 @@ class Date extends DateTime
      *
      * @param int A unix timestamp
      */
-    public function __construct($unix)
+    public function __construct(int $unix)
     {
         parent::__construct($unix);
 

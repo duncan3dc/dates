@@ -11,10 +11,8 @@ trait RelativeDateTimes
      * Get a DateTime object for the specified number of days difference.
      *
      * @param int $days The number of days to add
-     *
-     * @return static
      */
-    public function addDays($days)
+    public function addDays(int $days): static
     {
         $days = (int) $days;
         if ($days === 0) {
@@ -36,10 +34,8 @@ trait RelativeDateTimes
      * Get a DateTime object for the specified number of days difference.
      *
      * @param int $days The number of days to subtract
-     *
-     * @return static
      */
-    public function subDays($days)
+    public function subDays(int $days): static
     {
         return $this->addDays($days * -1);
     }
@@ -49,10 +45,8 @@ trait RelativeDateTimes
      * Get a DateTime object for the specified number of weeks difference.
      *
      * @param int $weeks The number of weeks to add
-     *
-     * @return static
      */
-    public function addWeeks($weeks)
+    public function addWeeks(int $weeks): static
     {
         $weeks = (int) $weeks;
         if ($weeks === 0) {
@@ -67,10 +61,8 @@ trait RelativeDateTimes
      * Get a DateTime object for the specified number of weeks difference.
      *
      * @param int $weeks The number of weeks to subtract
-     *
-     * @return static
      */
-    public function subWeeks($weeks)
+    public function subWeeks(int $weeks): static
     {
         return $this->addWeeks($weeks * -1);
     }
@@ -80,10 +72,8 @@ trait RelativeDateTimes
      * Get a DateTime object for the specified number of months difference.
      *
      * @param int $months The number of months to add
-     *
-     * @return static
      */
-    public function addMonths($months)
+    public function addMonths(int $months): static
     {
         $months = (int) $months;
         if ($months === 0) {
@@ -121,10 +111,8 @@ trait RelativeDateTimes
      * Get a DateTime object for the specified number of months difference.
      *
      * @param int $months The number of months to subtract
-     *
-     * @return static
      */
-    public function subMonths($months)
+    public function subMonths(int $months): static
     {
         return $this->addMonths($months * -1);
     }
@@ -134,10 +122,8 @@ trait RelativeDateTimes
      * Get a DateTime object for the specified number of years difference.
      *
      * @param int $years The number of years to add
-     *
-     * @return static
      */
-    public function addYears($years)
+    public function addYears(int $years): static
     {
         # Use addMonths to take advantage of the day wrapping handling, as years always have 12 months
         return $this->addMonths($years * 12);
@@ -148,10 +134,8 @@ trait RelativeDateTimes
      * Get a DateTime object for the specified number of years difference.
      *
      * @param int $years The number of years to subtract
-     *
-     * @return static
      */
-    public function subYears($years)
+    public function subYears(int $years): static
     {
         return $this->addYears($years * -1);
     }
@@ -161,10 +145,8 @@ trait RelativeDateTimes
      * Get a DateTime object for the specified number of seconds difference.
      *
      * @param int $seconds The number of seconds to add
-     *
-     * @return static
      */
-    public function addSeconds($seconds)
+    public function addSeconds(int $seconds): static
     {
         $seconds = (int) $seconds;
         if ($seconds === 0) {
@@ -186,10 +168,8 @@ trait RelativeDateTimes
      * Get a DateTime object for the specified number of seconds difference.
      *
      * @param int $seconds The number of seconds to subtract
-     *
-     * @return static
      */
-    public function subSeconds($seconds)
+    public function subSeconds(int $seconds): static
     {
         return $this->addSeconds($seconds * -1);
     }
@@ -199,10 +179,8 @@ trait RelativeDateTimes
      * Get a DateTime object for the specified number of minutes difference.
      *
      * @param int $minutes The number of minutes to add
-     *
-     * @return static
      */
-    public function addMinutes($minutes)
+    public function addMinutes(int $minutes): static
     {
         return $this->addSeconds($minutes * 60);
     }
@@ -212,10 +190,8 @@ trait RelativeDateTimes
      * Get a DateTime object for the specified number of minutes difference.
      *
      * @param int $minutes The number of minutes to subtract
-     *
-     * @return static
      */
-    public function subMinutes($minutes)
+    public function subMinutes(int $minutes): static
     {
         return $this->addMinutes($minutes * -1);
     }
@@ -224,10 +200,8 @@ trait RelativeDateTimes
      * Get a DateTime object for the specified number of hours difference.
      *
      * @param int $hours The number of hours to add
-     *
-     * @return static
      */
-    public function addHours($hours)
+    public function addHours(int $hours): static
     {
         return $this->addMinutes($hours * 60);
     }
@@ -237,10 +211,8 @@ trait RelativeDateTimes
      * Get a DateTime object for the specified number of hours difference.
      *
      * @param int $hours The number of hours to subtract
-     *
-     * @return static
      */
-    public function subHours($hours)
+    public function subHours(int $hours): static
     {
         return $this->addHours($hours * -1);
     }

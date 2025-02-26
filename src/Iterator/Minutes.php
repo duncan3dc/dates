@@ -25,10 +25,8 @@ class Minutes extends AbstractIterator
 
     /**
      * Increment the internal date to the next position in the range.
-     *
-     * @return void
      */
-    protected function increment()
+    protected function increment(): void
     {
         $this->date = $this->date->addMinutes(1);
     }

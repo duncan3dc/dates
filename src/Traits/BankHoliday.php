@@ -11,10 +11,8 @@ trait BankHoliday
 {
     /**
      * Check if this object is a bank holiday.
-     *
-     * @return bool
      */
-    public function isBankHoliday()
+    public function isBankHoliday(): bool
     {
         return (
                $this->bhNewYearsDay()
@@ -25,7 +23,7 @@ trait BankHoliday
         );
     }
 
-    protected function bhNewYearsDay()
+    protected function bhNewYearsDay(): bool
     {
         # If it's not January, or it's after the 3rd then it's not a bh
         if ($this->numeric("m") > 1 || $this->numeric("d") > 3) {
@@ -40,7 +38,7 @@ trait BankHoliday
         return false;
     }
 
-    protected function bhEasterDays()
+    protected function bhEasterDays(): bool
     {
         $easter = new Date(easter_date($this->numeric("Y")));
 
@@ -57,7 +55,7 @@ trait BankHoliday
         return false;
     }
 
-    protected function bhMayDays()
+    protected function bhMayDays(): bool
     {
         # If it's not May then it's not a bh
         if ($this->numeric("m") !== 5) {
@@ -77,7 +75,7 @@ trait BankHoliday
         return false;
     }
 
-    protected function bhEndOfAugust()
+    protected function bhEndOfAugust(): bool
     {
         # If it's not August then it's not a bh
         if ($this->numeric("m") !== 8) {
@@ -92,7 +90,7 @@ trait BankHoliday
         return false;
     }
 
-    protected function bhChristmasDays()
+    protected function bhChristmasDays(): bool
     {
         # If it's not December then it's not a bh
         if ($this->numeric("m") !== 12) {

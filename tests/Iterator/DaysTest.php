@@ -6,9 +6,9 @@ use duncan3dc\Dates\DateTime;
 use duncan3dc\Dates\Range;
 use PHPUnit\Framework\TestCase;
 
-class DaysTest extends TestCase
+final class DaysTest extends TestCase
 {
-    public function assertRangeDays($days, $start, $end)
+    public function assertRangeDays(int $days, int $start, int $end): void
     {
         $start = new DateTime($start);
         $end = new DateTime($end);

@@ -7,7 +7,7 @@ use duncan3dc\Dates\DateTime;
 use duncan3dc\Dates\Range;
 use PHPUnit\Framework\TestCase;
 
-class RangeTest extends TestCase
+final class RangeTest extends TestCase
 {
     public function testGetStart(): void
     {
@@ -34,6 +34,9 @@ class RangeTest extends TestCase
     }
 
 
+    /**
+     * @return iterable<array<DateTime|string>>
+     */
     public function rangeProvider(): iterable
     {
         $data = [
@@ -72,7 +75,7 @@ class RangeTest extends TestCase
     /**
      * @dataProvider rangeProvider
      */
-    public function testSsString(DateTime $from, DateTime $to, $expected): void
+    public function testAsString(DateTime $from, DateTime $to, string $expected): void
     {
         $range = new Range($from, $to);
         $this->assertSame($expected, $range->asString());

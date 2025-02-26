@@ -7,9 +7,9 @@ use duncan3dc\Dates\Month;
 use duncan3dc\Dates\Range;
 use PHPUnit\Framework\TestCase;
 
-class MonthsTest extends TestCase
+final class MonthsTest extends TestCase
 {
-    public function assertRangeMonths($months, $start, $end)
+    public function assertRangeMonths(int $months, int $start, int $end): void
     {
         $start = new DateTime($start);
         $end = new DateTime($end);

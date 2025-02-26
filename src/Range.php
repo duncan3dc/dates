@@ -7,15 +7,9 @@ namespace duncan3dc\Dates;
  */
 class Range
 {
-    /**
-     * @var DateTime $start The start date of this range.
-     */
-    protected $start;
+    protected DateTime $start;
 
-    /**
-     * @var DateTime $end The end date of this range.
-     */
-    protected $end;
+    protected DateTime $end;
 
     /**
      * Create a new range from 2 dates.
@@ -36,10 +30,8 @@ class Range
 
     /**
      * Get the start date of this range.
-     *
-     * @return DateTime
      */
-    public function getStart()
+    public function getStart(): DateTime
     {
         return $this->start;
     }
@@ -47,10 +39,8 @@ class Range
 
     /**
      * Get the end date of this range.
-     *
-     * @return DateTime
      */
-    public function getEnd()
+    public function getEnd(): DateTime
     {
         return $this->end;
     }
@@ -58,10 +48,8 @@ class Range
 
     /**
      * Get an iterator for the days covered by this date range.
-     *
-     * @return Iterator\Days
      */
-    public function days()
+    public function days(): Iterator\Days
     {
         return new Iterator\Days($this->start, $this->end);
     }
@@ -69,10 +57,8 @@ class Range
 
     /**
      * Get an iterator for the months covered by this date range.
-     *
-     * @return Iterator\Months
      */
-    public function months()
+    public function months(): Iterator\Months
     {
         return new Iterator\Months($this->start, $this->end);
     }
@@ -80,10 +66,8 @@ class Range
 
     /**
      * Get an iterator for the years covered by this date range.
-     *
-     * @return Iterator\Years
      */
-    public function years()
+    public function years(): Iterator\Years
     {
         return new Iterator\Years($this->start, $this->end);
     }
@@ -91,10 +75,8 @@ class Range
 
     /**
      * Get an iterator for the hours covered by this date range.
-     *
-     * @return Iterator\Hours
      */
-    public function hours()
+    public function hours(): Iterator\Hours
     {
         return new Iterator\Hours($this->start, $this->end);
     }
@@ -102,10 +84,8 @@ class Range
 
     /**
      * Get an iterator for the minutes covered by this date range.
-     *
-     * @return Iterator\Minutes
      */
-    public function minutes()
+    public function minutes(): Iterator\Minutes
     {
         return new Iterator\Minutes($this->start, $this->end);
     }
@@ -113,10 +93,8 @@ class Range
 
     /**
      * Get an iterator for the seconds covered by this date range.
-     *
-     * @return Iterator\Seconds
      */
-    public function seconds()
+    public function seconds(): Iterator\Seconds
     {
         return new Iterator\Seconds($this->start, $this->end);
     }
@@ -124,10 +102,8 @@ class Range
 
     /**
      * Get the range represented in a human readable format.
-     *
-     * @return string
      */
-    public function asString()
+    public function asString(): string
     {
         $plural = function ($number, $word) {
             $number = (int) $number;

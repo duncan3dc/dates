@@ -6,7 +6,7 @@ use duncan3dc\Dates\DateTime;
 use duncan3dc\Dates\Interfaces\Days;
 use PHPUnit\Framework\TestCase;
 
-class DateTimeTest extends TestCase
+final class DateTimeTest extends TestCase
 {
     public function testConstructor1(): void
     {
@@ -19,12 +19,6 @@ class DateTimeTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage("An invalid unix timestamp was passed");
         new DateTime(0);
-    }
-    public function testConstructor3(): void
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage("An invalid unix timestamp was passed");
-        new DateTime("ABC");
     }
 
 
@@ -142,6 +136,9 @@ class DateTimeTest extends TestCase
     }
 
 
+    /**
+     * @return iterable<array<string|int>>
+     */
     public function dateFormatProvider(): iterable
     {
         $dates = [
@@ -157,9 +154,9 @@ class DateTimeTest extends TestCase
     /**
      * @dataProvider dateFormatProvider
      */
-    public function testFromFormat($input, $format): void
+    public function testFromFormat(string|int $input, string $format): void
     {
-        $result = DateTime::fromFormat($format, $input)->format($format);
+        $result = DateTime::fromFormat($format, (string) $input)->format($format);
         $this->assertSame($input, $result);
     }
 

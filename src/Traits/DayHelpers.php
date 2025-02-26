@@ -2,6 +2,8 @@
 
 namespace duncan3dc\Dates\Traits;
 
+use duncan3dc\Dates\Date;
+use duncan3dc\Dates\DateTime;
 use duncan3dc\Dates\Interfaces\Days;
 
 /**
@@ -13,10 +15,8 @@ trait DayHelpers
      * Check if this date is the specified day.
      *
      * @param int $day The ISO-8601 number of the day
-     *
-     * @return bool
      */
-    public function isDay($day)
+    public function isDay(int $day): bool
     {
         $day = (int) $day;
         return ($this->numeric("N") === $day);
@@ -25,10 +25,8 @@ trait DayHelpers
 
     /**
      * Check if this date is a monday.
-     *
-     * @return bool
      */
-    public function isMonday()
+    public function isMonday(): bool
     {
         return $this->isDay(Days::MONDAY);
     }
@@ -36,10 +34,8 @@ trait DayHelpers
 
     /**
      * Check if this date is a tuesday.
-     *
-     * @return bool
      */
-    public function isTuesday()
+    public function isTuesday(): bool
     {
         return $this->isDay(Days::TUESDAY);
     }
@@ -47,10 +43,8 @@ trait DayHelpers
 
     /**
      * Check if this date is a wednesday.
-     *
-     * @return bool
      */
-    public function isWednesday()
+    public function isWednesday(): bool
     {
         return $this->isDay(Days::WEDNESDAY);
     }
@@ -58,10 +52,8 @@ trait DayHelpers
 
     /**
      * Check if this date is a thursday.
-     *
-     * @return bool
      */
-    public function isThursday()
+    public function isThursday(): bool
     {
         return $this->isDay(Days::THURSDAY);
     }
@@ -69,10 +61,8 @@ trait DayHelpers
 
     /**
      * Check if this date is a friday.
-     *
-     * @return bool
      */
-    public function isFriday()
+    public function isFriday(): bool
     {
         return $this->isDay(Days::FRIDAY);
     }
@@ -80,10 +70,8 @@ trait DayHelpers
 
     /**
      * Check if this date is a saturday.
-     *
-     * @return bool
      */
-    public function isSaturday()
+    public function isSaturday(): bool
     {
         return $this->isDay(Days::SATURDAY);
     }
@@ -91,10 +79,8 @@ trait DayHelpers
 
     /**
      * Check if this date is a sunday.
-     *
-     * @return bool
      */
-    public function isSunday()
+    public function isSunday(): bool
     {
         return $this->isDay(Days::SUNDAY);
     }
@@ -102,10 +88,8 @@ trait DayHelpers
 
     /**
      * Check if this date is a weekday.
-     *
-     * @return bool
      */
-    public function isWeekday()
+    public function isWeekday(): bool
     {
         return ($this->numeric("N") <= Days::FRIDAY);
     }
@@ -113,26 +97,20 @@ trait DayHelpers
 
     /**
      * Check if this date is a weekend.
-     *
-     * @return bool
      */
-    public function isWeekend()
+    public function isWeekend(): bool
     {
         return ($this->numeric("N") >= Days::SATURDAY);
     }
 
 
     /**
-     * Get a date object for the previous occurence of a specified day.
+     * Get a date object for the previous occurrence of a specified day.
      *
      * @param int $day The numeric representation of the day.
-     *
-     * @return Date
      */
-    public function getPrevious($day)
+    public function getPrevious(int $day): DateTime
     {
-        $day = (int) $day;
-
         # Don't include today as we want the 'previous' instance
         $date = $this->subDays(1);
 
@@ -148,16 +126,12 @@ trait DayHelpers
 
 
     /**
-     * Get a date object for the next occurence of a specified day.
+     * Get a date object for the next occurrence of a specified day.
      *
      * @param int $day The numeric representation of the day.
-     *
-     * @return Date
      */
-    public function getNext($day)
+    public function getNext(int $day): DateTime
     {
-        $day = (int) $day;
-
         # Don't include today as we want the 'next' instance
         $date = $this->addDays(1);
 

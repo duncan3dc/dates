@@ -6,7 +6,7 @@ use duncan3dc\Dates\Date;
 use duncan3dc\Dates\DateTime;
 use PHPUnit\Framework\TestCase;
 
-class DateTest extends TestCase
+final class DateTest extends TestCase
 {
     public function testConstructor(): void
     {

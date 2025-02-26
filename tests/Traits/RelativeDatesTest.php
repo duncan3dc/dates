@@ -1,11 +1,11 @@
 <?php
 
-namespace duncan3dc\DateTests;
+namespace duncan3dc\DateTests\Traits;
 
 use duncan3dc\Dates\Date;
 use PHPUnit\Framework\TestCase;
 
-class RelativeDatesTest extends TestCase
+final class RelativeDatesTest extends TestCase
 {
     public function testAddDays1(): void
     {

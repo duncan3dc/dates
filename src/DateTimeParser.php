@@ -10,39 +10,33 @@ use duncan3dc\Dates\DateTime;
 class DateTimeParser
 {
     /**
-     * @var Parsers\AbstractParser[] $parsers The parsers to use for parsing dates/times.
+     * @var array<Parsers\AbstractParser> $parsers The parsers to use for parsing dates/times.
      */
-    protected $parsers = [];
+    protected array $parsers = [];
 
     /**
      * Add a parser to the stack.
-     *
-     * @param Parsers\AbstractParser The parser object to add
-     *
-     * @return static
      */
-    public function addParser(Parsers\AbstractParser $parser)
+    public function addParser(Parsers\AbstractParser $parser): static
     {
         $this->parsers[] = $parser;
+        return $this;
     }
 
 
     /**
      * Add the default set of parsers the library ships with.
-     *
-     * @return static
      */
-    public function addDefaultParsers()
+    public function addDefaultParsers(): static
     {
-        $this->addParser(new Parsers\ISO8601());
-        $this->addParser(new Parsers\Sql());
-        $this->addParser(new Parsers\HumanReadable());
-        $this->addParser(new Parsers\SortableDateTime());
-        $this->addParser(new Parsers\SortableYearMonth());
-        $this->addParser(new Parsers\IbmDb2());
-        $this->addParser(new Parsers\Sortable());
-
-        return $this;
+        return $this
+            ->addParser(new Parsers\ISO8601())
+            ->addParser(new Parsers\Sql())
+            ->addParser(new Parsers\HumanReadable())
+            ->addParser(new Parsers\SortableDateTime())
+            ->addParser(new Parsers\SortableYearMonth())
+            ->addParser(new Parsers\IbmDb2())
+            ->addParser(new Parsers\Sortable());
     }
 
 
@@ -50,11 +44,9 @@ class DateTimeParser
      * Create a new DateTime object from a parsable date/time.
      *
      * @param string|int The date to parse
-     * @param string|int The time to parse
-     *
-     * @return DateTime
+     * @param string|int|null The time to parse
      */
-    public function parse($date, $time = null)
+    public function parse(string|int $date, string|int|null $time = null): DateTime
     {
         if (!$date = trim($date)) {
             throw new \InvalidArgumentException("No date was passed");

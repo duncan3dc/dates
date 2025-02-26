@@ -6,7 +6,7 @@ use duncan3dc\Dates\Date;
 use duncan3dc\Dates\Range;
 use PHPUnit\Framework\TestCase;
 
-class AbstractIteratorTest extends TestCase
+final class AbstractIteratorTest extends TestCase
 {
     public function testCurrent(): void
     {

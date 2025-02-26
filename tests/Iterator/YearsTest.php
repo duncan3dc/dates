@@ -7,9 +7,9 @@ use duncan3dc\Dates\Range;
 use duncan3dc\Dates\Year;
 use PHPUnit\Framework\TestCase;
 
-class YearsTest extends TestCase
+final class YearsTest extends TestCase
 {
-    public function assertRangeYears($years, $start, $end)
+    public function assertRangeYears(int $years, int $start, int $end): void
     {
         $start = new DateTime($start);
         $end = new DateTime($end);

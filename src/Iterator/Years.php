@@ -26,10 +26,8 @@ class Years extends AbstractIterator
 
     /**
      * Get the current iterator value.
-     *
-     * @return Year
      */
-    public function current()
+    public function current(): Year
     {
         return new Year($this->date);
     }
@@ -37,10 +35,8 @@ class Years extends AbstractIterator
 
     /**
      * Increment the internal date to the next position in the range.
-     *
-     * @return void
      */
-    protected function increment()
+    protected function increment(): void
     {
         $this->date = $this->date->addYears(1);
     }

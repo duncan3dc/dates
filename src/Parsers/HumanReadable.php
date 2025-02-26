@@ -7,15 +7,7 @@ namespace duncan3dc\Dates\Parsers;
  */
 class HumanReadable extends AbstractParser
 {
-    /**
-     * Convert a parsable date/time into a unix timestamp.
-     *
-     * @param string|int The date to parse
-     * @param string|int The time to parse
-     *
-     * @return int
-     */
-    public function parse($date, $time)
+    public function parse(string|int $date, string|int|null $time): ?int
     {
         if (strpos($date, "/") || strpos($date, "-")) {
             $char = strpos($date, "/") ? "/" : "-";
@@ -25,5 +17,7 @@ class HumanReadable extends AbstractParser
 
             return mktime($time["h"], $time["m"], $time["s"], $m, $d, $y);
         }
+
+        return null;
     }
 }

@@ -10,21 +10,19 @@ abstract class AbstractParser
     /**
      * Convert a parsable date/time into a unix timestamp.
      *
-     * @param string|int The date to parse
-     * @param string|int The time to parse
-     *
-     * @return int
+     * @param string|int $date The date to parse
+     * @param string|int $time The time to parse
      */
-    abstract public function parse($date, $time);
+    abstract public function parse(string|int $date, string|int|null $time): ?int;
 
     /**
      * Convert the time to an array of hours, minutes and seconds.
      *
      * @param string|int $time The value to parse.
      *
-     * @return array
+     * @return array<string, int>
      */
-    protected function parseTime($time)
+    protected function parseTime(string|int|null $time): array
     {
         $return = [
             "h" =>  12,
@@ -53,7 +51,7 @@ abstract class AbstractParser
         # Sortable format (His)
         return [
             "h" =>  floor($time / 10000),
-            "m" =>  floor(($time / 100) % 100),
+            "m" =>  floor((int) ($time / 100) % 100),
             "s" =>  $time % 100,
         ];
     }

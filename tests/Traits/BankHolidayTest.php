@@ -1,13 +1,16 @@
 <?php
 
-namespace duncan3dc\DateTests;
+namespace duncan3dc\DateTests\Traits;
 
 use duncan3dc\Dates\Date;
 use PHPUnit\Framework\TestCase;
 
-class BankHolidayTest extends TestCase
+final class BankHolidayTest extends TestCase
 {
-    protected $holidays = [
+    /**
+     * @var array<int, array<array<int>>>
+     */
+    private array $holidays = [
         2013    =>  [
             [1, 1],
             [3, 29],

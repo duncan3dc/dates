@@ -28,11 +28,9 @@ class Year extends Range
     /**
      * Create a new instance of the Year class from a numeric 4 digit year.
      *
-     * @param $year The 4 digit year (eg 2015)
-     *
-     * @return static
+     * @param int $year The 4 digit year (eg 2015)
      */
-    public static function fromInt($year)
+    public static function fromInt(int $year): static
     {
         $date = Date::mkdate($year, 1, 1);
         return new static($date);

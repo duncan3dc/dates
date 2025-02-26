@@ -7,9 +7,9 @@ use duncan3dc\Dates\DateTime;
 use duncan3dc\Dates\Month;
 use PHPUnit\Framework\TestCase;
 
-class MonthTest extends TestCase
+final class MonthTest extends TestCase
 {
-    protected function assertStartTime($expected, $unix)
+    private function assertStartTime(int $expected, int $unix): void
     {
         $date = new DateTime($unix);
         $month = new Month($date);
@@ -30,7 +30,7 @@ class MonthTest extends TestCase
     }
 
 
-    protected function assertEndTime($expected, $unix)
+    private function assertEndTime(int $expected, int $unix): void
     {
         $date = new DateTime($unix);
         $month = new Month($date);
@@ -61,7 +61,7 @@ class MonthTest extends TestCase
     }
 
 
-    public function assertRelativeTimes($start, $end, Month $month)
+    private function assertRelativeTimes(int $start, int $end, Month $month): void
     {
         $this->assertSame($start, $month->getStart()->timestamp());
         $this->assertSame($end, $month->getEnd()->timestamp());

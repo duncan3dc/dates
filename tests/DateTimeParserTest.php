@@ -5,11 +5,14 @@ namespace duncan3dc\DateTests;
 use duncan3dc\Dates\DateTimeParser;
 use PHPUnit\Framework\TestCase;
 
-class DateTimeParserTest extends TestCase
+final class DateTimeParserTest extends TestCase
 {
-    protected $parser;
+    private DateTimeParser $parser;
 
-    protected $dates = [
+    /**
+     * @var array<string, string|int>
+     */
+    private array $dates = [
         "Y-m-d"         =>  "2008-02-22",
         "Y-m-d H:i:s"   =>  "2010-04-30 05:33:21",
         "Y-m-d G:i"     =>  "2015-12-20 7:44",
@@ -41,32 +44,35 @@ class DateTimeParserTest extends TestCase
     }
 
 
+    /**
+     * @return iterable<array<string|int>>
+     */
     public function dateFormatProvider(): iterable
     {
         foreach ($this->dates as $format => $value) {
-            # If we're on a 32bit machine then large integers will be cast to strings
-            if (is_double($value)) {
-                $value = (string) $value;
-            }
             yield [$format, $value];
         }
     }
     /**
      * @dataProvider dateFormatProvider
      */
-    public function testFormat($format, $value): void
+    public function testFormat(string $format, string|int $value): void
     {
         $result = $this->parser->parse($value)->format($format);
         $this->assertSame($value, $result);
     }
 
 
+    /**
+     * @return iterable<array<string>>
+     */
     public function datetimeFormatProvider(): iterable
     {
         foreach ($this->dates as $format => $value) {
             if (!strpos($format, " ")) {
                 continue;
             }
+            $value = (string) $value;
             list($date, $time) = explode(" ", $value);
             yield [$value, $value, $date, $time];
         }
@@ -74,7 +80,7 @@ class DateTimeParserTest extends TestCase
     /**
      * @dataProvider datetimeFormatProvider
      */
-    public function testSeparateTime($format, $value, $date, $time): void
+    public function testSeparateTime(string $format, string $value, string $date, string $time): void
     {
         $result = $this->parser->parse($date, $time)->format($format);
         $this->assertSame($value, $result);

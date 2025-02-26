@@ -12,27 +12,27 @@ abstract class AbstractIterator implements \Iterator, \Countable
     /**
      * @var int $start The unix timestamp for the start date of the range
      */
-    protected $start;
+    protected int $start;
 
     /**
      * @var int $end The unix timestamp for the end date of the range
      */
-    protected $end;
+    protected int $end;
 
     /**
      * @var int $position The current position in the iterator
      */
-    protected $position;
+    protected int $position;
 
     /**
      * @var DateTime $date The date object for the current iterator position
      */
-    protected $date;
+    protected DateTime $date;
 
     /**
      * @var int|null $count The number of elements in the iterator
      */
-    protected $count;
+    protected ?int $count = null;
 
     /**
      * Create a new iterator for a range.
@@ -45,18 +45,14 @@ abstract class AbstractIterator implements \Iterator, \Countable
 
     /**
      * Increment the internal date to the next position in the range.
-     *
-     * @return void
      */
-    abstract protected function increment();
+    abstract protected function increment(): void;
 
 
     /**
      * Get the current iterator value.
-     *
-     * @return DateTime
      */
-    public function current()
+    public function current(): mixed
     {
         return $this->date;
     }
@@ -64,10 +60,8 @@ abstract class AbstractIterator implements \Iterator, \Countable
 
     /**
      * Get the current iterator position.
-     *
-     * @return int
      */
-    public function key()
+    public function key(): int
     {
         return $this->position;
     }
@@ -75,10 +69,8 @@ abstract class AbstractIterator implements \Iterator, \Countable
 
     /**
      * Advance the iterator to the next position.
-     *
-     * @return void
      */
-    public function next()
+    public function next(): void
     {
         ++$this->position;
         $this->increment();
@@ -87,10 +79,8 @@ abstract class AbstractIterator implements \Iterator, \Countable
 
     /**
      * Reset the iterator to the start.
-     *
-     * @return void
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->position = 0;
         $this->date = new DateTime($this->start);
@@ -99,10 +89,8 @@ abstract class AbstractIterator implements \Iterator, \Countable
 
     /**
      * Check if the current position is valid.
-     *
-     * @return bool
      */
-    public function valid()
+    public function valid(): bool
     {
         return $this->date->timestamp() <= $this->end;
     }
@@ -110,10 +98,8 @@ abstract class AbstractIterator implements \Iterator, \Countable
 
     /**
      * Get the number of elements in the iterator.
-     *
-     * @return int
      */
-    public function count()
+    public function count(): int
     {
         if ($this->count === null) {
             $this->count = count(iterator_to_array($this));
