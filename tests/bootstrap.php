@@ -1,5 +1,9 @@
 <?php
 
+namespace duncan3dc\DateTests;
+
+use function mktime;
+
 require __DIR__ . '/../vendor/autoload.php';
 
 # Convert any issues to exceptions

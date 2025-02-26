@@ -100,24 +100,24 @@ final class DateTimeTest extends TestCase
 
     public function testMiddayEarly(): void
     {
-        $date = new DateTime(mktime(0, 0, 0, 1, 1, 2014));
-        $this->assertSame(mktime(12, 0, 0, 1, 1, 2014), $date->midday());
+        $date = new DateTime(testtime(2014, 1, 1, 0));
+        $this->assertSame(testtime(2014, 1, 1), $date->midday());
     }
     public function testMiddayLate(): void
     {
-        $date = new DateTime(mktime(23, 59, 59, 1, 1, 2014));
-        $this->assertSame(mktime(12, 0, 0, 1, 1, 2014), $date->midday());
+        $date = new DateTime(testtime(2014, 1, 1, 23, 59, 59));
+        $this->assertSame(testtime(2014, 1, 1), $date->midday());
     }
 
     public function testStart(): void
     {
-        $date = new DateTime(mktime(12, 0, 0, 1, 1, 2014));
-        $this->assertSame(mktime(0, 0, 0, 1, 1, 2014), $date->start());
+        $date = new DateTime(testtime(2014, 1, 1));
+        $this->assertSame(testtime(2014, 1, 1, 0), $date->start());
     }
     public function testEnd(): void
     {
-        $date = new DateTime(mktime(12, 0, 0, 1, 1, 2014));
-        $this->assertSame(mktime(23, 59, 59, 1, 1, 2014), $date->end());
+        $date = new DateTime(testtime(2014, 1, 1));
+        $this->assertSame(testtime(2014, 1, 1, 23, 59, 59), $date->end());
     }
 
 
@@ -172,7 +172,7 @@ final class DateTimeTest extends TestCase
     public function testMktime(): void
     {
         $date = DateTime::mktime(12, 0, 0, 7, 1, 2014);
-        $this->assertSame(mktime(12, 0, 0, 7, 1, 2014), $date->timestamp());
+        $this->assertSame(testtime(2014, 7, 1), $date->timestamp());
     }
 
 
