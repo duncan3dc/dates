@@ -3,7 +3,7 @@
 namespace duncan3dc\Dates\Interfaces;
 
 /**
- * Format the internal unix timestamp in a specified way.
+ * Format the instance in a specified way.
  */
 interface FormatInterface
 {

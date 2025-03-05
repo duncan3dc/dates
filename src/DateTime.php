@@ -2,19 +2,26 @@
 
 namespace duncan3dc\Dates;
 
+use duncan3dc\Dates\Helpers\BankHoliday;
+use duncan3dc\Dates\Helpers\Formatter;
 use duncan3dc\Dates\Interfaces\DateTimeInterface;
 use duncan3dc\Dates\Interfaces\MonthInterface;
 use duncan3dc\Dates\Interfaces\YearInterface;
+
+use function date;
+use function preg_match;
+use function time;
 
 /**
  * A class to respresent a unix timestamp and allow convenient methods.
  */
 final class DateTime implements DateTimeInterface
 {
-    use Traits\BankHoliday;
     use Traits\DayHelpers;
-    use Traits\Formatting;
     use Traits\RelativeDateTimes;
+
+    private int $timestamp;
+
 
     /**
      * Create a new DateTime object representing the current time.
@@ -104,16 +111,14 @@ final class DateTime implements DateTimeInterface
 
     /**
      * Create a new instance from a unix timestamp.
-     *
-     * @param int $unix A unix timestamp
      */
-    public function __construct(int $unix)
+    public function __construct(int $timestamp)
     {
-        if (!$unix) {
+        if (!$timestamp) {
             throw new \InvalidArgumentException("An invalid unix timestamp was passed");
         }
 
-        $this->unix = $unix;
+        $this->timestamp = $timestamp;
     }
 
 
@@ -124,7 +129,25 @@ final class DateTime implements DateTimeInterface
      */
     public function timestamp(): int
     {
-        return $this->unix;
+        return $this->timestamp;
+    }
+
+
+    public function numeric(string $format): int
+    {
+        return Formatter::numeric($format, $this->timestamp);
+    }
+
+
+    public function string(string $format): string
+    {
+        return Formatter::string($format, $this->timestamp);
+    }
+
+
+    public function format(string $format): string|int
+    {
+        return Formatter::format($format, $this->timestamp);
     }
 
 
@@ -239,5 +262,11 @@ final class DateTime implements DateTimeInterface
         }
 
         return $date;
+    }
+
+
+    public function isBankHoliday(): bool
+    {
+        return BankHoliday::isBankHoliday($this);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace duncan3dc\DateTests\Traits;
+namespace duncan3dc\DateTests\Helpers;
 
 use duncan3dc\Dates\Date;
 use PHPUnit\Framework\TestCase;
