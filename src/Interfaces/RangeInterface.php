@@ -68,37 +68,4 @@ interface RangeInterface
      * Get the range represented in a human readable format.
      */
     public function asString(): string;
-
-# TODO - Separate interface?
-
-    /**
-     * Get a new Range object for the specified number of months difference.
-     *
-     * @param int $months The number of months to add
-     */
-#    public function addMonths(int $months): static;
-
-
-    /**
-     * Get a new Range object for the specified number of months difference.
-     *
-     * @param int $months The number of months to subtract
-     */
-#    public function subMonths(int $months): static;
-
-
-    /**
-     * Get a new Range object for the specified number of years difference.
-     *
-     * @param int $years The number of years to add
-     */
-#    public function addYears(int $years): static;
-
-
-    /**
-     * Get a new Range object for the specified number of years difference.
-     *
-     * @param int $years The number of years to subtract
-     */
-#    public function subYears(int $years): static;
 }

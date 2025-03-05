@@ -2,6 +2,7 @@
 
 namespace duncan3dc\Dates;
 
+use duncan3dc\Dates\Helpers\Formatter;
 use duncan3dc\Dates\Interfaces\DateTimeInterface;
 use duncan3dc\Dates\Interfaces\MonthInterface;
 
@@ -10,7 +11,7 @@ use duncan3dc\Dates\Interfaces\MonthInterface;
  */
 final class Month extends Range implements MonthInterface
 {
-    use Traits\Formatting;
+    private int $timestamp;
 
 
     /**
@@ -24,11 +25,29 @@ final class Month extends Range implements MonthInterface
 
     public function __construct(DateTimeInterface $date)
     {
-        $this->unix = $date->timestamp();
+        $this->timestamp = $date->timestamp();
 
         $start = Date::mkdate($date->numeric("Y"), $date->numeric("n"), 1);
         $end = Date::mkdate($date->numeric("Y"), $date->numeric("n"), $date->numeric("t"));
         parent::__construct($start, $end);
+    }
+
+
+    public function numeric(string $format): int
+    {
+        return Formatter::numeric($format, $this->timestamp);
+    }
+
+
+    public function string(string $format): string
+    {
+        return Formatter::string($format, $this->timestamp);
+    }
+
+
+    public function format(string $format): string|int
+    {
+        return Formatter::format($format, $this->timestamp);
     }
 
 

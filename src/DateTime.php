@@ -2,19 +2,25 @@
 
 namespace duncan3dc\Dates;
 
+use duncan3dc\Dates\Helpers\BankHoliday;
+use duncan3dc\Dates\Helpers\Formatter;
 use duncan3dc\Dates\Interfaces\DateTimeInterface;
+use duncan3dc\Dates\Interfaces\Days;
 use duncan3dc\Dates\Interfaces\MonthInterface;
 use duncan3dc\Dates\Interfaces\YearInterface;
+
+use function date;
+use function mktime;
+use function preg_match;
+use function time;
 
 /**
  * A class to respresent a unix timestamp and allow convenient methods.
  */
 final class DateTime implements DateTimeInterface
 {
-    use Traits\BankHoliday;
-    use Traits\DayHelpers;
-    use Traits\Formatting;
-    use Traits\RelativeDateTimes;
+    private int $timestamp;
+
 
     /**
      * Create a new DateTime object representing the current time.
@@ -104,16 +110,14 @@ final class DateTime implements DateTimeInterface
 
     /**
      * Create a new instance from a unix timestamp.
-     *
-     * @param int $unix A unix timestamp
      */
-    public function __construct(int $unix)
+    public function __construct(int $timestamp)
     {
-        if (!$unix) {
+        if (!$timestamp) {
             throw new \InvalidArgumentException("An invalid unix timestamp was passed");
         }
 
-        $this->unix = $unix;
+        $this->timestamp = $timestamp;
     }
 
 
@@ -124,7 +128,25 @@ final class DateTime implements DateTimeInterface
      */
     public function timestamp(): int
     {
-        return $this->unix;
+        return $this->timestamp;
+    }
+
+
+    public function numeric(string $format): int
+    {
+        return Formatter::numeric($format, $this->timestamp);
+    }
+
+
+    public function string(string $format): string
+    {
+        return Formatter::string($format, $this->timestamp);
+    }
+
+
+    public function format(string $format): string|int
+    {
+        return Formatter::format($format, $this->timestamp);
     }
 
 
@@ -170,6 +192,256 @@ final class DateTime implements DateTimeInterface
     public function end(): int
     {
         return mktime(23, 59, 59, $this->numeric("n"), $this->numeric("j"), $this->numeric("Y"));
+    }
+
+
+    /**
+     * Check if this date is the specified day.
+     *
+     * @param int $day The ISO-8601 number of the day
+     */
+    public function isDay(int $day): bool
+    {
+        return ($this->numeric("N") === $day);
+    }
+
+
+    public function isMonday(): bool
+    {
+        return $this->isDay(Days::MONDAY);
+    }
+
+
+    public function isTuesday(): bool
+    {
+        return $this->isDay(Days::TUESDAY);
+    }
+
+
+    public function isWednesday(): bool
+    {
+        return $this->isDay(Days::WEDNESDAY);
+    }
+
+
+    public function isThursday(): bool
+    {
+        return $this->isDay(Days::THURSDAY);
+    }
+
+
+    public function isFriday(): bool
+    {
+        return $this->isDay(Days::FRIDAY);
+    }
+
+
+    public function isSaturday(): bool
+    {
+        return $this->isDay(Days::SATURDAY);
+    }
+
+
+    public function isSunday(): bool
+    {
+        return $this->isDay(Days::SUNDAY);
+    }
+
+
+    public function isWeekday(): bool
+    {
+        return ($this->numeric("N") <= Days::FRIDAY);
+    }
+
+
+    public function isWeekend(): bool
+    {
+        return ($this->numeric("N") >= Days::SATURDAY);
+    }
+
+
+    public function isBankHoliday(): bool
+    {
+        return BankHoliday::isBankHoliday($this);
+    }
+
+
+    /**
+     * Get a date object for the previous occurrence of a specified day.
+     *
+     * @param int $day The numeric representation of the day.
+     */
+    public function getPrevious(int $day): DateTimeInterface
+    {
+        # Don't include today as we want the 'previous' instance
+        $date = $this->subDays(1);
+
+        $current = $date->numeric("N");
+        if ($current < $day) {
+            $day -= 7;
+        }
+
+        $adjust = $current - $day;
+
+        return $date->subDays($adjust);
+    }
+
+
+    /**
+     * Get a date object for the next occurrence of a specified day.
+     *
+     * @param int $day The numeric representation of the day.
+     */
+    public function getNext(int $day): DateTimeInterface
+    {
+        # Don't include today as we want the 'next' instance
+        $date = $this->addDays(1);
+
+        $current = $date->numeric("N");
+        if ($current > $day) {
+            $day += 7;
+        }
+
+        $adjust = $day - $current;
+
+        return $date->addDays($adjust);
+    }
+
+
+    public function addDays(int $days): DateTimeInterface
+    {
+        if ($days === 0) {
+            return $this;
+        }
+
+        return new DateTime((int) mktime(
+            $this->numeric("H"),
+            $this->numeric("i"),
+            $this->numeric("s"),
+            $this->numeric("n"),
+            $this->numeric("j") + $days,
+            $this->numeric("Y")
+        ));
+    }
+
+
+    public function subDays(int $days): DateTimeInterface
+    {
+        return $this->addDays($days * -1);
+    }
+
+
+    public function addWeeks(int $weeks): DateTimeInterface
+    {
+        if ($weeks === 0) {
+            return $this;
+        }
+
+        return $this->addDays($weeks * 7);
+    }
+
+
+    public function subWeeks(int $weeks): DateTimeInterface
+    {
+        return $this->addWeeks($weeks * -1);
+    }
+
+
+    public function addMonths(int $months): DateTimeInterface
+    {
+        if ($months === 0) {
+            return $this;
+        }
+
+        $date = new DateTime((int) mktime(
+            $this->numeric("H"),
+            $this->numeric("i"),
+            $this->numeric("s"),
+            $this->numeric("n") + $months,
+            1,
+            $this->numeric("Y")
+        ));
+
+        # Prevent the month from wrapping when using a date that doesn't exist in that month
+        $day = $this->numeric("j");
+        $max = $date->numeric("t");
+        if ($day > $max) {
+            $day = $max;
+        }
+
+        return new DateTime((int) mktime(
+            $this->numeric("H"),
+            $this->numeric("i"),
+            $this->numeric("s"),
+            $this->numeric("n") + $months,
+            $day,
+            $this->numeric("Y")
+        ));
+    }
+
+
+    public function subMonths(int $months): DateTimeInterface
+    {
+        return $this->addMonths($months * -1);
+    }
+
+
+    public function addYears(int $years): DateTimeInterface
+    {
+        # Use addMonths to take advantage of the day wrapping handling, as years always have 12 months
+        return $this->addMonths($years * 12);
+    }
+
+
+    public function subYears(int $years): DateTimeInterface
+    {
+        return $this->addYears($years * -1);
+    }
+
+
+    public function addSeconds(int $seconds): DateTimeInterface
+    {
+        if ($seconds === 0) {
+            return $this;
+        }
+
+        return new DateTime((int) mktime(
+            $this->numeric("H"),
+            $this->numeric("i"),
+            $this->numeric("s") + $seconds,
+            $this->numeric("n"),
+            $this->numeric("j"),
+            $this->numeric("Y")
+        ));
+    }
+
+
+    public function subSeconds(int $seconds): DateTimeInterface
+    {
+        return $this->addSeconds($seconds * -1);
+    }
+
+
+    public function addMinutes(int $minutes): DateTimeInterface
+    {
+        return $this->addSeconds($minutes * 60);
+    }
+
+
+    public function subMinutes(int $minutes): DateTimeInterface
+    {
+        return $this->addMinutes($minutes * -1);
+    }
+
+    public function addHours(int $hours): DateTimeInterface
+    {
+        return $this->addMinutes($hours * 60);
+    }
+
+
+    public function subHours(int $hours): DateTimeInterface
+    {
+        return $this->addHours($hours * -1);
     }
 
 
