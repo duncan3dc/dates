@@ -5,6 +5,25 @@ Changelog
 
 --------
 
+## 2.0.0 - 2025-03-05
+
+### Changed
+
+* [Support] Added support for PHP 8.2, 8.3, and 8.4.
+* [Support] Dropped support for PHP 7.2, 7.3, and 7.4.
+* [DateTime] Added parameter/return types to all methods.
+* [DateTime] Refactored to prevent inheritance and reduce traits.
+
+### Added
+
+* [DateTime] Added interfaces for all code intended to be used externally.
+
+### Removed
+
+* [Date] Deprecated instantiation of this class, only static methods should be used.
+
+--------
+
 ## 1.4.0 - 2022-09-06
 
 ### Added
