@@ -1,15 +1,13 @@
 <?php
 
-namespace duncan3dc\DateTests\Traits;
+namespace duncan3dc\DateTests;
 
 use duncan3dc\Dates\Date;
 use duncan3dc\Dates\Interfaces\DateTimeInterface;
 use duncan3dc\Dates\Interfaces\Days;
 use PHPUnit\Framework\TestCase;
 
-use function duncan3dc\DateTests\testtime;
-
-final class DayHelpersTest extends TestCase
+final class IsDayTest extends TestCase
 {
     public function testIsMonday(): void
     {
@@ -75,7 +73,7 @@ final class DayHelpersTest extends TestCase
 
 
     /**
-     * @return iterable<array<DateTimeInterface|int|string>>
+     * @return DateTimeInterface
      */
     public function nextDayProvider(): iterable
     {
@@ -113,7 +111,7 @@ final class DayHelpersTest extends TestCase
 
 
     /**
-     * @return iterable<array<DateTimeInterface|int|string>>
+     * @return DateTimeInterface
      */
     public function previousDayProvider(): iterable
     {
