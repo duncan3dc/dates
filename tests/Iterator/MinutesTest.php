@@ -58,6 +58,8 @@ final class MinutesTest extends TestCase
     {
         $this->assertRangeMinutes(1, testtime(2014, 4, 14, 23, 59, 59), testtime(2014, 4, 14, 23, 59, 59));
     }
+
+
     public function testLateTimes2(): void
     {
         $this->assertRangeMinutes(2, testtime(2014, 4, 14, 23, 58, 59), testtime(2014, 4, 14, 23, 59, 59));

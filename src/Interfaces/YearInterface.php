@@ -14,6 +14,7 @@ interface YearInterface extends RangeInterface, FormatInterface
      */
     public static function fromInt(int $year): YearInterface;
 
+
     /**
      * Get a new Range object for the specified number of months difference.
      */

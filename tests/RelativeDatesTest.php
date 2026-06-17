@@ -13,12 +13,16 @@ final class RelativeDatesTest extends TestCase
         $result = $date->addDays(2);
         $this->assertSame(testtime(2014, 4, 2), $result->timestamp());
     }
+
+
     public function testAddDays2(): void
     {
         $date = new Date(testtime(2012, 1, 1));
         $result = $date->addDays(-2);
         $this->assertSame(testtime(2011, 12, 30), $result->timestamp());
     }
+
+
     public function testAddDays3(): void
     {
         $date = new Date(testtime(2014, 6, 7));
@@ -41,6 +45,8 @@ final class RelativeDatesTest extends TestCase
         $result = $date->addDays(1);
         $this->assertSame(testtime(1970, 4, 1), $result->timestamp());
     }
+
+
     public function testPrevDay(): void
     {
         $date = new Date(testtime(2001, 1, 1, 0));
@@ -55,12 +61,16 @@ final class RelativeDatesTest extends TestCase
         $result = $date->addMonths(2);
         $this->assertSame(testtime(2014, 5, 31), $result->timestamp());
     }
+
+
     public function testAddMonths2(): void
     {
         $date = new Date(testtime(2012, 1, 31));
         $result = $date->addMonths(-2);
         $this->assertSame(testtime(2011, 11, 30), $result->timestamp());
     }
+
+
     public function testAddMonths3(): void
     {
         $date = new Date(testtime(2012, 2, 20));
@@ -83,6 +93,8 @@ final class RelativeDatesTest extends TestCase
         $result = $date->addMonths(1);
         $this->assertSame(testtime(1970, 4, 30), $result->timestamp());
     }
+
+
     public function testPrevMonth(): void
     {
         $date = new Date(testtime(2001, 1, 1, 0));
@@ -97,6 +109,8 @@ final class RelativeDatesTest extends TestCase
         $result = $date->addYears(2);
         $this->assertSame(testtime(2014, 5, 1), $result->timestamp());
     }
+
+
     public function testAddYears2(): void
     {
         $date = new Date(testtime(2012, 2, 29));
@@ -119,6 +133,8 @@ final class RelativeDatesTest extends TestCase
         $result = $date->addYears(1);
         $this->assertSame(testtime(1987, 31, 12), $result->timestamp());
     }
+
+
     public function testPrevYear(): void
     {
         $date = new Date(testtime(2001, 1, 1, 0));

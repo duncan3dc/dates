@@ -270,6 +270,7 @@ interface DateTimeInterface extends FormatInterface
      */
     public function subMinutes(int $minutes): DateTimeInterface;
 
+
     /**
      * Get a DateTime object for the specified number of hours difference.
      *

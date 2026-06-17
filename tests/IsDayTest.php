@@ -95,6 +95,8 @@ final class IsDayTest extends TestCase
             yield [$date, $row[1], $row[2]];
         }
     }
+
+
     /**
      * @dataProvider nextDayProvider
      */
@@ -133,6 +135,8 @@ final class IsDayTest extends TestCase
             yield [$date, $row[1], $row[2]];
         }
     }
+
+
     /**
      * @dataProvider previousDayProvider
      */

@@ -16,13 +16,14 @@ final class BankHoliday
     public static function isBankHoliday(DateTimeInterface $date): bool
     {
         return (
-               self::newYearsDay($date)
+            self::newYearsDay($date)
             || self::easterDays($date)
             || self::mayDays($date)
             || self::endOfAugust($date)
             || self::christmasDays($date)
         );
     }
+
 
     private static function newYearsDay(DateTimeInterface $date): bool
     {
@@ -38,6 +39,7 @@ final class BankHoliday
 
         return false;
     }
+
 
     private static function easterDays(DateTimeInterface $date): bool
     {
@@ -55,6 +57,7 @@ final class BankHoliday
 
         return false;
     }
+
 
     private static function mayDays(DateTimeInterface $date): bool
     {
@@ -76,6 +79,7 @@ final class BankHoliday
         return false;
     }
 
+
     private static function endOfAugust(DateTimeInterface $date): bool
     {
         # If it's not August then it's not a bank holiday
@@ -90,6 +94,7 @@ final class BankHoliday
 
         return false;
     }
+
 
     private static function christmasDays(DateTimeInterface $date): bool
     {

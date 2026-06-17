@@ -20,6 +20,7 @@ final class AbstractIteratorTest extends TestCase
         $this->assertSame(1, $count);
     }
 
+
     public function testCount(): void
     {
         $date = Date::now();

@@ -13,24 +13,32 @@ final class RelativeDateTimesTest extends TestCase
         $result = $date->addWeeks(2);
         $this->assertSame(testtime(2013, 3, 14), $result->timestamp());
     }
+
+
     public function testAddWeeks2(): void
     {
         $date = new DateTime(testtime(2013, 2, 28));
         $result = $date->addWeeks(-2);
         $this->assertSame(testtime(2013, 2, 14), $result->timestamp());
     }
+
+
     public function testAddWeeks3(): void
     {
         $date = new DateTime(testtime(2013, 2, 28));
         $result = $date->addWeeks(0);
         $this->assertSame($date, $result);
     }
+
+
     public function testSubWeeks1(): void
     {
         $date = new DateTime(testtime(2014, 10, 2));
         $result = $date->subWeeks(2);
         $this->assertSame(testtime(2014, 9, 18), $result->timestamp());
     }
+
+
     public function testSubWeeks2(): void
     {
         $date = new DateTime(testtime(2013, 10, 2));
@@ -45,6 +53,8 @@ final class RelativeDateTimesTest extends TestCase
         $result = $date->addMonths(2);
         $this->assertSame(testtime(2014, 5, 31), $result->timestamp());
     }
+
+
     public function testAddMonths2(): void
     {
         $date = new DateTime(testtime(2012, 1, 31));
@@ -59,6 +69,8 @@ final class RelativeDateTimesTest extends TestCase
         $result = $date->addMonths(1);
         $this->assertSame(testtime(1970, 4, 30, 23, 59, 59), $result->timestamp());
     }
+
+
     public function testPrevMonth(): void
     {
         $date = new DateTime(testtime(2001, 1, 1, 0));
@@ -73,6 +85,8 @@ final class RelativeDateTimesTest extends TestCase
         $result = $date->addYears(2);
         $this->assertSame(testtime(2014, 5, 1), $result->timestamp());
     }
+
+
     public function testAddYears2(): void
     {
         $date = new DateTime(testtime(2012, 2, 29));
@@ -87,6 +101,8 @@ final class RelativeDateTimesTest extends TestCase
         $result = $date->addYears(1);
         $this->assertSame(testtime(1987, 31, 12, 23, 59, 59), $result->timestamp());
     }
+
+
     public function testPrevYear(): void
     {
         $date = new DateTime(testtime(2001, 1, 1, 0));
@@ -101,6 +117,8 @@ final class RelativeDateTimesTest extends TestCase
         $result = $date->addSeconds(5);
         $this->assertSame(testtime(2014, 3, 31, 12, 0, 5), $result->timestamp());
     }
+
+
     public function testAddSeconds2(): void
     {
         $date = new DateTime(testtime(2014, 3, 31, 12, 0, 22));

@@ -11,7 +11,7 @@ final class BankHolidayTest extends TestCase
      * @var array<int, array<array<int>>>
      */
     private array $holidays = [
-        2013    =>  [
+        2013 => [
             [1, 1],
             [3, 29],
             [4, 1],
@@ -21,7 +21,7 @@ final class BankHolidayTest extends TestCase
             [12, 25],
             [12, 26],
         ],
-        2014    =>  [
+        2014 => [
             [1, 1],
             [4, 18],
             [4, 21],
@@ -31,7 +31,7 @@ final class BankHolidayTest extends TestCase
             [12, 25],
             [12, 26],
         ],
-        2015    =>  [
+        2015 => [
             [1, 1],
             [4, 3],
             [4, 6],
@@ -41,7 +41,7 @@ final class BankHolidayTest extends TestCase
             [12, 25],
             [12, 28],
         ],
-        2016    =>  [
+        2016 => [
             [1, 1],
             [3, 25],
             [3, 28],
@@ -53,6 +53,7 @@ final class BankHolidayTest extends TestCase
         ],
     ];
 
+
     public function testBankHolidays(): void
     {
         foreach ($this->holidays as $year => $dates) {
@@ -62,6 +63,7 @@ final class BankHolidayTest extends TestCase
             }
         }
     }
+
 
     public function testNonBankHolidays(): void
     {

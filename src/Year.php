@@ -13,6 +13,7 @@ final class Year extends Range implements YearInterface
 {
     private int $timestamp;
 
+
     /**
      * Get an instance for the current year.
      */

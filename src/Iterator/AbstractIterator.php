@@ -38,6 +38,7 @@ abstract class AbstractIterator implements IteratorInterface
      */
     protected ?int $count = null;
 
+
     /**
      * Create a new iterator for a range.
      *

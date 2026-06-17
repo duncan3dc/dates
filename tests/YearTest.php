@@ -17,18 +17,26 @@ final class YearTest extends TestCase
         $result = $year->getStart()->timestamp();
         $this->assertSame($expected, $result);
     }
+
+
     public function testGetStart1(): void
     {
         $this->assertStartTime(testtime(2015, 1, 1), testtime(2015, 2, 1));
     }
+
+
     public function testGetStart2(): void
     {
         $this->assertStartTime(testtime(2015, 1, 1), testtime(2015, 7, 31));
     }
+
+
     public function testGetStart3(): void
     {
         $this->assertStartTime(testtime(2015, 1, 1), testtime(2015, 8, 1));
     }
+
+
     public function testGetStart4(): void
     {
         $this->assertStartTime(testtime(2015, 1, 1), testtime(2015, 1, 31));
@@ -42,18 +50,26 @@ final class YearTest extends TestCase
         $result = $year->getEnd()->timestamp();
         $this->assertSame($expected, $result);
     }
+
+
     public function testGetEnd1(): void
     {
         $this->assertEndTime(testtime(2014, 12, 31), testtime(2014, 2, 1));
     }
+
+
     public function testGetEnd2(): void
     {
         $this->assertEndTime(testtime(2014, 12, 31), testtime(2014, 7, 31));
     }
+
+
     public function testGetEnd3(): void
     {
         $this->assertEndTime(testtime(2014, 12, 31), testtime(2014, 8, 1));
     }
+
+
     public function testGetEnd4(): void
     {
         $this->assertEndTime(testtime(2015, 12, 31), testtime(2015, 1, 31));
@@ -75,6 +91,8 @@ final class YearTest extends TestCase
         $this->assertSame($start, $year->getStart()->timestamp());
         $this->assertSame($end, $year->getEnd()->timestamp());
     }
+
+
     public function testAddYears(): void
     {
         $year = new Year(Date::mkdate(2015, 6, 1));
@@ -82,6 +100,8 @@ final class YearTest extends TestCase
 
         $this->assertRelativeTimes(testtime(2017, 1, 1), testtime(2017, 12, 31), $year);
     }
+
+
     public function testSubYears(): void
     {
         $year = new Year(Date::mkdate(2015, 1, 1));

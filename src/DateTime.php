@@ -433,6 +433,7 @@ final class DateTime implements DateTimeInterface
         return $this->addMinutes($minutes * -1);
     }
 
+
     public function addHours(int $hours): DateTimeInterface
     {
         return $this->addMinutes($hours * 60);
